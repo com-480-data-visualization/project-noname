@@ -2,7 +2,7 @@
 
 | Student's name | SCIPER |
 | -------------- | ------ |
-| | |
+| Daniele Giuli | 395832 |
 | | |
 | | |
 
@@ -16,6 +16,18 @@ This is a preliminary milestone to let you set up goals for your final project a
 Please, fill the following sections about your project.
 
 *(max. 2000 characters per section)*
+
+The conflict in Ukraine represents a critical geopolitical crisis with a vast but often fragmented landscape of information. This project aims to bridge the gap between raw data and public understanding by developing an interactive, data-driven platform that provides a multi-faceted analysis of the war.
+
+Our goal is to move beyond static reporting, offering a comprehensive visualization of the conflict’s evolution through four main pillars:
+
+Military Dynamics: Visualizing the shifting battlefronts and tactical engagements over time.
+
+Human Impact: Tracking casualties and the humanitarian cost of the escalation.
+
+Financial & Material Support: Mapping the flow of international aid and military equipment.
+
+Geopolitical Context: Analyzing the diplomatic shifts and alliances surrounding the crisis.
 
 ### Dataset
 
