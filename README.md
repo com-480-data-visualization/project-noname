@@ -3,7 +3,7 @@
 | Student's name | SCIPER |
 | -------------- | ------ |
 | Daniele Giuli | 395832 |
-| | |
+| Chaewon Yoon | 423059 |
 | | |
 
 [Milestone 1](#milestone-1) • [Milestone 2](#milestone-2) • [Milestone 3](#milestone-3)
@@ -34,6 +34,44 @@ Geopolitical Context: Analyzing the diplomatic shifts and alliances surrounding 
 > Find a dataset (or multiple) that you will explore. Assess the quality of the data it contains and how much preprocessing / data-cleaning it will require before tackling visualization. We recommend using a standard dataset as this course is not about scraping nor data processing.
 >
 > Hint: some good pointers for finding quality publicly available datasets ([Google dataset search](https://datasetsearch.research.google.com/), [Kaggle](https://www.kaggle.com/datasets), [OpenSwissData](https://opendata.swiss/en/), [SNAP](https://snap.stanford.edu/data/) and [FiveThirtyEight](https://data.fivethirtyeight.com/)).
+
+
+Dataset 
+
+To provide a multi-dimensional analysis of the Ukraine conflict, we have selected several authoritative and standardized datasets that cover military, humanitarian, and economic aspects:
+
+* Military Dynamics & Casualties
+- ACLED (Armed Conflict Location & Event Data Project) : Provides georeferenced data on specific military actions, battles, and explosions.
+https://acleddata.com/conflict-data/download-data-files
+
+- UCDP GED (Georeferenced Event Dataset) : Offers high-quality, event-based data to track precise casualty figures and instances of one-sided violence.
+https://ucdp.uu.se/downloads/#section-other
+
+* International Support & Sanctions
+- Ukraine Support Tracker (Kiel Institute) : Tracks financial, humanitarian, and military aid pledged by various countries.
+https://www.ifw-kiel.de/publications/ukraine-support-tracker-data-6453/
+
+- OpenSanctions (Ukraine War Sanctions) : A curated dataset of individuals and entities targeted by international sanctions.
+https://www.opensanctions.org/datasets/ua_war_sanctions/
+
+* Economic Impact & Territorial Changes: 
+- COW (Correlates of War) Bilateral Trade : Used to assess shifts in global trade patterns and the economic consequences of the war.
+https://correlatesofwar.org/data-sets/
+
+- DeepStateMap/ISW Geospatial Data : Open-source data to visualize the temporal shifts of the battlefront and territorial control.
+https://t.me/DeepStateUA
+
+Data Quality Assessment
+
+These datasets are widely recognized as "gold standards" in political science and conflict research. ACLED and UCDP provide rigorous, cross-verified event logs, while the Kiel Institute’s tracker is the most comprehensive source for aid transparency. The data quality is high, minimizing the risk of misinformation common in active conflict reporting.
+
+Preprocessing & Data Cleaning
+
+1.  Normalization : Aligning timestamps (daily events vs. monthly/periodic reports) to a unified interactive timeline.
+2.  Geospatial Join : Mapping event-based coordinates from ACLED/UCDP onto the territorial polygons derived from DeepStateMap to ensure visual consistency.
+3.  Entity Linking: Connecting sanctioned entities from OpenSanctions with economic indicators to visualize the correlation between legal pressure and economic shifts.
+
+
 
 ### Problematic
 
