@@ -41,6 +41,7 @@ Dataset
 To provide a multi-dimensional analysis of the Ukraine conflict, we have selected several authoritative and standardized datasets that cover military, humanitarian, and economic aspects:
 
 * Military Dynamics & Casualties
+  ---
 - ACLED (Armed Conflict Location & Event Data Project) : Provides georeferenced data on specific military actions, battles, and explosions.
 https://acleddata.com/conflict-data/download-data-files
 
@@ -48,13 +49,15 @@ https://acleddata.com/conflict-data/download-data-files
 https://ucdp.uu.se/downloads/#section-other
 
 * International Support & Sanctions
+  ---
 - Ukraine Support Tracker (Kiel Institute) : Tracks financial, humanitarian, and military aid pledged by various countries.
 https://www.ifw-kiel.de/publications/ukraine-support-tracker-data-6453/
 
 - OpenSanctions (Ukraine War Sanctions) : A curated dataset of individuals and entities targeted by international sanctions.
 https://www.opensanctions.org/datasets/ua_war_sanctions/
 
-* Economic Impact & Territorial Changes: 
+* Economic Impact & Territorial Changes:
+  ---
 - COW (Correlates of War) Bilateral Trade : Used to assess shifts in global trade patterns and the economic consequences of the war.
 https://correlatesofwar.org/data-sets/
 
