@@ -10,12 +10,12 @@
 
 ## Milestone 1 (20th March, 5pm)
 
-**10% of the final grade**
+> **10% of the final grade**
 
-This is a preliminary milestone to let you set up goals for your final project and assess the feasibility of your ideas.
-Please, fill the following sections about your project.
+> This is a preliminary milestone to let you set up goals for your final project and assess the feasibility of your ideas.
+> Please, fill the following sections about your project.
 
-*(max. 2000 characters per section)*
+> *(max. 2000 characters per section)*
 
 The conflict in Ukraine represents a critical geopolitical crisis with a vast but often fragmented landscape of information. This project aims to bridge the gap between raw data and public understanding by developing an interactive, data-driven platform that provides a multi-faceted analysis of the war.
 
