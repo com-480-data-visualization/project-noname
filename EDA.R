@@ -233,3 +233,212 @@ fatalities_actor_plot <- ggplot(monthly_fatalities_actors, aes(x = month_year, y
   )
 
 print(fatalities_actor_plot)
+
+"--------------------------------"
+#### UCDP ####
+"--------------------------------"
+# I did not find anything relevant, definately not in the actors dataset
+
+
+"--------------------------------"
+#### UKRAINE WAR AND SANCTIONS ####
+"--------------------------------"
+targets_uws <- read_csv("data/targets.simple.csv")
+View(targets_uws)
+# who are the tagets of the sanctions
+
+library(jsonlite)
+senzing_uws <- stream_in(file("data/senzing.json"), flatten = TRUE)
+dim(senzing_uws)
+View(senzing_uws)
+# useless this too
+
+entities_uws <- stream_in(file("data/entities.ftm.json"), flatten = TRUE)
+View(entities_uws)
+# same
+
+
+"--------------------------------"
+#### UKRAINE SUPPORT TRACKER ####
+"--------------------------------"
+library(readxl)
+library(lubridate)
+library(janitor)
+
+assistance_main_data <- read_excel("data/assistance_main_data.xlsx")
+
+assistance_main_data <- assistance_main_data %>%
+  mutate(
+    data_da_excel = excel_numeric_to_date(as.numeric(announcement_date)),
+    data_da_testo = as.Date(parse_date_time(announcement_date, orders = c("dmy", "mdy", "ymd", "my", "d b y", "d B Y", "Ymd", "dbY"))),
+    date = coalesce(data_da_excel, data_da_testo)
+  )
+
+mode(assistance_main_data$date)
+range(assistance_main_data$date)
+class(assistance_main_data$date)
+
+st_data <- assistance_main_data %>%
+  select(colnames(assistance_main_data)[sapply(assistance_main_data, function(x) mean(is.na(x))) < 0.30]) %>%
+  mutate(donor = ifelse(assistance_main_data$donor %in% c("European Investment Bank", "European Peace Facility", "EU (Commission and Council)"), "EU", assistance_main_data$donor))
+
+tassi_medi <- data.frame(
+  reporting_currency = c("EUR", "USD", "CAD", "SEK", "DKK", "NOK", "GBP", "CZK", 
+                         "CHF", "AUD", "ISK", "NZD", "JPY", "PLN", "BGN", "HUF", 
+                         "HRK", "RON", "CNY", "KRW"),
+  tasso_cambio = c(1.0000, 0.9200, 0.6800, 0.0880, 0.1340, 0.0880, 1.1600, 0.0410, 
+                   1.0300, 0.6100, 0.0067, 0.5600, 0.0064, 0.2200, 0.5100, 0.0026, 
+                   0.1327, 0.2000, 0.1300, 0.0007)
+)
+
+data_nations <- st_data %>%
+  mutate(source_reported_value = as.numeric(source_reported_value)) %>%
+  filter(!is.na(reporting_currency) & !is.na(source_reported_value)) %>%
+  left_join(tassi_medi, by = "reporting_currency") %>%
+  mutate(value_eur = source_reported_value * tasso_cambio) %>%
+  group_by(donor) %>%
+  summarise(tot_aid_eur = sum(value_eur, na.rm = TRUE)) %>%
+  arrange(desc(tot_aid_eur))
+
+data_pie <- data_nations %>%
+  mutate(donor_10 = if_else(row_number() <= 10, donor, "Others")) %>%
+  group_by(donor_10) %>%
+  summarise(tot_aid_eur = sum(tot_aid_eur)) %>%
+  arrange(donor_10 == "Others", desc(tot_aid_eur)) %>%
+  mutate(percentuale = tot_aid_eur / sum(tot_aid_eur) * 100)
+
+colori_nazioni <- c(
+  "United States"               = "#b82940",
+  "EU" = "#283c87", # Blu istituzionale UE
+  "Germany"                     = "#000000", # Giallo/Oro bandiera tedesca (il nero sembrerebbe un buco)
+  "United Kingdom"              = "#f8f8f8", # Blu scuro della Union Jack
+  "Denmark"                     = "#C60C30", # Rosso scuro Danimarca
+  "Japan"                       = "#FFB7C5", # Rosa ciliegio (Sakura) per distinguerlo dagli altri rossi
+  "France"                      = "#1b2d59", # Azzurro/Ciano per non confonderlo con i blu di UE e UK
+  "Norway"                      = "#93cbcb", 
+  "Canada"                      = "#d1612a", # Rosso acceso della foglia d'acero
+  "Poland"                      = "#DC143C", # Rosso cremisi Polonia
+  "Sweden"                      = "#f2d44b",
+  "Others"                      = "grey"  # Grigio neutro per raggruppare gli altri
+)
+
+totale_miliardi <- sum(data_pie$tot_aid_eur) / 1e9
+testo_sottotitolo <- paste0("Total Aid: € ", round(totale_miliardi, 2), " Billion")
+ggplot(data_pie, aes(x = "", y = tot_aid_eur, fill = reorder(donor_10, -tot_aid_eur))) +
+  geom_bar(stat = "identity", width = 1, color = "white", linewidth = 0.5) + 
+  geom_text(
+    aes(label = if_else(percentuale > 5, paste0(round(percentuale, 1), "%"), "")), 
+    position = position_stack(vjust = 0.5), 
+    color = "white",                        
+    fontface = "bold", 
+    size = 6
+  ) +
+  
+  coord_polar("y", start = 0) +
+  theme_void() +
+  scale_fill_manual(values = colori_nazioni) +  
+  labs(
+    title = "Total aids by donor country",
+    subtitle = testo_sottotitolo,           # <-- Inserito il sottotitolo calcolato
+    fill = "Donating country"
+  ) +
+  theme(
+    plot.title = element_text(hjust = 0.5, face = "bold", size = 16, margin = margin(b = 5)),
+    plot.subtitle = element_text(hjust = 0.5, size = 13, margin = margin(b = 15), color = "#333333"),
+    legend.position = "right",
+    legend.title = element_text(face = "bold")
+  )
+
+st_data <- st_data %>%
+  mutate(source_reported_value = as.numeric(source_reported_value)) %>%
+  filter(!is.na(reporting_currency) & !is.na(source_reported_value)) %>%
+  left_join(tassi_medi, by = "reporting_currency") %>%
+  mutate(value_eur = source_reported_value * tasso_cambio)
+
+st_data_monthly <- st_data %>%
+  mutate(
+    mese_anno = format(date, "%Y-%m")
+  ) %>%
+  filter(!is.na(mese_anno)) %>%
+  group_by(donor, mese_anno) %>%
+  summarise(
+    totale_mensile_eur = sum(value_eur, na.rm = TRUE), 
+    .groups = "drop" 
+  ) %>%
+  arrange(mese_anno, desc(totale_mensile_eur))
+
+
+data_ts <- st_data_monthly %>%
+  filter(donor %in% c("United States", "EU")) %>%
+  mutate(
+    date_plot = as.Date(paste0(mese_anno, "-01")),
+    tot_aid_billion = totale_mensile_eur / 1e9
+  ) %>%
+  complete(donor, date_plot, fill = list(tot_aid_billion = 0, totale_mensile_eur = 0)) %>%
+  arrange(donor, date_plot)
+
+colori_ts <- c(
+  "United States" = "#b82940",
+  "EU"            = "#283c87"
+)
+
+library(scales)
+
+ggplot(data_ts, aes(x = date_plot, y = tot_aid_billion, color = donor, group = donor)) +
+  geom_line(linewidth = 1.2) +
+  geom_point(size = 2.5) +
+  scale_color_manual(values = colori_ts) +
+  scale_x_date(date_labels = "%b %Y", date_breaks = "3 months") +
+  scale_y_continuous(labels = label_dollar(prefix = "€", suffix = " B")) +
+  theme_minimal() +
+  labs(
+    title = "Monthly Aid Pledged to Ukraine over Time",
+    subtitle = "United States vs European Union",
+    x = "Announcement Date",
+    y = "Total Aid (Billion €)",
+    color = "Donor"
+  ) +
+  theme(
+    plot.title = element_text(face = "bold", size = 16, margin = margin(b = 8)),
+    plot.subtitle = element_text(size = 12, color = "#555555", margin = margin(b = 20)),
+    axis.text.x = element_text(angle = 45, hjust = 1, size = 10),
+    axis.text.y = element_text(size = 10),
+    axis.title = element_text(face = "bold", size = 11, margin = margin(t = 10)),
+    legend.position = "top",
+    legend.title = element_text(face = "bold"),
+    panel.grid.minor = element_blank() 
+  )
+
+prop.table(table(st_data$aid_type_general))
+data_aid <- as.data.frame(prop.table(table(st_data$aid_type_general)))
+colnames(data_aid) <- c("aid_type", "proportion")
+
+colori_categorie <- c(
+  "Military"     = "#5C7148", 
+  "Financial"    = "#F39C12",  
+  "Humanitarian" = "#4A90E2" 
+)
+ggplot(data_aid, aes(x = reorder(aid_type, -proportion), y = proportion, fill = aid_type)) +
+  geom_col(color = "black", linewidth = 0.5, width = 0.7) +
+  geom_text(
+    aes(label = percent(proportion, accuracy = 0.1)), 
+    vjust = -0.5, 
+    fontface = "bold", 
+    size = 5
+  ) +
+  scale_y_continuous(labels = label_percent(), expand = expansion(mult = c(0, 0.15))) +
+  scale_fill_manual(values = colori_categorie) +
+  theme_minimal() +
+  labs(
+    title = "Proportion of Pledged Aid by Category",
+    y = "Percentage (%)"
+  ) +
+  theme(
+    plot.title = element_text(hjust = 0.5, face = "bold", size = 16, margin = margin(b = 15)),
+    axis.title.x = element_blank(), 
+    axis.text.x = element_text(size = 12, face = "bold"),
+    axis.title.y = element_text(face = "bold", margin = margin(r = 10)),
+    axis.text.y = element_text(size = 10),
+    legend.position = "none", 
+    panel.grid.major.x = element_blank() 
+  )
