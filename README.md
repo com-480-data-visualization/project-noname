@@ -78,13 +78,29 @@ Preprocessing & Data Cleaning
 
 The Russian invasion of Ukraine began on 24 February 2024. The invasion not only impacted the two warring countries, but it had a worldwide effect as it both sides draw support from their allies. As a result of its global impact, the conflict has garnered worldwide attention and extensive coverage. Our goal is to move beyond static reporting, offering a comprehensive visualization of the conflict’s evolution through four main pillars:
 
-Military Dynamics: This is the most basic aspect of any war. We want to visualize the shifting battlefronts and tactical engagements over time. With this visualization we can see when each side advanced or retreated. We will also be able to understand which operations and engagements were. successful and which have failed. Moreover, we can determine if the conflicted has transformed into an attrition warfare.
+## Military Dynamics
 
-Human Impact: The war had devastating humanitarian impact on both sides. In addition to the large number of military casualties and injuries, There has been a significant number of civilian deaths. Again the evolution of this numbers will be shown and the comparison would be made for both side. At the same time, the data will be analyzed to show which age groups have been more intensely affected by the war . In addition to the loss of life, the war resulted in displacement and migration of many people affected by war. The visualization would demonstrate the movement of these people to other places in Ukraine or to other countries around the world.
+-   This is the most basic aspect of any war. We want to visualize the shifting battlefronts and tactical engagements over time. Withthe use of this visualization we will be able to see the progress of the war, the advances and retreats of armies and the occupation of territories.
 
-Financial & Material Support: Since start of the war Ukraine relied heavily on the financial support and military aid of its allies especially US and EU. This supports usually come in the form of direct financial aid for military or humanitarian purposes or military equipment. On the other hand Russia at the beginning relied on finances built over years from selling oil and natural gas. Moreover, it had access to the large albeit outdated reserve of Soviet military equipment. As the war dragged on longer than expected, Russia purchased equipment from various countries and even used manpower provided by North Korea. Therefore one goal of the visualization is mapping the flow of international aid and military equipment to determine how much and what kind of aid each country received during the course war and who were the biggest contributors on each side.
+-   Also, it will help us understand which operations and engagements resulted in success and which have failed. Moreover, we can analyze if the conflict has transformed into an attrition warfare or not. For this purpose the data on the violent events is used.
 
-Geopolitical Context: As stated earlier, the conflict had a global impact. Some countries clearly took sides while other tried a more pragmatic approach. Some of these stances changed over the course of war while the rest remained the same. Analyzing thees diplomatic shifts and alliances surrounding the crisis is one of the goals of this project.
+## Human Impact 
+
+-   The war had devastating humanitarian impact on both sides. In addition to the large number of military casualties and injuries, There has been a significant number of civilian deaths. As a result, we will analyze the the data on the casualties of both side and would visualize the evolution of the loss of life through the war.
+
+-   At the same time, we are interested to show which age groups have been more intensely affected by the war. In addition to the loss of life, the war resulted in displacement and migration of many people affected by war. The visualization would demonstrate the movement of these people to other places in Ukraine or to other countries around the world.
+
+## Financial & Material Support
+
+-   Since start of the war Ukraine relied heavily on the financial support and military aid of its allies especially US and EU. This supports usually come in the form of direct financial aid for military or humanitarian purposes or military equipment. Thereofre, the data will be analyzed to demonstrate the origin of the aid given to Ukraine.
+
+-   In addition, we will analyze the purpose of the aid given and whether it was military or financial or humanitarian aid.
+
+-   On the other hand Russia at the beginning relied on finances built over years from selling oil and natural gas. Moreover, it had access to the large albeit outdated reserve of Soviet military equipment. As the war dragged on longer than expected, Russia purchased equipment from various countries and even used manpower provided by North Korea. Therefore one goal of the visualization is mapping the flow of international aid and military equipment to determine how much and what kind of aid each country received during the course war and who were the biggest contributors on each side.
+
+## Geopolitical Context
+
+-   As stated earlier, the conflict had a global impact. Some countries clearly took sides while other tried a more pragmatic approach. Some of these stances changed over the course of war while the rest remained the same. Analyzing thees diplomatic shifts and alliances surrounding the crisis is one of the goals of this project.
 
 ### Exploratory Data Analysis
 
@@ -97,9 +113,11 @@ Geopolitical Context: As stated earlier, the conflict had a global impact. Some 
 > -   What source of inspiration do you take? Visualizations that you found on other websites or magazines (might be unrelated to your data).
 > -   In case you are using a dataset that you have already explored in another context (ML or ADA course, semester project...), you are required to share the report of that work to outline the differences with the submission for this class.
 
-Since the war is an ongoing conflict and due to its important on a global scale, a large number of analysis has been done on the gathered data about the war. Some of the sources for chosen datasets also provide visualization of their data. Although there are visualization available on the data, there is a lack of an analysis which unifies all these different aspects and reports their related data together. Our main objective in this project is to connect different aspects of the Ukraine war in a natural way and present the available data at one place.
+Since the war is an ongoing conflict and due to its important on a global scale, a large number of analysis has been done on the gathered data about the war. Some of the sources for chosen datasets also provide visualization of their data. for instance there are visualization available for the map of the battlefront and its evolution and for the aid given to Ukraine.
 
-This helps interested individuals to have a better understanding of the conflict as a whole. Using our intended visualization, one can use a comprehensive summary to better understand the war.
+But while there are visualization available on the data, there is a lack of an analysis which unifies all these different aspects and reports their related data together. Our main objective in this project is to connect different aspects of the Ukraine war in a logical way and present the available data at one place.
+
+For this reason we have chosen various datasets that cover the mentioned points of interest and we will use them to visualize and report an story about different sides of the war. This helps interested individuals to have a better understanding of the conflict as a whole and be able to access the data related to every feature of the war at one place. Using our intended visualization, one can use a comprehensive summary to better understand the war.
 
 ## Milestone 2 (17th April, 5pm)
 
