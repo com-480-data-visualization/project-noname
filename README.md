@@ -70,7 +70,7 @@ Preprocessing & Data Cleaning
 
 > Frame the general topic of your visualization and the main axis that you want to develop. - What am I trying to show with my visualization? - Think of an overview for the project, your motivation, and the target audience.
 
-The Russian invasion of Ukraine began on 24 February 2024. The invasion not only impacted the two warring countries, but it had a worldwide effect as it both sides draw support from their allies. As a result of its global impact, the conflict has garnered worldwide attention and extensive coverage. Our goal is to move beyond static reporting, offering a comprehensive visualization of the conflict’s evolution through four main pillars:
+The Russian invasion of Ukraine began on 24 February 2022. The invasion not only impacted the two warring countries, but it had a worldwide effect as it both sides draw support from their allies. As a result of its global impact, the conflict has garnered worldwide attention and extensive coverage. Our goal is to move beyond static reporting, offering a comprehensive visualization of the conflict’s evolution through four main pillars:
 
 ## Military Dynamics
 
