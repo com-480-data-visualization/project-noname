@@ -38,25 +38,19 @@ Dataset
 
 To provide a multi-dimensional analysis of the Ukraine conflict, we have selected several authoritative and standardized datasets that cover military, humanitarian, and economic aspects:
 
--   
-
-    ## Military Dynamics & Casualties
+## Military Dynamics & Casualties
 
 -   ACLED (Armed Conflict Location & Event Data Project) : Provides georeferenced data on specific military actions, battles, and explosions. https://acleddata.com/conflict-data/download-data-files
 
 -   UCDP GED (Georeferenced Event Dataset) : Offers high-quality, event-based data to track precise casualty figures and instances of one-sided violence. https://ucdp.uu.se/downloads/#section-other
 
--   
-
-    ## International Support & Sanctions
+## International Support & Sanctions
 
 -   Ukraine Support Tracker (Kiel Institute) : Tracks financial, humanitarian, and military aid pledged by various countries. https://www.ifw-kiel.de/publications/ukraine-support-tracker-data-6453/
 
 -   OpenSanctions (Ukraine War Sanctions) : A curated dataset of individuals and entities targeted by international sanctions. https://www.opensanctions.org/datasets/ua_war_sanctions/
 
--   
-
-    ## Economic Impact & Territorial Changes:
+## Economic Impact & Territorial Changes:
 
 -   COW (Correlates of War) Bilateral Trade : Used to assess shifts in global trade patterns and the economic consequences of the war. https://correlatesofwar.org/data-sets/
 
@@ -84,7 +78,7 @@ The Russian invasion of Ukraine began on 24 February 2024. The invasion not only
 
 -   Also, it will help us understand which operations and engagements resulted in success and which have failed. Moreover, we can analyze if the conflict has transformed into an attrition warfare or not. For this purpose the data on the violent events is used.
 
-## Human Impact 
+## Human Impact
 
 -   The war had devastating humanitarian impact on both sides. In addition to the large number of military casualties and injuries, There has been a significant number of civilian deaths. As a result, we will analyze the the data on the casualties of both side and would visualize the evolution of the loss of life through the war.
 
