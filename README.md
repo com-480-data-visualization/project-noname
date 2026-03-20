@@ -18,15 +18,11 @@
 
 The conflict in Ukraine represents a critical geopolitical crisis with a vast but often fragmented landscape of information. This project aims to bridge the gap between raw data and public understanding by developing an interactive, data-driven platform that provides a multi-faceted analysis of the war.
 
-Our goal is to move beyond static reporting, offering a comprehensive visualization of the conflict’s evolution through four main pillars:
+Our goal is to move beyond static reporting, offering a comprehensive visualization of the conflict’s evolution through two main pillars:
 
-Military Dynamics: Visualizing the shifting battlefronts and tactical engagements over time.
+Military Dynamics: Visualizing the tactical engagements over time and tracking casualties and the humanitarian cost of the escalation.
 
-Human Impact: Tracking casualties and the humanitarian cost of the escalation.
-
-Financial & Material Support: Mapping the flow of international aid and military equipment.
-
-Geopolitical Context: Analyzing the diplomatic shifts and alliances surrounding the crisis.
+Financial & Material Support: Mapping the flow of international aid and military equipment, potentially casting light on diplomatic shifts and alliances surrounding the crisis.
 
 ### Dataset
 
