@@ -29,6 +29,7 @@ To provide a multi-dimensional analysis of the Ukraine conflict, we have selecte
 Data Quality Assessment
 
 These datasets are widely recognized as "gold standards" in political science and conflict research. ACLED provides rigorous, cross-verified event logs, while the Kiel Institute’s tracker is the most comprehensive source for aid transparency. Their high data quality significantly reduces the risk of misinformation typically associated with active conflict reporting. 
+The Ukraine Support Tracker covers the period up to the end of 2025, while the ACLED dataset includes events through March 2025.
 
 Preprocessing & Data Cleaning
 
