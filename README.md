@@ -74,7 +74,7 @@ Geographically (**Figure 2**), fighting is heavily concentrated in the Donetsk O
 
 ![Figure 5. Number of Casualties on each side during the war](figures/fatalities_hist.png)
 
-Fatality trends shifted notably (**Figure 5**). While Ukraine sustained higher average casualties initially, Russian fatalities spiked significantly from mid-2024. Correlated with the 2024 surge in Russian attacks, these high casualty rates suggest their intensified offensives faced stiff resistance, though comprehensive spatial analysis is needed to fully validate tactical outcomes.
+Fatality trends shifted notably (**Figure 5**). While Ukraine caused higher average casualties initially, Russian killings spiked significantly from mid-2024. These high casualty rates are well explained by the surge in Russian drone attacks.
 
 #### International Support and Aid Allocation
 
