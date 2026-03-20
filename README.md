@@ -86,11 +86,11 @@ The US is the primary benefactor, contributing ~60% of total aid, with the EU an
 
 ### Related work
 
-Since the war is an ongoing conflict and due to its important on a global scale, a large number of analysis has been done on the gathered data about the war. Some of the sources for chosen datasets also provide visualization of their data. for instance there are visualization available for the map of the battlefront and its evolution and for the aid given to Ukraine.
+Since the war is an ongoing conflict and due to its importance on a global scale, a large number of analysis has been done on the gathered data about the war. Some of the sources for chosen datasets also provide visualization of their data ([ACLED Ukraine Conflict Monitor](https://acleddata.com/monitor/ukraine-conflict-monitor)). For instance, there are visualizations available for the map of the battlefront ([DeepStateMap](https://deepstatemap.live/#6/45.9893289/27.5537109)) and its evolution, and for the aid given to Ukraine ([Ukraine Support Tracker](https://www.kielinstitut.de/topics/war-against-ukraine/ukraine-support-tracker/)).
 
-But while there are visualization available on the data, there is a lack of an analysis which unifies all these different aspects and reports their related data together. Our main objective in this project is to connect different aspects of the Ukraine war in a logical way and present the available data at one place.
+But while there are visualizations available on the data, there is a lack of an analysis which unifies all these different aspects and reports their related data together. Our main objective in this project is to connect different aspects of the Ukraine war in a logical way and present the available data at one place.
 
-For this reason we have chosen various datasets that cover the mentioned points of interest and we will use them to visualize and report an story about different sides of the war. This helps interested individuals to have a better understanding of the conflict as a whole and be able to access the data related to every feature of the war at one place. Using our intended visualization, one can use a comprehensive summary to better understand the war.
+For this reason we have chosen various datasets that cover the mentioned points of interest and we will use them to visualize and report a story about different sides of the war. This helps interested individuals to have a better understanding of the conflict as a whole and be able to access the data related to every feature of the war at one place. Using our intended visualization, one can use a comprehensive summary to better understand the war.
 
 ## Milestone 2 (17th April, 5pm)
 
