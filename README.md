@@ -86,11 +86,6 @@ The US is the primary benefactor, contributing ~60% of total aid, with the EU an
 
 ### Related work
 
-> -   What others have already done with the data?
-> -   Why is your approach original?
-> -   What source of inspiration do you take? Visualizations that you found on other websites or magazines (might be unrelated to your data).
-> -   In case you are using a dataset that you have already explored in another context (ML or ADA course, semester project...), you are required to share the report of that work to outline the differences with the submission for this class.
-
 Since the war is an ongoing conflict and due to its important on a global scale, a large number of analysis has been done on the gathered data about the war. Some of the sources for chosen datasets also provide visualization of their data. for instance there are visualization available for the map of the battlefront and its evolution and for the aid given to Ukraine.
 
 But while there are visualization available on the data, there is a lack of an analysis which unifies all these different aspects and reports their related data together. Our main objective in this project is to connect different aspects of the Ukraine war in a logical way and present the available data at one place.
