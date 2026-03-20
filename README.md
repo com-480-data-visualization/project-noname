@@ -56,41 +56,33 @@ We will analyze and visualize the influx of foreign support, categorizing the da
 
 ### Exploratory Data Analysis
 
-In this section we will make an initial analysis of some of the available data and create some simple visualization to demonstrate basic statistics of the data regarding some of the mentioned aspects of our project.
+We present an initial exploratory analysis of the available data, utilizing foundational visualizations to highlight key statistics across our project's core pillars.
+
+#### Military Dynamics and Event Distribution
 
 ![Figure 1. Evolution of violent events initiated by each side](figures/timeseries_events.png)
-
-As shown in Fig. 1, overall through the course of war, the number of violent events caused by Russian military was higher than Ukraine. Moreover, since beginning of 2024, there has been a decrease in the number of operations of the Ukraine. Meanwhile, the Russians have intensified their attacks in that time, reaching a peak of about 100 daily events caused by them. This number is more than double the average of operations done by Russian military in the period before.
-
-![Figure 2. Distribution of violent events by region](figures/regions_pie.png)
-
-The above pie chart shows what percentage of the violent events happened in each impacted region. Kursk is a Russian Oblast, Luhansk is completely occupied by Russia, Kharkiv was occupied at the beginning and was later liberated, and the rest are currently partially occupied by Russia. Nearly half of the events happen at Dontesk Oblast showing that this region is where the fighting is most intense. On the other hand less than 15 percent of the events happen at the regions completely controlled by Russia Suggesting there are much fewer events directed toward Russian soil.
-
-![Figure 3. Distribution of event types](figures/grafico_event_types.png)
-
-Figure 3 demonstrates how much share each category of events has. Nearly half of the violent events were battles meaning they happened on the frontlines of the war. On the other hand, about 40 percent were explosions or remote violence. This includes aerial bombing, artillery shelling, missile attack, use of drones, planting bombs and other similar methods.
-
 ![Figure 4. Evolution of Russian Air and Drone Strikes](figures/drone_strikes.png)
 
-From figure 4. we can see the number of the aerial and drone strikes done by the Russian military has intensified since the later part of 2024 and reached its all time high towards the end of the year. This data alongside figure 1 shows that the Russian military heavily intensified its attacks in 2024, tying to achieve a breakthrough. On the other hand, the Ukranian Army has been in a more defensive position since then and the number of violent events initiated by it has been reduced significantly.
+As shown in **Figure 1**, Russian-initiated events consistently outnumber Ukrainian ones. This gap widened in early 2024: Ukrainian operations decreased while Russian attacks peaked at ~100 daily events (double their previous average). **Figure 4** confirms this surge was driven by record-high Russian aerial and drone strikes, indicating an aggressive offensive while Ukraine shifted to a defensive posture.
 
-The humanitarian toll of war was another aspects that we are interested in analyzing. One of the first steps is to analyze the casualties suffered by each side during the war. The following histogram shows the number fatalities on each side from the beginning of war.
+![Figure 2. Distribution of violent events by region](figures/regions_pie.png)
+![Figure 3. Distribution of event types](figures/grafico_event_types.png)
 
-![Figure 5. Number of Casualties on each side during the war ](figures/fatalities_hist.png)
+Geographically (**Figure 2**), fighting is heavily concentrated in the Donetsk Oblast (~50% of all events). Conversely, under 15% occur on Russian soil or in fully occupied territories. By event type (**Figure 3**), frontline battles account for roughly 50% of recorded violence, closely followed by remote violence (explosions, artillery, drone strikes) at 40%.
 
-For most of the war, the Ukranian military suffered more casualties on average. But since the middle of 2024, the Russian military has suffered a much higher number of deaths than Ukraine and than it's average before. This is line with the analysis we made earlier and what the other data also show: During 2024 Russian military intensified its attacks in order to achieve a breakthrough and the Ukranian military has been mostly on defensive. The high rate of casualties coupled with the fact that most of the violent events were initiated by the Russian military, suggests that the Russians were mostly unsuccessful in their operations. Although for more accuracy the battlefront map should be analyzed.
+#### Human Impact and Casualties
 
-We also want to analyze the aid and support given to countries. The following pie chart shows share of the each country of the total aid given to Ukraine.
+![Figure 5. Number of Casualties on each side during the war](figures/fatalities_hist.png)
+
+Fatality trends shifted notably (**Figure 5**). While Ukraine sustained higher average casualties initially, Russian fatalities spiked significantly from mid-2024. Correlated with the 2024 surge in Russian attacks, these high casualty rates suggest their intensified offensives faced stiff resistance, though comprehensive spatial analysis is needed to fully validate tactical outcomes.
+
+#### International Support and Aid Allocation
 
 ![Figure 6. Contribution of countries to Ukraine](figures/aid_pie.png)
-
-As the chart demonstrates, United States is by far the largest donor to Ukraine, contributing about 60 percent of the total amount. Most of the remaining aid is given by EU or its member countries individually. In figure 7 we can see how the aid given by EU and US has changed over time:
-
 ![Figure 7. Timeline of the assistance given by EU and US](figures/eu_v_usa_ts.png)
-
-Finally, We are interested in the type of aid that Ukraine has received. Using figure 8 we can see that the largest portion is dedicated to military aid, constituting 60 percent of the aid received by Ukraine. Next, 30 percent of the total aid is humanitarian aid, and just 10 percent of the aid is financial which goes toward the civilian administration of the country.
-
 ![Figure 8. Aid given to Ukraine by type](figures/aid_type.png)
+
+The US is the primary benefactor, contributing ~60% of total aid, with the EU and its members providing most of the rest (**Figure 6**). **Figure 7** tracks these temporal fluctuations. Regarding resource allocation (**Figure 8**), support is strictly prioritized toward military aid (60%), followed by humanitarian (30%) and financial assistance for civilian administration (10%).
 
 ### Related work
 
