@@ -38,17 +38,17 @@ While the Ukraine Support Tracker records international aid values in their orig
 
 The Russian invasion of Ukraine, which escalated on February 24, 2022, has had profound global implications, drawing significant involvement from international allies. Given the extensive coverage and global impact of the war, our goal is to move beyond static reporting. By leveraging high-quality, event-based conflict data (ACLED) and international aid records (Ukraine Support Tracker), we aim to offer a comprehensive visualization of the conflict’s evolution across three main pillars:
 
-## Military Dynamics
+#### Military Dynamics
 
 At the core of our analysis is the spatiotemporal evolution of the war. Using event-level data, we will visualize the shifting intensity of the conflict, mapping tactical engagements, and remote violence (such as shelling and airstrikes) over time.
 This visual approach will allow us to track the progression of the war—identifying regional hotspots, shifts in territorial control, and the conflict's transition into attrition warfare in specific areas.
 
-## Human Impact
+#### Human Impact
 
 The humanitarian toll of the conflict has been devastating. While we cannot track demographic specifics or displacement within this scope, we will rely on rigorous event data to visualize the direct loss of life.
 Our focus will be on mapping total fatality trends and, crucially, isolating events of direct violence against civilians. This will provide a clear, data-driven picture of how the human cost has evolved spatially and temporally throughout the war.
 
-## Financial & Material Support
+#### Financial & Material Support
 
 Since the onset of the war, Ukraine's defense and economic stability have relied heavily on international backing, particularly from the US and the EU.
 We will analyze and visualize the influx of foreign support, categorizing the data to show both the origin of the aid and its primary purpose (military, financial, or humanitarian). This will highlight how international commitment has fluctuated in response to the changing dynamics on the ground.
