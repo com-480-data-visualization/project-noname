@@ -1,0 +1,77 @@
+[
+  {
+    "date": "2022-02-24",
+    "title": "Full-scale invasion begins",
+    "description": "Russia launches a full-scale invasion of Ukraine across multiple axes: north toward Kyiv, east from Donbas, and south from Crimea. The largest land war in Europe since WWII."
+  },
+  {
+    "date": "2022-02-25",
+    "title": "Battle of Kyiv starts",
+    "description": "Russian armored columns advance on the Ukrainian capital. Fierce resistance around Hostomel airport and Kyiv suburbs stalls Russian progress."
+  },
+  {
+    "date": "2022-03-28",
+    "title": "Russia withdraws from Kyiv",
+    "description": "After a failed attempt to capture the capital, Russian forces redeploy to focus on eastern and southern Ukraine."
+  },
+  {
+    "date": "2022-04-02",
+    "title": "Bucha massacre discovered",
+    "description": "Ukrainian forces retaking Bucha find hundreds of civilians killed, triggering international outrage and calls for war crime investigations."
+  },
+  {
+    "date": "2022-05-20",
+    "title": "Azovstal surrender – Mariupol",
+    "description": "The last Ukrainian defenders of the Azovstal steel plant in Mariupol surrender after weeks of siege, ending organized resistance in the city."
+  },
+  {
+    "date": "2022-09-06",
+    "title": "Kharkiv counteroffensive",
+    "description": "Ukraine launches a rapid offensive in Kharkiv region, liberating over 6,000 km² in just days and forcing a major Russian retreat eastward."
+  },
+  {
+    "date": "2022-09-21",
+    "title": "Russia announces mobilization",
+    "description": "Putin orders the first partial mobilization since World War II, calling up 300,000 reservists amid severe military setbacks."
+  },
+  {
+    "date": "2022-09-30",
+    "title": "Russia annexes 4 oblasts",
+    "description": "Russia illegally annexes Donetsk, Luhansk, Zaporizhia, and Kherson oblasts following sham referenda, despite not fully controlling any of them."
+  },
+  {
+    "date": "2022-11-11",
+    "title": "Kherson liberated",
+    "description": "Ukrainian forces enter Kherson city after Russian troops withdraw across the Dnipro River — the only regional capital Russia had captured."
+  },
+  {
+    "date": "2023-06-04",
+    "title": "Ukrainian summer counteroffensive",
+    "description": "Ukraine begins its long-anticipated counteroffensive in the south and east, aiming to breach Russian defensive lines toward Melitopol and Berdiansk."
+  },
+  {
+    "date": "2023-06-06",
+    "title": "Kakhovka dam destroyed",
+    "description": "The Nova Kakhovka dam on the Dnipro River is destroyed, flooding vast areas of southern Ukraine and causing a catastrophic humanitarian disaster."
+  },
+  {
+    "date": "2024-02-17",
+    "title": "Fall of Avdiivka",
+    "description": "After months of intense fighting and heavy losses on both sides, Russia captures Avdiivka in Donetsk — a key Ukrainian stronghold since 2014."
+  },
+  {
+    "date": "2024-08-06",
+    "title": "Ukraine incursion into Kursk",
+    "description": "Ukrainian forces launch a surprise cross-border incursion into Russia's Kursk Oblast, seizing territory and opening an entirely new front inside Russia."
+  },
+  {
+    "date": "2025-01-20",
+    "title": "Trump returns to power",
+    "description": "Donald Trump is inaugurated as US President; his administration signals potential shifts in American military aid policy toward Ukraine."
+  },
+  {
+    "date": "2025-03-11",
+    "title": "US pauses military aid",
+    "description": "The Trump administration temporarily suspends military assistance to Ukraine pending diplomatic negotiations, sending shockwaves through European capitals."
+  }
+]

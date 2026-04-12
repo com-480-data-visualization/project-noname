@@ -1,0 +1,5234 @@
+{
+  "Australia": {
+    "total_eur": 2664421800.0,
+    "n_packages": 73,
+    "by_type": {
+      "Humanitarian": 148522800.0,
+      "Military": 2515899000.0
+    },
+    "monthly": [
+      {
+        "month": "2022-01",
+        "total_eur": 64538000.0,
+        "Humanitarian": 21838000.0,
+        "Military": 42700000.0
+      },
+      {
+        "month": "2022-02",
+        "total_eur": 2760000.0,
+        "Military": 2760000.0
+      },
+      {
+        "month": "2022-03",
+        "total_eur": 127246000.0,
+        "Humanitarian": 38186000.0,
+        "Military": 89060000.0
+      },
+      {
+        "month": "2022-04",
+        "total_eur": 244061000.0,
+        "Military": 244061000.0
+      },
+      {
+        "month": "2022-05",
+        "total_eur": 74298000.0,
+        "Military": 74298000.0
+      },
+      {
+        "month": "2022-08",
+        "total_eur": 62220000.0,
+        "Military": 62220000.0
+      },
+      {
+        "month": "2022-10",
+        "total_eur": 16470000.0,
+        "Humanitarian": 16470000.0
+      },
+      {
+        "month": "2023-02",
+        "total_eur": 20130000.0,
+        "Military": 20130000.0
+      },
+      {
+        "month": "2023-06",
+        "total_eur": 311100000.0,
+        "Humanitarian": 6100000.0,
+        "Military": 305000000.0
+      },
+      {
+        "month": "2023-10",
+        "total_eur": 48800000.0,
+        "Military": 48800000.0
+      },
+      {
+        "month": "2024-02",
+        "total_eur": 30500000.0,
+        "Military": 30500000.0
+      },
+      {
+        "month": "2024-04",
+        "total_eur": 97600000.0,
+        "Military": 97600000.0
+      },
+      {
+        "month": "2024-05",
+        "total_eur": 27450000.0,
+        "Humanitarian": 18910000.0,
+        "Military": 8540000.0
+      },
+      {
+        "month": "2024-07",
+        "total_eur": 610000.0,
+        "Humanitarian": 610000.0
+      },
+      {
+        "month": "2024-10",
+        "total_eur": 149450000.0,
+        "Military": 149450000.0
+      },
+      {
+        "month": "2024-11",
+        "total_eur": 1220000000.0,
+        "Military": 1220000000.0
+      },
+      {
+        "month": "2024-12",
+        "total_eur": 46408800.0,
+        "Humanitarian": 46408800.0
+      },
+      {
+        "month": "2025-03",
+        "total_eur": 10370000.0,
+        "Military": 10370000.0
+      },
+      {
+        "month": "2025-04",
+        "total_eur": 110410000.0,
+        "Military": 110410000.0
+      }
+    ]
+  },
+  "Austria": {
+    "total_eur": 1528408159.0,
+    "n_packages": 39,
+    "by_type": {
+      "Financial": 105640000.0,
+      "Humanitarian": 1422768159.0
+    },
+    "monthly": [
+      {
+        "month": "2022-01",
+        "total_eur": 10005199.0,
+        "Humanitarian": 10005199.0
+      },
+      {
+        "month": "2022-04",
+        "total_eur": 1304400000.0,
+        "Humanitarian": 1304400000.0
+      },
+      {
+        "month": "2022-05",
+        "total_eur": 20000000.0,
+        "Financial": 20000000.0
+      },
+      {
+        "month": "2022-07",
+        "total_eur": 10000000.0,
+        "Financial": 10000000.0
+      },
+      {
+        "month": "2022-09",
+        "total_eur": 10000000.0,
+        "Financial": 10000000.0,
+        "Humanitarian": 0.0
+      },
+      {
+        "month": "2022-12",
+        "total_eur": 5000000.0,
+        "Humanitarian": 5000000.0
+      },
+      {
+        "month": "2023-01",
+        "total_eur": 5000000.0,
+        "Humanitarian": 5000000.0
+      },
+      {
+        "month": "2023-02",
+        "total_eur": 3147960.0,
+        "Humanitarian": 3147960.0
+      },
+      {
+        "month": "2023-03",
+        "total_eur": 18000000.0,
+        "Humanitarian": 18000000.0
+      },
+      {
+        "month": "2023-05",
+        "total_eur": 2000000.0,
+        "Humanitarian": 2000000.0
+      },
+      {
+        "month": "2023-07",
+        "total_eur": 1000000.0,
+        "Humanitarian": 1000000.0
+      },
+      {
+        "month": "2023-09",
+        "total_eur": 1000000.0,
+        "Humanitarian": 1000000.0
+      },
+      {
+        "month": "2023-12",
+        "total_eur": 40000000.0,
+        "Financial": 40000000.0
+      },
+      {
+        "month": "2024-03",
+        "total_eur": 10000000.0,
+        "Financial": 10000000.0
+      },
+      {
+        "month": "2024-05",
+        "total_eur": 5000000.0,
+        "Humanitarian": 5000000.0
+      },
+      {
+        "month": "2024-06",
+        "total_eur": 10000000.0,
+        "Humanitarian": 10000000.0
+      },
+      {
+        "month": "2024-11",
+        "total_eur": 8000000.0,
+        "Humanitarian": 8000000.0
+      },
+      {
+        "month": "2024-12",
+        "total_eur": 11170000.0,
+        "Humanitarian": 11170000.0
+      },
+      {
+        "month": "2025-01",
+        "total_eur": 1045000.0,
+        "Humanitarian": 1045000.0
+      },
+      {
+        "month": "2025-05",
+        "total_eur": 20000000.0,
+        "Humanitarian": 20000000.0
+      },
+      {
+        "month": "2025-08",
+        "total_eur": 2000000.0,
+        "Humanitarian": 2000000.0
+      },
+      {
+        "month": "2025-10",
+        "total_eur": 15000000.0,
+        "Humanitarian": 15000000.0
+      },
+      {
+        "month": "2025-11",
+        "total_eur": 15640000.0,
+        "Financial": 15640000.0
+      },
+      {
+        "month": "2025-12",
+        "total_eur": 1000000.0,
+        "Humanitarian": 1000000.0
+      }
+    ]
+  },
+  "Belgium": {
+    "total_eur": 16511204141.8,
+    "n_packages": 130,
+    "by_type": {
+      "Financial": 488560000.0,
+      "Humanitarian": 658330000.0,
+      "Military": 15364314141.8
+    },
+    "monthly": [
+      {
+        "month": "2022-01",
+        "total_eur": 10200000.0,
+        "Humanitarian": 10200000.0
+      },
+      {
+        "month": "2022-02",
+        "total_eur": 611330000.0,
+        "Financial": 3100000.0,
+        "Humanitarian": 230000.0,
+        "Military": 608000000.0
+      },
+      {
+        "month": "2022-03",
+        "total_eur": 77000000.0,
+        "Military": 77000000.0
+      },
+      {
+        "month": "2022-06",
+        "total_eur": 5292800.0,
+        "Military": 5292800.0
+      },
+      {
+        "month": "2022-07",
+        "total_eur": 22078016.0,
+        "Humanitarian": 800000.0,
+        "Military": 21278016.0
+      },
+      {
+        "month": "2022-08",
+        "total_eur": 32000000.0,
+        "Military": 32000000.0
+      },
+      {
+        "month": "2022-09",
+        "total_eur": 315911627.2,
+        "Humanitarian": 60600000.0,
+        "Military": 255311627.2
+      },
+      {
+        "month": "2022-10",
+        "total_eur": 8195699.0,
+        "Financial": 4960000.0,
+        "Military": 3235699.0
+      },
+      {
+        "month": "2022-11",
+        "total_eur": 29141120.0,
+        "Military": 29141120.0
+      },
+      {
+        "month": "2022-12",
+        "total_eur": 2888800.0,
+        "Military": 2888800.0
+      },
+      {
+        "month": "2023-01",
+        "total_eur": 564837852.0,
+        "Humanitarian": 600000.0,
+        "Military": 564237852.0
+      },
+      {
+        "month": "2023-03",
+        "total_eur": 3448471.600000024,
+        "Military": 3448471.600000024
+      },
+      {
+        "month": "2023-06",
+        "total_eur": 15860000.0,
+        "Financial": 1500000.0,
+        "Humanitarian": 12860000.0,
+        "Military": 1500000.0
+      },
+      {
+        "month": "2023-09",
+        "total_eur": 3450000.0,
+        "Humanitarian": 3450000.0
+      },
+      {
+        "month": "2023-10",
+        "total_eur": 1000000.0,
+        "Financial": 1000000.0
+      },
+      {
+        "month": "2023-11",
+        "total_eur": 2500000.0,
+        "Humanitarian": 2500000.0
+      },
+      {
+        "month": "2023-12",
+        "total_eur": 1885000000.0,
+        "Financial": 458000000.0,
+        "Humanitarian": 96400000.0,
+        "Military": 1330600000.0
+      },
+      {
+        "month": "2024-02",
+        "total_eur": 1870000000.0,
+        "Military": 1870000000.0
+      },
+      {
+        "month": "2024-03",
+        "total_eur": 663700000.0,
+        "Financial": 20000000.0,
+        "Humanitarian": 15000000.0,
+        "Military": 628700000.0
+      },
+      {
+        "month": "2024-04",
+        "total_eur": 213300000.0,
+        "Humanitarian": 9000000.0,
+        "Military": 204300000.0
+      },
+      {
+        "month": "2024-05",
+        "total_eur": 8000000.0,
+        "Humanitarian": 8000000.0
+      },
+      {
+        "month": "2024-07",
+        "total_eur": 159000000.0,
+        "Humanitarian": 159000000.0
+      },
+      {
+        "month": "2024-11",
+        "total_eur": 1000000.0,
+        "Humanitarian": 1000000.0
+      },
+      {
+        "month": "2024-12",
+        "total_eur": 200000.0,
+        "Humanitarian": 200000.0
+      },
+      {
+        "month": "2025-01",
+        "total_eur": 321490000.0,
+        "Humanitarian": 278490000.0,
+        "Military": 43000000.0
+      },
+      {
+        "month": "2025-05",
+        "total_eur": 8444379756.0,
+        "Military": 8444379756.0
+      },
+      {
+        "month": "2025-07",
+        "total_eur": 140000000.0,
+        "Military": 140000000.0
+      },
+      {
+        "month": "2025-08",
+        "total_eur": 1100000000.0,
+        "Military": 1100000000.0
+      }
+    ]
+  },
+  "Bulgaria": {
+    "total_eur": 20413518.75201907,
+    "n_packages": 10,
+    "by_type": {
+      "Financial": 60000.0,
+      "Humanitarian": 1953518.752019072,
+      "Military": 18400000.0
+    },
+    "monthly": [
+      {
+        "month": "2022-04",
+        "total_eur": 706000.0,
+        "Humanitarian": 706000.0
+      },
+      {
+        "month": "2022-09",
+        "total_eur": 18400000.0,
+        "Military": 18400000.0
+      },
+      {
+        "month": "2023-08",
+        "total_eur": 145869.062019072,
+        "Humanitarian": 145869.062019072
+      },
+      {
+        "month": "2023-11",
+        "total_eur": 17850.0,
+        "Humanitarian": 17850.0
+      },
+      {
+        "month": "2024-06",
+        "total_eur": 473799.69,
+        "Humanitarian": 473799.69
+      },
+      {
+        "month": "2024-07",
+        "total_eur": 100000.0,
+        "Humanitarian": 100000.0
+      },
+      {
+        "month": "2024-10",
+        "total_eur": 60000.0,
+        "Financial": 60000.0
+      },
+      {
+        "month": "2024-11",
+        "total_eur": 510000.0,
+        "Humanitarian": 510000.0
+      }
+    ]
+  },
+  "Canada": {
+    "total_eur": 24351223240.0,
+    "n_packages": 204,
+    "by_type": {
+      "Financial": 15190710000.0,
+      "Humanitarian": 608493240.0,
+      "Military": 8552020000.0
+    },
+    "monthly": [
+      {
+        "month": "2022-01",
+        "total_eur": 298520000.0,
+        "Humanitarian": 68000000.0,
+        "Military": 230520000.00000003
+      },
+      {
+        "month": "2022-02",
+        "total_eur": 462400000.0,
+        "Financial": 340000000.0,
+        "Military": 122400000.00000001
+      },
+      {
+        "month": "2022-03",
+        "total_eur": 10200000.0,
+        "Military": 10200000.0
+      },
+      {
+        "month": "2022-04",
+        "total_eur": 12240000.000000002,
+        "Military": 12240000.000000002
+      },
+      {
+        "month": "2022-05",
+        "total_eur": 245480000.0,
+        "Financial": 170000000.0,
+        "Humanitarian": 8840000.0,
+        "Military": 66640000.00000001
+      },
+      {
+        "month": "2022-06",
+        "total_eur": 461516000.0,
+        "Financial": 136000000.0,
+        "Humanitarian": 152796000.0,
+        "Military": 172720000.0
+      },
+      {
+        "month": "2022-07",
+        "total_eur": 1020000000.0,
+        "Financial": 680000000.0,
+        "Military": 340000000.0
+      },
+      {
+        "month": "2022-08",
+        "total_eur": 308618000.0,
+        "Financial": 2618000.0,
+        "Military": 306000000.0
+      },
+      {
+        "month": "2022-09",
+        "total_eur": 102000000.0,
+        "Humanitarian": 68000000.0,
+        "Military": 34000000.0
+      },
+      {
+        "month": "2022-10",
+        "total_eur": 376500000.0,
+        "Financial": 376500000.0
+      },
+      {
+        "month": "2022-11",
+        "total_eur": 709920000.0,
+        "Humanitarian": 6800000.000000001,
+        "Military": 703120000.0
+      },
+      {
+        "month": "2022-12",
+        "total_eur": 253200000.0,
+        "Financial": 79120000.0,
+        "Humanitarian": 78200000.0,
+        "Military": 95880000.00000001
+      },
+      {
+        "month": "2023-01",
+        "total_eur": 62560000.00000001,
+        "Military": 62560000.00000001
+      },
+      {
+        "month": "2023-02",
+        "total_eur": 21760000.0,
+        "Military": 21760000.0
+      },
+      {
+        "month": "2023-04",
+        "total_eur": 26588000.0,
+        "Military": 26588000.0
+      },
+      {
+        "month": "2023-07",
+        "total_eur": 33184000.000000004,
+        "Military": 33184000.000000004
+      },
+      {
+        "month": "2023-09",
+        "total_eur": 521764000.0,
+        "Humanitarian": 5644000.0,
+        "Military": 516120000.0
+      },
+      {
+        "month": "2023-10",
+        "total_eur": 319600000.0,
+        "Military": 319600000.0
+      },
+      {
+        "month": "2023-11",
+        "total_eur": 2286160000.0,
+        "Financial": 1632000000.0,
+        "Military": 654160000.0
+      },
+      {
+        "month": "2023-12",
+        "total_eur": 1836000.0000000002,
+        "Humanitarian": 1836000.0000000002
+      },
+      {
+        "month": "2024-01",
+        "total_eur": 13600000.000000002,
+        "Military": 13600000.000000002
+      },
+      {
+        "month": "2024-02",
+        "total_eur": 2049914400.0,
+        "Financial": 1101600000.0,
+        "Humanitarian": 105114400.0,
+        "Military": 843200000.0
+      },
+      {
+        "month": "2024-03",
+        "total_eur": 1392300000.0,
+        "Financial": 1360000000.0,
+        "Military": 32300000.000000004
+      },
+      {
+        "month": "2024-04",
+        "total_eur": 541280000.0,
+        "Financial": 530400000.00000006,
+        "Military": 10880000.0
+      },
+      {
+        "month": "2024-06",
+        "total_eur": 35632000.0,
+        "Financial": 10472000.0,
+        "Humanitarian": 25160000.0
+      },
+      {
+        "month": "2024-08",
+        "total_eur": 10676000.000000002,
+        "Humanitarian": 10676000.000000002
+      },
+      {
+        "month": "2024-10",
+        "total_eur": 3488604000.0000005,
+        "Financial": 3400000000.0000005,
+        "Military": 88604000.0
+      },
+      {
+        "month": "2024-11",
+        "total_eur": 650080000.0,
+        "Financial": 272000000.0,
+        "Military": 378080000.0
+      },
+      {
+        "month": "2025-02",
+        "total_eur": 1741480000.0000002,
+        "Financial": 1700000000.0000002,
+        "Humanitarian": 11696000.0,
+        "Military": 29784000.000000004
+      },
+      {
+        "month": "2025-03",
+        "total_eur": 193800000.0,
+        "Humanitarian": 34000000.0,
+        "Military": 159800000.0
+      },
+      {
+        "month": "2025-06",
+        "total_eur": 3031032000.0,
+        "Financial": 1564000000.0,
+        "Humanitarian": 8432000.000000002,
+        "Military": 1458600000.0
+      },
+      {
+        "month": "2025-08",
+        "total_eur": 1381258840.0,
+        "Humanitarian": 21258840.0,
+        "Military": 1360000000.0
+      },
+      {
+        "month": "2025-09",
+        "total_eur": 303960000.0,
+        "Humanitarian": 2040000.0000000002,
+        "Military": 301920000.0
+      },
+      {
+        "month": "2025-10",
+        "total_eur": 28560000.0,
+        "Military": 28560000.0
+      },
+      {
+        "month": "2025-11",
+        "total_eur": 221000000.0,
+        "Financial": 136000000.0,
+        "Military": 85000000.0
+      },
+      {
+        "month": "2025-12",
+        "total_eur": 1734000000.0000002,
+        "Financial": 1700000000.0000002,
+        "Military": 34000000.0
+      }
+    ]
+  },
+  "China": {
+    "total_eur": 2150000.0,
+    "n_packages": 3,
+    "by_type": {
+      "Humanitarian": 2150000.0
+    },
+    "monthly": [
+      {
+        "month": "2022-03",
+        "total_eur": 1300000.0,
+        "Humanitarian": 1300000.0
+      },
+      {
+        "month": "2022-09",
+        "total_eur": 650000.0,
+        "Humanitarian": 650000.0
+      },
+      {
+        "month": "2023-08",
+        "total_eur": 200000.0,
+        "Humanitarian": 200000.0
+      }
+    ]
+  },
+  "Croatia": {
+    "total_eur": 175938679.36,
+    "n_packages": 19,
+    "by_type": {
+      "Financial": 1000000.0,
+      "Humanitarian": 53212864.36,
+      "Military": 121725815.0
+    },
+    "monthly": [
+      {
+        "month": "2022-02",
+        "total_eur": 17662370.0,
+        "Humanitarian": 1207570.0,
+        "Military": 16454800.000000002
+      },
+      {
+        "month": "2022-05",
+        "total_eur": 5000000.0,
+        "Humanitarian": 5000000.0
+      },
+      {
+        "month": "2022-06",
+        "total_eur": 33000.0,
+        "Humanitarian": 33000.0
+      },
+      {
+        "month": "2022-08",
+        "total_eur": 201279.36000000002,
+        "Humanitarian": 201279.36000000002
+      },
+      {
+        "month": "2022-12",
+        "total_eur": 3000000.0,
+        "Humanitarian": 3000000.0
+      },
+      {
+        "month": "2023-01",
+        "total_eur": 1000000.0,
+        "Humanitarian": 1000000.0
+      },
+      {
+        "month": "2023-03",
+        "total_eur": 500000.0,
+        "Military": 500000.0
+      },
+      {
+        "month": "2023-04",
+        "total_eur": 59542030.0,
+        "Humanitarian": 29771015.0,
+        "Military": 29771015.0
+      },
+      {
+        "month": "2023-07",
+        "total_eur": 2000000.0,
+        "Financial": 1000000.0,
+        "Humanitarian": 1000000.0
+      },
+      {
+        "month": "2023-08",
+        "total_eur": 30000000.0,
+        "Military": 30000000.0
+      },
+      {
+        "month": "2023-11",
+        "total_eur": 5000000.0,
+        "Humanitarian": 5000000.0
+      },
+      {
+        "month": "2024-10",
+        "total_eur": 1000000.0,
+        "Humanitarian": 1000000.0
+      },
+      {
+        "month": "2024-11",
+        "total_eur": 4000000.0,
+        "Humanitarian": 4000000.0
+      },
+      {
+        "month": "2025-01",
+        "total_eur": 2000000.0,
+        "Humanitarian": 2000000.0
+      },
+      {
+        "month": "2025-08",
+        "total_eur": 30000000.0,
+        "Military": 30000000.0
+      },
+      {
+        "month": "2025-12",
+        "total_eur": 15000000.0,
+        "Military": 15000000.0
+      }
+    ]
+  },
+  "Cyprus": {
+    "total_eur": 12000000.0,
+    "n_packages": 10,
+    "by_type": {
+      "Financial": 1000000.0,
+      "Humanitarian": 11000000.0
+    },
+    "monthly": [
+      {
+        "month": "2022-03",
+        "total_eur": 500000.0,
+        "Humanitarian": 500000.0
+      },
+      {
+        "month": "2022-09",
+        "total_eur": 10000000.0,
+        "Humanitarian": 10000000.0
+      },
+      {
+        "month": "2022-12",
+        "total_eur": 500000.0,
+        "Humanitarian": 500000.0
+      },
+      {
+        "month": "2023-07",
+        "total_eur": 1000000.0,
+        "Financial": 1000000.0,
+        "Humanitarian": 0.0
+      }
+    ]
+  },
+  "Czechia": {
+    "total_eur": 4460295867.61998,
+    "n_packages": 92,
+    "by_type": {
+      "Humanitarian": 288092602.87598,
+      "Military": 4172203264.7440004
+    },
+    "monthly": [
+      {
+        "month": "2022-01",
+        "total_eur": 3684260.0,
+        "Military": 3684260.0
+      },
+      {
+        "month": "2022-02",
+        "total_eur": 105704707.6,
+        "Humanitarian": 12300000.0,
+        "Military": 93404707.6
+      },
+      {
+        "month": "2022-03",
+        "total_eur": 2290137.0,
+        "Humanitarian": 1025000.0,
+        "Military": 1265137.0
+      },
+      {
+        "month": "2022-04",
+        "total_eur": 4428000.0,
+        "Humanitarian": 4428000.0
+      },
+      {
+        "month": "2022-05",
+        "total_eur": 18163000.0,
+        "Humanitarian": 18163000.0
+      },
+      {
+        "month": "2022-06",
+        "total_eur": 574000.0,
+        "Humanitarian": 574000.0
+      },
+      {
+        "month": "2022-07",
+        "total_eur": 8384500.0,
+        "Humanitarian": 8384500.0
+      },
+      {
+        "month": "2022-08",
+        "total_eur": 3485000.0,
+        "Military": 3485000.0
+      },
+      {
+        "month": "2022-10",
+        "total_eur": 984000.0,
+        "Military": 984000.0
+      },
+      {
+        "month": "2022-12",
+        "total_eur": 3378127890.1,
+        "Humanitarian": 8500000.0,
+        "Military": 3369627890.1
+      },
+      {
+        "month": "2023-02",
+        "total_eur": 5658000.0,
+        "Humanitarian": 5658000.0
+      },
+      {
+        "month": "2023-04",
+        "total_eur": 1168833.244,
+        "Humanitarian": 1133250.0,
+        "Military": 35583.244
+      },
+      {
+        "month": "2023-05",
+        "total_eur": 320074191.354,
+        "Humanitarian": 274191.354,
+        "Military": 319800000.0
+      },
+      {
+        "month": "2023-06",
+        "total_eur": 47334500.0,
+        "Humanitarian": 2234500.0,
+        "Military": 45100000.0
+      },
+      {
+        "month": "2023-07",
+        "total_eur": 410000.0,
+        "Humanitarian": 410000.0
+      },
+      {
+        "month": "2023-10",
+        "total_eur": 638370.0,
+        "Humanitarian": 638370.0
+      },
+      {
+        "month": "2023-11",
+        "total_eur": 2500000.0,
+        "Military": 2500000.0
+      },
+      {
+        "month": "2023-12",
+        "total_eur": 10000000.0,
+        "Humanitarian": 10000000.0
+      },
+      {
+        "month": "2024-06",
+        "total_eur": 308269775.0,
+        "Military": 308269775.0
+      },
+      {
+        "month": "2024-11",
+        "total_eur": 701911.8,
+        "Humanitarian": 205000.0,
+        "Military": 496911.80000000005
+      },
+      {
+        "month": "2024-12",
+        "total_eur": 23550000.0,
+        "Military": 23550000.0
+      },
+      {
+        "month": "2025-02",
+        "total_eur": 738000.0,
+        "Humanitarian": 738000.0
+      },
+      {
+        "month": "2025-03",
+        "total_eur": 205000000.0,
+        "Humanitarian": 205000000.0
+      },
+      {
+        "month": "2025-05",
+        "total_eur": 4102090.672,
+        "Humanitarian": 4102090.672
+      },
+      {
+        "month": "2025-06",
+        "total_eur": 3075000.0,
+        "Humanitarian": 3075000.0
+      },
+      {
+        "month": "2025-07",
+        "total_eur": 368000.00000000006,
+        "Humanitarian": 368000.00000000006
+      },
+      {
+        "month": "2025-08",
+        "total_eur": 61700.849980000006,
+        "Humanitarian": 61700.849980000006
+      },
+      {
+        "month": "2025-10",
+        "total_eur": 820000.0,
+        "Humanitarian": 820000.0
+      }
+    ]
+  },
+  "Denmark": {
+    "total_eur": 34547384546.0002,
+    "n_packages": 225,
+    "by_type": {
+      "Financial": 112503800.0,
+      "Humanitarian": 1312564716.0001943,
+      "Military": 33122316030.0
+    },
+    "monthly": [
+      {
+        "month": "2022-01",
+        "total_eur": 254502000.0,
+        "Humanitarian": 123182000.0,
+        "Military": 131320000.00000001
+      },
+      {
+        "month": "2022-04",
+        "total_eur": 1206535494.0,
+        "Humanitarian": 535494.0,
+        "Military": 1206000000.0000002
+      },
+      {
+        "month": "2022-05",
+        "total_eur": 402000000.00000006,
+        "Military": 402000000.00000006
+      },
+      {
+        "month": "2022-07",
+        "total_eur": 20000000.0,
+        "Financial": 20000000.0
+      },
+      {
+        "month": "2022-09",
+        "total_eur": 27600000.0,
+        "Financial": 27600000.0
+      },
+      {
+        "month": "2022-11",
+        "total_eur": 109880000.0,
+        "Military": 109880000.0
+      },
+      {
+        "month": "2022-12",
+        "total_eur": 59580000.0,
+        "Military": 59580000.0
+      },
+      {
+        "month": "2023-02",
+        "total_eur": 1116914030.0,
+        "Military": 1116914030.0
+      },
+      {
+        "month": "2023-03",
+        "total_eur": 2614809000.0,
+        "Financial": 55703800.0,
+        "Humanitarian": 26505200.0,
+        "Military": 2532600000.0
+      },
+      {
+        "month": "2023-05",
+        "total_eur": 2934600000.0,
+        "Military": 2934600000.0
+      },
+      {
+        "month": "2023-06",
+        "total_eur": 388600000.0,
+        "Humanitarian": 40200000.0,
+        "Military": 348400000.0
+      },
+      {
+        "month": "2023-07",
+        "total_eur": 139200000.0,
+        "Financial": 9200000.0,
+        "Military": 130000000.0
+      },
+      {
+        "month": "2023-09",
+        "total_eur": 5440400000.0,
+        "Military": 5440400000.0
+      },
+      {
+        "month": "2023-10",
+        "total_eur": 3470600000.0,
+        "Military": 3470600000.0
+      },
+      {
+        "month": "2023-11",
+        "total_eur": 3461220000.0,
+        "Humanitarian": 4020000.0000000005,
+        "Military": 3457200000.0
+      },
+      {
+        "month": "2023-12",
+        "total_eur": 1902432700.0,
+        "Humanitarian": 19732700.0,
+        "Military": 1882700000.0
+      },
+      {
+        "month": "2024-01",
+        "total_eur": 242942000.0,
+        "Humanitarian": 8040000.000000001,
+        "Military": 234902000.0
+      },
+      {
+        "month": "2024-02",
+        "total_eur": 8710000.0,
+        "Humanitarian": 1340000.0,
+        "Military": 7370000.0
+      },
+      {
+        "month": "2024-03",
+        "total_eur": 234500000.0,
+        "Military": 234500000.0
+      },
+      {
+        "month": "2024-04",
+        "total_eur": 1152400000.0,
+        "Military": 1152400000.0
+      },
+      {
+        "month": "2024-05",
+        "total_eur": 1801740315.0,
+        "Humanitarian": 6140315.0,
+        "Military": 1795600000.0
+      },
+      {
+        "month": "2024-06",
+        "total_eur": 165518000.0,
+        "Humanitarian": 4700000.0,
+        "Military": 160818000.0
+      },
+      {
+        "month": "2024-07",
+        "total_eur": 33500000.0,
+        "Humanitarian": 33500000.0
+      },
+      {
+        "month": "2024-08",
+        "total_eur": 117123007.00019437,
+        "Humanitarian": 12201007.000194367,
+        "Military": 104922000.0
+      },
+      {
+        "month": "2024-09",
+        "total_eur": 190630000.0,
+        "Humanitarian": 81420000.0,
+        "Military": 109210000.0
+      },
+      {
+        "month": "2024-10",
+        "total_eur": 643200000.0,
+        "Military": 643200000.0
+      },
+      {
+        "month": "2024-11",
+        "total_eur": 134000000.00000001,
+        "Military": 134000000.00000001
+      },
+      {
+        "month": "2024-12",
+        "total_eur": 945834000.0,
+        "Humanitarian": 20234000.0,
+        "Military": 925600000.0
+      },
+      {
+        "month": "2025-01",
+        "total_eur": 384000000.0,
+        "Humanitarian": 384000000.0
+      },
+      {
+        "month": "2025-02",
+        "total_eur": 363140000.0,
+        "Humanitarian": 108540000.0,
+        "Military": 254600000.00000003
+      },
+      {
+        "month": "2025-03",
+        "total_eur": 892802000.0,
+        "Humanitarian": 1300000.0,
+        "Military": 891502000.0
+      },
+      {
+        "month": "2025-04",
+        "total_eur": 46498000.0,
+        "Military": 46498000.0
+      },
+      {
+        "month": "2025-05",
+        "total_eur": 1771200000.0,
+        "Military": 1771200000.0
+      },
+      {
+        "month": "2025-07",
+        "total_eur": 3484000.0,
+        "Humanitarian": 3484000.0
+      },
+      {
+        "month": "2025-09",
+        "total_eur": 701490000.0,
+        "Humanitarian": 58290000.0,
+        "Military": 643200000.0
+      },
+      {
+        "month": "2025-10",
+        "total_eur": 147400000.0,
+        "Military": 147400000.0
+      },
+      {
+        "month": "2025-11",
+        "total_eur": 187600000.0,
+        "Military": 187600000.0
+      },
+      {
+        "month": "2025-12",
+        "total_eur": 830800000.0,
+        "Humanitarian": 375200000.0,
+        "Military": 455600000.0
+      }
+    ]
+  },
+  "Estonia": {
+    "total_eur": 1797061673.0,
+    "n_packages": 107,
+    "by_type": {
+      "Financial": 87600000.0,
+      "Humanitarian": 101700273.0,
+      "Military": 1607761400.0
+    },
+    "monthly": [
+      {
+        "month": "2022-01",
+        "total_eur": 0.0,
+        "Military": 0.0
+      },
+      {
+        "month": "2022-02",
+        "total_eur": 1900000.0,
+        "Humanitarian": 1900000.0
+      },
+      {
+        "month": "2022-05",
+        "total_eur": 7000000.0,
+        "Humanitarian": 7000000.0
+      },
+      {
+        "month": "2022-06",
+        "total_eur": 5000000.0,
+        "Military": 5000000.0
+      },
+      {
+        "month": "2022-07",
+        "total_eur": 20000000.0,
+        "Military": 20000000.0
+      },
+      {
+        "month": "2022-08",
+        "total_eur": 0.0,
+        "Military": 0.0
+      },
+      {
+        "month": "2022-09",
+        "total_eur": 1000000.0,
+        "Humanitarian": 1000000.0,
+        "Military": 0.0
+      },
+      {
+        "month": "2023-01",
+        "total_eur": 565000000.0,
+        "Military": 565000000.0
+      },
+      {
+        "month": "2023-02",
+        "total_eur": 3100000.0,
+        "Humanitarian": 3100000.0
+      },
+      {
+        "month": "2023-03",
+        "total_eur": 3954400.0,
+        "Military": 3954400.0
+      },
+      {
+        "month": "2023-04",
+        "total_eur": 27807000.0,
+        "Military": 27807000.0
+      },
+      {
+        "month": "2023-06",
+        "total_eur": 1820724.0,
+        "Humanitarian": 1820724.0
+      },
+      {
+        "month": "2023-08",
+        "total_eur": 2600000.0,
+        "Humanitarian": 2600000.0
+      },
+      {
+        "month": "2023-09",
+        "total_eur": 235500.0,
+        "Humanitarian": 235500.0
+      },
+      {
+        "month": "2023-10",
+        "total_eur": 570000.0,
+        "Humanitarian": 570000.0
+      },
+      {
+        "month": "2023-12",
+        "total_eur": 320850000.0,
+        "Humanitarian": 850000.0,
+        "Military": 320000000.0
+      },
+      {
+        "month": "2024-01",
+        "total_eur": 1000000.0,
+        "Humanitarian": 1000000.0
+      },
+      {
+        "month": "2024-03",
+        "total_eur": 123976726.0,
+        "Humanitarian": 3976726.0,
+        "Military": 120000000.0
+      },
+      {
+        "month": "2024-04",
+        "total_eur": 11970000.0,
+        "Financial": 10000000.0,
+        "Humanitarian": 1970000.0
+      },
+      {
+        "month": "2024-05",
+        "total_eur": 2656447.0,
+        "Humanitarian": 656447.0,
+        "Military": 2000000.0
+      },
+      {
+        "month": "2024-06",
+        "total_eur": 500000.0,
+        "Military": 500000.0
+      },
+      {
+        "month": "2024-09",
+        "total_eur": 2524600.0,
+        "Humanitarian": 2524600.0
+      },
+      {
+        "month": "2024-10",
+        "total_eur": 535016276.0,
+        "Financial": 77600000.0,
+        "Humanitarian": 57416276.0,
+        "Military": 400000000.0
+      },
+      {
+        "month": "2024-11",
+        "total_eur": 668000.0,
+        "Humanitarian": 668000.0
+      },
+      {
+        "month": "2024-12",
+        "total_eur": 5198000.0,
+        "Humanitarian": 198000.0,
+        "Military": 5000000.0
+      },
+      {
+        "month": "2025-01",
+        "total_eur": 1839000.0,
+        "Humanitarian": 1839000.0
+      },
+      {
+        "month": "2025-02",
+        "total_eur": 25000000.0,
+        "Military": 25000000.0
+      },
+      {
+        "month": "2025-03",
+        "total_eur": 102160000.0,
+        "Humanitarian": 2160000.0,
+        "Military": 100000000.0
+      },
+      {
+        "month": "2025-04",
+        "total_eur": 315000.0,
+        "Humanitarian": 315000.0
+      },
+      {
+        "month": "2025-05",
+        "total_eur": 500000.0,
+        "Humanitarian": 500000.0
+      },
+      {
+        "month": "2025-06",
+        "total_eur": 2590000.0,
+        "Humanitarian": 2590000.0
+      },
+      {
+        "month": "2025-07",
+        "total_eur": 2700000.0,
+        "Humanitarian": 2700000.0
+      },
+      {
+        "month": "2025-08",
+        "total_eur": 50000.0,
+        "Humanitarian": 50000.0
+      },
+      {
+        "month": "2025-09",
+        "total_eur": 10430000.0,
+        "Humanitarian": 430000.0,
+        "Military": 10000000.0
+      },
+      {
+        "month": "2025-10",
+        "total_eur": 1380000.0,
+        "Humanitarian": 1380000.0
+      },
+      {
+        "month": "2025-11",
+        "total_eur": 3750000.0,
+        "Humanitarian": 250000.0,
+        "Military": 3500000.0
+      },
+      {
+        "month": "2025-12",
+        "total_eur": 2000000.0,
+        "Humanitarian": 2000000.0
+      }
+    ]
+  },
+  "European Union": {
+    "total_eur": 273593871430.10754,
+    "n_packages": 132,
+    "by_type": {
+      "Financial": 265188801430.10754,
+      "Humanitarian": 2805070000.0,
+      "Military": 5600000000.0
+    },
+    "monthly": [
+      {
+        "month": "2022-01",
+        "total_eur": 2415000000.0,
+        "Financial": 2000000000.0,
+        "Humanitarian": 415000000.0
+      },
+      {
+        "month": "2022-02",
+        "total_eur": 1700000000.0,
+        "Financial": 1200000000.0,
+        "Military": 500000000.0
+      },
+      {
+        "month": "2022-03",
+        "total_eur": 500000000.0,
+        "Military": 500000000.0
+      },
+      {
+        "month": "2022-04",
+        "total_eur": 668000000.0,
+        "Financial": 668000000.0
+      },
+      {
+        "month": "2022-05",
+        "total_eur": 1300000000.0,
+        "Financial": 600000000.0,
+        "Humanitarian": 200000000.0,
+        "Military": 500000000.0
+      },
+      {
+        "month": "2022-07",
+        "total_eur": 2092500000.0,
+        "Financial": 1592500000.0,
+        "Military": 500000000.0
+      },
+      {
+        "month": "2022-08",
+        "total_eur": 620000000.0,
+        "Financial": 120000000.0,
+        "Military": 500000000.0
+      },
+      {
+        "month": "2022-09",
+        "total_eur": 5805000000.0,
+        "Financial": 5000000000.0,
+        "Humanitarian": 805000000.0
+      },
+      {
+        "month": "2022-10",
+        "total_eur": 2750000000.0,
+        "Financial": 2000000000.0,
+        "Humanitarian": 150000000.0,
+        "Military": 600000000.0
+      },
+      {
+        "month": "2022-11",
+        "total_eur": 3100000000.0,
+        "Financial": 3100000000.0
+      },
+      {
+        "month": "2022-12",
+        "total_eur": 18530000000.0,
+        "Financial": 18500000000.0,
+        "Humanitarian": 30000000.0
+      },
+      {
+        "month": "2023-01",
+        "total_eur": 5005000000.0,
+        "Financial": 4500000000.0,
+        "Humanitarian": 5000000.0,
+        "Military": 500000000.0
+      },
+      {
+        "month": "2023-02",
+        "total_eur": 460000000.0,
+        "Humanitarian": 460000000.0
+      },
+      {
+        "month": "2023-03",
+        "total_eur": 25000000.0,
+        "Humanitarian": 25000000.0
+      },
+      {
+        "month": "2023-04",
+        "total_eur": 2555000000.0,
+        "Financial": 1500000000.0,
+        "Humanitarian": 55000000.0,
+        "Military": 1000000000.0
+      },
+      {
+        "month": "2023-05",
+        "total_eur": 2500000000.0,
+        "Financial": 1500000000.0,
+        "Military": 1000000000.0
+      },
+      {
+        "month": "2023-06",
+        "total_eur": 52175000000.0,
+        "Financial": 52175000000.0
+      },
+      {
+        "month": "2023-07",
+        "total_eur": 1500000000.0,
+        "Financial": 1500000000.0
+      },
+      {
+        "month": "2023-08",
+        "total_eur": 1500000000.0,
+        "Financial": 1500000000.0
+      },
+      {
+        "month": "2023-09",
+        "total_eur": 1500000000.0,
+        "Financial": 1500000000.0
+      },
+      {
+        "month": "2023-10",
+        "total_eur": 1550000000.0,
+        "Financial": 1500000000.0,
+        "Humanitarian": 50000000.0
+      },
+      {
+        "month": "2023-11",
+        "total_eur": 1500000000.0,
+        "Financial": 1500000000.0
+      },
+      {
+        "month": "2023-12",
+        "total_eur": 1616500000.0,
+        "Financial": 1600000000.0,
+        "Humanitarian": 16500000.0
+      },
+      {
+        "month": "2024-02",
+        "total_eur": 75000000.0,
+        "Humanitarian": 75000000.0
+      },
+      {
+        "month": "2024-03",
+        "total_eur": 4500000000.0,
+        "Financial": 4500000000.0
+      },
+      {
+        "month": "2024-04",
+        "total_eur": 1500000000.0,
+        "Financial": 1500000000.0
+      },
+      {
+        "month": "2024-06",
+        "total_eur": 1900000000.0,
+        "Financial": 1900000000.0
+      },
+      {
+        "month": "2024-07",
+        "total_eur": 796000000.0,
+        "Financial": 796000000.0
+      },
+      {
+        "month": "2024-08",
+        "total_eur": 4300000000.0,
+        "Financial": 4300000000.0
+      },
+      {
+        "month": "2024-09",
+        "total_eur": 213570000.0,
+        "Financial": 50000000.0,
+        "Humanitarian": 163570000.0
+      },
+      {
+        "month": "2024-10",
+        "total_eur": 18100000000.0,
+        "Financial": 18100000000.0
+      },
+      {
+        "month": "2024-11",
+        "total_eur": 1454650000.0,
+        "Financial": 1454650000.0
+      },
+      {
+        "month": "2024-12",
+        "total_eur": 4265000000.0,
+        "Financial": 4200000000.0,
+        "Humanitarian": 65000000.0
+      },
+      {
+        "month": "2025-01",
+        "total_eur": 7640000000.0,
+        "Financial": 7500000000.0,
+        "Humanitarian": 140000000.0
+      },
+      {
+        "month": "2025-03",
+        "total_eur": 1110000000.0,
+        "Financial": 1000000000.0,
+        "Humanitarian": 110000000.0
+      },
+      {
+        "month": "2025-05",
+        "total_eur": 511000.0,
+        "Financial": 511000.0
+      },
+      {
+        "month": "2025-06",
+        "total_eur": 3000420000.0,
+        "Financial": 3000420000.0
+      },
+      {
+        "month": "2025-08",
+        "total_eur": 5050000000.0,
+        "Financial": 5050000000.0
+      },
+      {
+        "month": "2025-09",
+        "total_eur": 1000000000.0,
+        "Financial": 1000000000.0
+      },
+      {
+        "month": "2025-10",
+        "total_eur": 9081720430.107527,
+        "Financial": 9081720430.107527
+      },
+      {
+        "month": "2025-11",
+        "total_eur": 5900000000.0,
+        "Financial": 5900000000.0
+      },
+      {
+        "month": "2025-12",
+        "total_eur": 92340000000.0,
+        "Financial": 92300000000.0,
+        "Humanitarian": 40000000.0
+      }
+    ]
+  },
+  "Finland": {
+    "total_eur": 4798307000.0,
+    "n_packages": 91,
+    "by_type": {
+      "Financial": 159400000.0,
+      "Humanitarian": 775307000.0,
+      "Military": 3863600000.0
+    },
+    "monthly": [
+      {
+        "month": "2022-01",
+        "total_eur": 8250000.0,
+        "Military": 8250000.0
+      },
+      {
+        "month": "2022-02",
+        "total_eur": 272100000.0,
+        "Financial": 15000000.0,
+        "Humanitarian": 52000000.0,
+        "Military": 205100000.0
+      },
+      {
+        "month": "2022-04",
+        "total_eur": 46500000.0,
+        "Financial": 46500000.0
+      },
+      {
+        "month": "2022-05",
+        "total_eur": 9200000.0,
+        "Humanitarian": 9200000.0
+      },
+      {
+        "month": "2022-07",
+        "total_eur": 6000000.0,
+        "Financial": 6000000.0
+      },
+      {
+        "month": "2022-08",
+        "total_eur": 10300000.0,
+        "Financial": 5800000.0,
+        "Humanitarian": 4500000.0
+      },
+      {
+        "month": "2022-10",
+        "total_eur": 84750000.0,
+        "Military": 84750000.0
+      },
+      {
+        "month": "2022-11",
+        "total_eur": 55600000.0,
+        "Military": 55600000.0
+      },
+      {
+        "month": "2022-12",
+        "total_eur": 33800000.0,
+        "Humanitarian": 5000000.0,
+        "Military": 28800000.0
+      },
+      {
+        "month": "2023-01",
+        "total_eur": 400000000.0,
+        "Military": 400000000.0
+      },
+      {
+        "month": "2023-02",
+        "total_eur": 165500000.0,
+        "Financial": 5500000.0,
+        "Military": 160000000.0
+      },
+      {
+        "month": "2023-03",
+        "total_eur": 161000000.0,
+        "Military": 161000000.0
+      },
+      {
+        "month": "2023-04",
+        "total_eur": 78000000.0,
+        "Military": 78000000.0
+      },
+      {
+        "month": "2023-05",
+        "total_eur": 109000000.0,
+        "Military": 109000000.0
+      },
+      {
+        "month": "2023-06",
+        "total_eur": 105000000.0,
+        "Military": 105000000.0
+      },
+      {
+        "month": "2023-08",
+        "total_eur": 94000000.0,
+        "Military": 94000000.0
+      },
+      {
+        "month": "2023-09",
+        "total_eur": 67520000.0,
+        "Financial": 62000000.0,
+        "Humanitarian": 5520000.0
+      },
+      {
+        "month": "2023-10",
+        "total_eur": 43000000.0,
+        "Financial": 14000000.0,
+        "Humanitarian": 29000000.0
+      },
+      {
+        "month": "2023-11",
+        "total_eur": 196000000.0,
+        "Humanitarian": 1000000.0,
+        "Military": 195000000.0
+      },
+      {
+        "month": "2023-12",
+        "total_eur": 109000000.0,
+        "Humanitarian": 3000000.0,
+        "Military": 106000000.0
+      },
+      {
+        "month": "2024-01",
+        "total_eur": 4000000.0,
+        "Humanitarian": 4000000.0
+      },
+      {
+        "month": "2024-02",
+        "total_eur": 9000000.0,
+        "Humanitarian": 9000000.0
+      },
+      {
+        "month": "2024-03",
+        "total_eur": 218000000.0,
+        "Military": 218000000.0
+      },
+      {
+        "month": "2024-04",
+        "total_eur": 10100000.0,
+        "Military": 10100000.0
+      },
+      {
+        "month": "2024-05",
+        "total_eur": 25000000.0,
+        "Military": 25000000.0
+      },
+      {
+        "month": "2024-06",
+        "total_eur": 164550000.0,
+        "Humanitarian": 5550000.0,
+        "Military": 159000000.0
+      },
+      {
+        "month": "2024-09",
+        "total_eur": 118000000.0,
+        "Military": 118000000.0
+      },
+      {
+        "month": "2024-10",
+        "total_eur": 190000000.0,
+        "Military": 190000000.0
+      },
+      {
+        "month": "2024-11",
+        "total_eur": 2000000.0,
+        "Humanitarian": 2000000.0
+      },
+      {
+        "month": "2024-12",
+        "total_eur": 252500000.0,
+        "Humanitarian": 252500000.0
+      },
+      {
+        "month": "2025-01",
+        "total_eur": 198000000.0,
+        "Military": 198000000.0
+      },
+      {
+        "month": "2025-02",
+        "total_eur": 663000000.0,
+        "Financial": 3000000.0,
+        "Military": 660000000.0
+      },
+      {
+        "month": "2025-03",
+        "total_eur": 200000000.0,
+        "Military": 200000000.0
+      },
+      {
+        "month": "2025-04",
+        "total_eur": 40000000.0,
+        "Humanitarian": 40000000.0
+      },
+      {
+        "month": "2025-06",
+        "total_eur": 144037000.0,
+        "Humanitarian": 1037000.0,
+        "Military": 143000000.0
+      },
+      {
+        "month": "2025-07",
+        "total_eur": 1600000.0,
+        "Financial": 1600000.0
+      },
+      {
+        "month": "2025-08",
+        "total_eur": 2000000.0,
+        "Humanitarian": 2000000.0
+      },
+      {
+        "month": "2025-10",
+        "total_eur": 499000000.0,
+        "Humanitarian": 347000000.0,
+        "Military": 152000000.0
+      },
+      {
+        "month": "2025-11",
+        "total_eur": 3000000.0,
+        "Humanitarian": 3000000.0
+      }
+    ]
+  },
+  "France": {
+    "total_eur": 21877400000.0,
+    "n_packages": 58,
+    "by_type": {
+      "Financial": 799400000.0,
+      "Humanitarian": 1486000000.0,
+      "Military": 19592000000.0
+    },
+    "monthly": [
+      {
+        "month": "2022-01",
+        "total_eur": 600000000.0,
+        "Humanitarian": 600000000.0
+      },
+      {
+        "month": "2022-02",
+        "total_eur": 300000000.0,
+        "Financial": 300000000.0
+      },
+      {
+        "month": "2022-03",
+        "total_eur": 1600000.0,
+        "Humanitarian": 1600000.0
+      },
+      {
+        "month": "2022-04",
+        "total_eur": 200000000.0,
+        "Military": 200000000.0
+      },
+      {
+        "month": "2022-07",
+        "total_eur": 200000000.0,
+        "Military": 200000000.0
+      },
+      {
+        "month": "2022-08",
+        "total_eur": 200000000.0,
+        "Financial": 200000000.0
+      },
+      {
+        "month": "2022-09",
+        "total_eur": 108000000.0,
+        "Humanitarian": 108000000.0
+      },
+      {
+        "month": "2022-11",
+        "total_eur": 100000000.0,
+        "Financial": 100000000.0
+      },
+      {
+        "month": "2022-12",
+        "total_eur": 313800000.0,
+        "Financial": 99400000.0,
+        "Humanitarian": 214400000.0
+      },
+      {
+        "month": "2023-06",
+        "total_eur": 40000000.0,
+        "Humanitarian": 40000000.0
+      },
+      {
+        "month": "2023-07",
+        "total_eur": 100000000.0,
+        "Financial": 100000000.0
+      },
+      {
+        "month": "2023-10",
+        "total_eur": 6000000.0,
+        "Humanitarian": 6000000.0
+      },
+      {
+        "month": "2024-01",
+        "total_eur": 14000000.0,
+        "Humanitarian": 12000000.0,
+        "Military": 2000000.0
+      },
+      {
+        "month": "2024-02",
+        "total_eur": 3000000000.0,
+        "Military": 3000000000.0
+      },
+      {
+        "month": "2024-08",
+        "total_eur": 200000000.0,
+        "Humanitarian": 200000000.0
+      },
+      {
+        "month": "2024-10",
+        "total_eur": 1800000000.0,
+        "Military": 1800000000.0
+      },
+      {
+        "month": "2024-12",
+        "total_eur": 4000000.0,
+        "Humanitarian": 4000000.0
+      },
+      {
+        "month": "2025-01",
+        "total_eur": 100000000.0,
+        "Humanitarian": 100000000.0
+      },
+      {
+        "month": "2025-03",
+        "total_eur": 14000000000.0,
+        "Military": 14000000000.0
+      },
+      {
+        "month": "2025-04",
+        "total_eur": 200000000.0,
+        "Humanitarian": 200000000.0
+      },
+      {
+        "month": "2025-08",
+        "total_eur": 390000000.0,
+        "Military": 390000000.0
+      }
+    ]
+  },
+  "Germany": {
+    "total_eur": 74250838050.0,
+    "n_packages": 106,
+    "by_type": {
+      "Financial": 1447500000.0,
+      "Humanitarian": 3605120050.0,
+      "Military": 69198218000.0
+    },
+    "monthly": [
+      {
+        "month": "2022-01",
+        "total_eur": 5800000.0,
+        "Humanitarian": 5800000.0
+      },
+      {
+        "month": "2022-03",
+        "total_eur": 150000000.0,
+        "Financial": 150000000.0
+      },
+      {
+        "month": "2022-04",
+        "total_eur": 1606000000.0,
+        "Humanitarian": 406000000.0,
+        "Military": 1200000000.0
+      },
+      {
+        "month": "2022-05",
+        "total_eur": 1567000000.0,
+        "Financial": 1257000000.0,
+        "Humanitarian": 310000000.0
+      },
+      {
+        "month": "2022-08",
+        "total_eur": 6000000.0,
+        "Humanitarian": 6000000.0
+      },
+      {
+        "month": "2022-09",
+        "total_eur": 478300000.0,
+        "Humanitarian": 478300000.0
+      },
+      {
+        "month": "2022-11",
+        "total_eur": 46748000.0,
+        "Humanitarian": 46748000.0
+      },
+      {
+        "month": "2022-12",
+        "total_eur": 555176050.0,
+        "Humanitarian": 309176050.0,
+        "Military": 246000000.0
+      },
+      {
+        "month": "2023-01",
+        "total_eur": 52000000.0,
+        "Humanitarian": 52000000.0
+      },
+      {
+        "month": "2023-02",
+        "total_eur": 2310000000.0,
+        "Humanitarian": 160000000.0,
+        "Military": 2150000000.0
+      },
+      {
+        "month": "2023-03",
+        "total_eur": 25000000.0,
+        "Humanitarian": 25000000.0
+      },
+      {
+        "month": "2023-04",
+        "total_eur": 2663020000.0,
+        "Humanitarian": 298020000.0,
+        "Military": 2365000000.0
+      },
+      {
+        "month": "2023-05",
+        "total_eur": 10626936000.0,
+        "Military": 10626936000.0
+      },
+      {
+        "month": "2023-09",
+        "total_eur": 25930000.0,
+        "Humanitarian": 24830000.0,
+        "Military": 1100000.0
+      },
+      {
+        "month": "2023-11",
+        "total_eur": 420166000.0,
+        "Humanitarian": 376466000.0,
+        "Military": 43700000.0
+      },
+      {
+        "month": "2023-12",
+        "total_eur": 1024780000.0,
+        "Humanitarian": 474780000.0,
+        "Military": 550000000.0
+      },
+      {
+        "month": "2024-02",
+        "total_eur": 1502296000.0,
+        "Humanitarian": 100000000.0,
+        "Military": 1402296000.0
+      },
+      {
+        "month": "2024-10",
+        "total_eur": 434400000.0,
+        "Military": 434400000.0
+      },
+      {
+        "month": "2024-11",
+        "total_eur": 2460572000.0,
+        "Humanitarian": 170000000.0,
+        "Military": 2290572000.0
+      },
+      {
+        "month": "2025-01",
+        "total_eur": 11380000000.0,
+        "Humanitarian": 130000000.0,
+        "Military": 11250000000.0
+      },
+      {
+        "month": "2025-02",
+        "total_eur": 1200000000.0,
+        "Military": 1200000000.0
+      },
+      {
+        "month": "2025-03",
+        "total_eur": 209000000.0,
+        "Military": 209000000.0
+      },
+      {
+        "month": "2025-05",
+        "total_eur": 2200000000.0,
+        "Military": 2200000000.0
+      },
+      {
+        "month": "2025-07",
+        "total_eur": 7669214000.0,
+        "Military": 7669214000.0
+      },
+      {
+        "month": "2025-08",
+        "total_eur": 460000000.0,
+        "Military": 460000000.0
+      },
+      {
+        "month": "2025-10",
+        "total_eur": 20060000000.0,
+        "Humanitarian": 60000000.0,
+        "Military": 20000000000.0
+      },
+      {
+        "month": "2025-11",
+        "total_eur": 40500000.0,
+        "Financial": 40500000.0
+      },
+      {
+        "month": "2025-12",
+        "total_eur": 5072000000.0,
+        "Humanitarian": 172000000.0,
+        "Military": 4900000000.0
+      }
+    ]
+  },
+  "Greece": {
+    "total_eur": 20000000.0,
+    "n_packages": 1,
+    "by_type": {
+      "Military": 20000000.0
+    },
+    "monthly": [
+      {
+        "month": "2025-12",
+        "total_eur": 20000000.0,
+        "Military": 20000000.0
+      }
+    ]
+  },
+  "Hungary": {
+    "total_eur": 115346000.0,
+    "n_packages": 7,
+    "by_type": {
+      "Humanitarian": 115346000.0
+    },
+    "monthly": [
+      {
+        "month": "2022-03",
+        "total_eur": 171600.0,
+        "Humanitarian": 171600.0
+      },
+      {
+        "month": "2022-04",
+        "total_eur": 681200.0,
+        "Humanitarian": 681200.0
+      },
+      {
+        "month": "2022-05",
+        "total_eur": 111000000.0,
+        "Humanitarian": 111000000.0
+      },
+      {
+        "month": "2022-11",
+        "total_eur": 993200.0,
+        "Humanitarian": 993200.0
+      },
+      {
+        "month": "2023-08",
+        "total_eur": 2500000.0,
+        "Humanitarian": 2500000.0
+      }
+    ]
+  },
+  "Iceland": {
+    "total_eur": 125670559.0,
+    "n_packages": 63,
+    "by_type": {
+      "Financial": 12782000.0,
+      "Humanitarian": 31577029.0,
+      "Military": 81311530.0
+    },
+    "monthly": [
+      {
+        "month": "2022-02",
+        "total_eur": 971500.0000000001,
+        "Humanitarian": 971500.0000000001
+      },
+      {
+        "month": "2022-03",
+        "total_eur": 1340000.0,
+        "Humanitarian": 1340000.0
+      },
+      {
+        "month": "2022-04",
+        "total_eur": 1071000.0,
+        "Financial": 871000.0,
+        "Military": 200000.0
+      },
+      {
+        "month": "2022-05",
+        "total_eur": 2847500.0,
+        "Financial": 871000.0,
+        "Humanitarian": 1976500.0
+      },
+      {
+        "month": "2023-02",
+        "total_eur": 552000.0,
+        "Financial": 552000.0
+      },
+      {
+        "month": "2023-03",
+        "total_eur": 5438930.0,
+        "Humanitarian": 1902000.0,
+        "Military": 3536930.0
+      },
+      {
+        "month": "2023-05",
+        "total_eur": 12646342.0,
+        "Humanitarian": 4874342.0,
+        "Military": 7772000.0
+      },
+      {
+        "month": "2023-06",
+        "total_eur": 3588000.0,
+        "Financial": 3588000.0
+      },
+      {
+        "month": "2023-07",
+        "total_eur": 1380000.0,
+        "Financial": 1380000.0
+      },
+      {
+        "month": "2023-12",
+        "total_eur": 12985000.0,
+        "Financial": 920000.0,
+        "Humanitarian": 6700000.0,
+        "Military": 5365000.0
+      },
+      {
+        "month": "2024-03",
+        "total_eur": 2502500.0,
+        "Military": 2502500.0
+      },
+      {
+        "month": "2024-04",
+        "total_eur": 667000.0,
+        "Humanitarian": 667000.0
+      },
+      {
+        "month": "2024-06",
+        "total_eur": 2827000.0,
+        "Financial": 2760000.0,
+        "Humanitarian": 67000.0
+      },
+      {
+        "month": "2025-02",
+        "total_eur": 5360000.0,
+        "Military": 5360000.0
+      },
+      {
+        "month": "2025-04",
+        "total_eur": 5840000.0,
+        "Financial": 1840000.0,
+        "Military": 4000000.0
+      },
+      {
+        "month": "2025-09",
+        "total_eur": 34572000.0,
+        "Humanitarian": 402000.0,
+        "Military": 34170000.0
+      },
+      {
+        "month": "2025-11",
+        "total_eur": 10928187.0,
+        "Humanitarian": 2928187.0,
+        "Military": 8000000.0
+      },
+      {
+        "month": "2025-12",
+        "total_eur": 20153600.0,
+        "Humanitarian": 9748500.0,
+        "Military": 10405100.0
+      }
+    ]
+  },
+  "Ireland": {
+    "total_eur": 482312000.0,
+    "n_packages": 42,
+    "by_type": {
+      "Financial": 47000000.0,
+      "Humanitarian": 211462000.0,
+      "Military": 223850000.0
+    },
+    "monthly": [
+      {
+        "month": "2022-02",
+        "total_eur": 19000000.0,
+        "Humanitarian": 19000000.0
+      },
+      {
+        "month": "2022-05",
+        "total_eur": 500000.0,
+        "Humanitarian": 500000.0
+      },
+      {
+        "month": "2022-06",
+        "total_eur": 2197000.0,
+        "Humanitarian": 2197000.0
+      },
+      {
+        "month": "2022-09",
+        "total_eur": 57000000.0,
+        "Financial": 25000000.0,
+        "Humanitarian": 32000000.0
+      },
+      {
+        "month": "2023-02",
+        "total_eur": 3850000.0,
+        "Military": 3850000.0
+      },
+      {
+        "month": "2023-03",
+        "total_eur": 5100000.0,
+        "Humanitarian": 5100000.0
+      },
+      {
+        "month": "2023-07",
+        "total_eur": 21600000.0,
+        "Financial": 7000000.0,
+        "Humanitarian": 14600000.0
+      },
+      {
+        "month": "2023-09",
+        "total_eur": 20000000.0,
+        "Financial": 8000000.0,
+        "Humanitarian": 12000000.0
+      },
+      {
+        "month": "2023-10",
+        "total_eur": 50000.0,
+        "Humanitarian": 50000.0
+      },
+      {
+        "month": "2024-04",
+        "total_eur": 31115000.0,
+        "Humanitarian": 31115000.0
+      },
+      {
+        "month": "2024-07",
+        "total_eur": 35000000.0,
+        "Humanitarian": 35000000.0
+      },
+      {
+        "month": "2025-01",
+        "total_eur": 125000000.0,
+        "Humanitarian": 25000000.0,
+        "Military": 100000000.0
+      },
+      {
+        "month": "2025-02",
+        "total_eur": 1500000.0,
+        "Humanitarian": 1500000.0
+      },
+      {
+        "month": "2025-04",
+        "total_eur": 127000000.0,
+        "Financial": 7000000.0,
+        "Military": 120000000.0
+      },
+      {
+        "month": "2025-09",
+        "total_eur": 33400000.0,
+        "Humanitarian": 33400000.0
+      }
+    ]
+  },
+  "Italy": {
+    "total_eur": 1265000000.0,
+    "n_packages": 25,
+    "by_type": {
+      "Financial": 410000000.0,
+      "Humanitarian": 705000000.0,
+      "Military": 150000000.0
+    },
+    "monthly": [
+      {
+        "month": "2022-02",
+        "total_eur": 264000000.0,
+        "Financial": 110000000.0,
+        "Humanitarian": 4000000.0,
+        "Military": 150000000.0
+      },
+      {
+        "month": "2022-04",
+        "total_eur": 16000000.0,
+        "Humanitarian": 16000000.0
+      },
+      {
+        "month": "2022-05",
+        "total_eur": 200000000.0,
+        "Financial": 200000000.0
+      },
+      {
+        "month": "2022-12",
+        "total_eur": 10000000.0,
+        "Humanitarian": 10000000.0
+      },
+      {
+        "month": "2023-04",
+        "total_eur": 270000000.0,
+        "Financial": 100000000.0,
+        "Humanitarian": 170000000.0
+      },
+      {
+        "month": "2024-02",
+        "total_eur": 100000000.0,
+        "Humanitarian": 100000000.0
+      },
+      {
+        "month": "2024-10",
+        "total_eur": 500000.0,
+        "Humanitarian": 500000.0
+      },
+      {
+        "month": "2024-11",
+        "total_eur": 185000000.0,
+        "Humanitarian": 185000000.0
+      },
+      {
+        "month": "2024-12",
+        "total_eur": 13000000.0,
+        "Humanitarian": 13000000.0
+      },
+      {
+        "month": "2025-03",
+        "total_eur": 21000000.0,
+        "Humanitarian": 21000000.0
+      },
+      {
+        "month": "2025-05",
+        "total_eur": 3500000.0,
+        "Humanitarian": 3500000.0
+      },
+      {
+        "month": "2025-07",
+        "total_eur": 71000000.0,
+        "Humanitarian": 71000000.0
+      },
+      {
+        "month": "2025-10",
+        "total_eur": 1000000.0,
+        "Humanitarian": 1000000.0
+      },
+      {
+        "month": "2025-12",
+        "total_eur": 110000000.0,
+        "Humanitarian": 110000000.0
+      }
+    ]
+  },
+  "Japan": {
+    "total_eur": 29900588900.4,
+    "n_packages": 61,
+    "by_type": {
+      "Financial": 27253174000.0,
+      "Humanitarian": 2585774900.4,
+      "Military": 61640000.0
+    },
+    "monthly": [
+      {
+        "month": "2022-02",
+        "total_eur": 54556000.0,
+        "Humanitarian": 54556000.0
+      },
+      {
+        "month": "2022-03",
+        "total_eur": 141560400.0,
+        "Financial": 92000000.0,
+        "Humanitarian": 49560400.0
+      },
+      {
+        "month": "2022-04",
+        "total_eur": 186116000.0,
+        "Financial": 184000000.0,
+        "Humanitarian": 2116000.0
+      },
+      {
+        "month": "2022-05",
+        "total_eur": 277527200.0,
+        "Financial": 276000000.0,
+        "Humanitarian": 1527200.0
+      },
+      {
+        "month": "2022-06",
+        "total_eur": 459880740.40000004,
+        "Humanitarian": 459880740.40000004
+      },
+      {
+        "month": "2022-11",
+        "total_eur": 2364400.0,
+        "Humanitarian": 2364400.0
+      },
+      {
+        "month": "2023-01",
+        "total_eur": 89672400.0,
+        "Humanitarian": 89672400.0
+      },
+      {
+        "month": "2023-02",
+        "total_eur": 5081666000.0,
+        "Financial": 5081666000.0
+      },
+      {
+        "month": "2023-03",
+        "total_eur": 460099360.0,
+        "Humanitarian": 432499360.0,
+        "Military": 27600000.0
+      },
+      {
+        "month": "2023-04",
+        "total_eur": 1537320000.0,
+        "Financial": 1537320000.0
+      },
+      {
+        "month": "2023-05",
+        "total_eur": 161000.0,
+        "Financial": 161000.0
+      },
+      {
+        "month": "2023-06",
+        "total_eur": 3224600000.0,
+        "Financial": 3220000000.0,
+        "Humanitarian": 4600000.0
+      },
+      {
+        "month": "2023-07",
+        "total_eur": 2511600000.0,
+        "Financial": 1591600000.0,
+        "Humanitarian": 920000000.0
+      },
+      {
+        "month": "2023-09",
+        "total_eur": 143616000.0,
+        "Humanitarian": 143616000.0
+      },
+      {
+        "month": "2023-12",
+        "total_eur": 999120000.0,
+        "Financial": 999120000.0
+      },
+      {
+        "month": "2024-01",
+        "total_eur": 432400000.0,
+        "Financial": 432400000.0
+      },
+      {
+        "month": "2024-02",
+        "total_eur": 101990400.0,
+        "Humanitarian": 101990400.0
+      },
+      {
+        "month": "2024-03",
+        "total_eur": 971152000.0,
+        "Financial": 905280000.0,
+        "Humanitarian": 65872000.0
+      },
+      {
+        "month": "2024-04",
+        "total_eur": 869400000.0,
+        "Financial": 869400000.0
+      },
+      {
+        "month": "2024-05",
+        "total_eur": 0.0,
+        "Humanitarian": 0.0
+      },
+      {
+        "month": "2024-07",
+        "total_eur": 34040000.0,
+        "Military": 34040000.0
+      },
+      {
+        "month": "2024-10",
+        "total_eur": 3249240000.0,
+        "Financial": 3249240000.0
+      },
+      {
+        "month": "2024-11",
+        "total_eur": 639400000.0,
+        "Financial": 630200000.0,
+        "Humanitarian": 9200000.0
+      },
+      {
+        "month": "2024-12",
+        "total_eur": 521801000.0,
+        "Financial": 521801000.0,
+        "Humanitarian": 0.0
+      },
+      {
+        "month": "2025-02",
+        "total_eur": 276960000.0,
+        "Financial": 195040000.0,
+        "Humanitarian": 81920000.0
+      },
+      {
+        "month": "2025-04",
+        "total_eur": 166400000.0,
+        "Humanitarian": 166400000.0
+      },
+      {
+        "month": "2025-05",
+        "total_eur": 3020160000.0,
+        "Financial": 3020160000.0,
+        "Humanitarian": 0.0
+      },
+      {
+        "month": "2025-09",
+        "total_eur": 307786000.0,
+        "Financial": 307786000.0
+      },
+      {
+        "month": "2025-12",
+        "total_eur": 4140000000.0,
+        "Financial": 4140000000.0
+      }
+    ]
+  },
+  "Latvia": {
+    "total_eur": 2148550339.194828,
+    "n_packages": 87,
+    "by_type": {
+      "Financial": 47250000.0,
+      "Humanitarian": 43930059.0,
+      "Military": 2057370280.194828
+    },
+    "monthly": [
+      {
+        "month": "2022-01",
+        "total_eur": 925000.0,
+        "Humanitarian": 925000.0
+      },
+      {
+        "month": "2022-03",
+        "total_eur": 334834.0,
+        "Humanitarian": 334834.0
+      },
+      {
+        "month": "2022-04",
+        "total_eur": 1312829996.0,
+        "Humanitarian": 29996.0,
+        "Military": 1312800000.0
+      },
+      {
+        "month": "2022-05",
+        "total_eur": 11400000.0,
+        "Financial": 10000000.0,
+        "Humanitarian": 1400000.0
+      },
+      {
+        "month": "2022-07",
+        "total_eur": 30024000.0,
+        "Humanitarian": 24000.0,
+        "Military": 30000000.0
+      },
+      {
+        "month": "2022-08",
+        "total_eur": 5000000.0,
+        "Financial": 5000000.0
+      },
+      {
+        "month": "2022-11",
+        "total_eur": 559640.0,
+        "Humanitarian": 559640.0
+      },
+      {
+        "month": "2023-01",
+        "total_eur": 459393280.1948279,
+        "Military": 459393280.1948279
+      },
+      {
+        "month": "2023-02",
+        "total_eur": 11026552.0,
+        "Humanitarian": 11026552.0
+      },
+      {
+        "month": "2023-04",
+        "total_eur": 10000000.0,
+        "Financial": 10000000.0
+      },
+      {
+        "month": "2023-06",
+        "total_eur": 6000000.0,
+        "Military": 6000000.0
+      },
+      {
+        "month": "2023-07",
+        "total_eur": 7000000.0,
+        "Financial": 7000000.0
+      },
+      {
+        "month": "2023-09",
+        "total_eur": 18500.0,
+        "Humanitarian": 18500.0
+      },
+      {
+        "month": "2023-10",
+        "total_eur": 56782.0,
+        "Humanitarian": 56782.0
+      },
+      {
+        "month": "2023-11",
+        "total_eur": 4000000.0,
+        "Financial": 4000000.0
+      },
+      {
+        "month": "2024-01",
+        "total_eur": 10000000.0,
+        "Military": 10000000.0
+      },
+      {
+        "month": "2024-02",
+        "total_eur": 10000000.0,
+        "Military": 10000000.0
+      },
+      {
+        "month": "2024-03",
+        "total_eur": 10000000.0,
+        "Humanitarian": 10000000.0
+      },
+      {
+        "month": "2024-04",
+        "total_eur": 60000000.0,
+        "Financial": 6000000.0,
+        "Military": 54000000.0
+      },
+      {
+        "month": "2024-07",
+        "total_eur": 200000.0,
+        "Humanitarian": 100000.0,
+        "Military": 100000.0
+      },
+      {
+        "month": "2024-08",
+        "total_eur": 20000000.0,
+        "Military": 20000000.0
+      },
+      {
+        "month": "2024-10",
+        "total_eur": 2736000.0,
+        "Financial": 250000.0,
+        "Humanitarian": 2486000.0
+      },
+      {
+        "month": "2024-11",
+        "total_eur": 135000000.0,
+        "Financial": 5000000.0,
+        "Humanitarian": 10000000.0,
+        "Military": 120000000.0
+      },
+      {
+        "month": "2025-02",
+        "total_eur": 200000.0,
+        "Humanitarian": 200000.0
+      },
+      {
+        "month": "2025-04",
+        "total_eur": 36498755.0,
+        "Humanitarian": 6498755.0,
+        "Military": 30000000.0
+      },
+      {
+        "month": "2025-07",
+        "total_eur": 70000.0,
+        "Humanitarian": 70000.0
+      },
+      {
+        "month": "2025-08",
+        "total_eur": 77000.0,
+        "Military": 77000.0
+      },
+      {
+        "month": "2025-09",
+        "total_eur": 5000000.0,
+        "Military": 5000000.0
+      },
+      {
+        "month": "2025-12",
+        "total_eur": 200000.0,
+        "Humanitarian": 200000.0
+      }
+    ]
+  },
+  "Lithuania": {
+    "total_eur": 2158470000.0,
+    "n_packages": 110,
+    "by_type": {
+      "Financial": 51500000.0,
+      "Humanitarian": 202470000.0,
+      "Military": 1904500000.0
+    },
+    "monthly": [
+      {
+        "month": "2022-02",
+        "total_eur": 5800000.0,
+        "Humanitarian": 5800000.0
+      },
+      {
+        "month": "2022-03",
+        "total_eur": 49000000.0,
+        "Military": 49000000.0
+      },
+      {
+        "month": "2022-04",
+        "total_eur": 95200000.0,
+        "Humanitarian": 34200000.0,
+        "Military": 61000000.0
+      },
+      {
+        "month": "2022-05",
+        "total_eur": 48500000.0,
+        "Humanitarian": 2000000.0,
+        "Military": 46500000.0
+      },
+      {
+        "month": "2022-06",
+        "total_eur": 10000000.0,
+        "Financial": 10000000.0
+      },
+      {
+        "month": "2022-07",
+        "total_eur": 5000000.0,
+        "Financial": 5000000.0
+      },
+      {
+        "month": "2022-10",
+        "total_eur": 6000000.0,
+        "Military": 6000000.0
+      },
+      {
+        "month": "2022-11",
+        "total_eur": 24000000.0,
+        "Financial": 5000000.0,
+        "Humanitarian": 19000000.0
+      },
+      {
+        "month": "2023-01",
+        "total_eur": 415000000.0,
+        "Military": 415000000.0
+      },
+      {
+        "month": "2023-04",
+        "total_eur": 10000000.0,
+        "Financial": 10000000.0
+      },
+      {
+        "month": "2023-05",
+        "total_eur": 41000000.0,
+        "Military": 41000000.0
+      },
+      {
+        "month": "2023-06",
+        "total_eur": 6000000.0,
+        "Military": 6000000.0
+      },
+      {
+        "month": "2023-07",
+        "total_eur": 237050000.0,
+        "Financial": 10000000.0,
+        "Humanitarian": 50000.0,
+        "Military": 227000000.0
+      },
+      {
+        "month": "2023-08",
+        "total_eur": 170800000.0,
+        "Humanitarian": 6800000.0,
+        "Military": 164000000.0
+      },
+      {
+        "month": "2023-09",
+        "total_eur": 1500000.0,
+        "Financial": 1500000.0
+      },
+      {
+        "month": "2024-01",
+        "total_eur": 112000000.0,
+        "Humanitarian": 500000.0,
+        "Military": 111500000.0
+      },
+      {
+        "month": "2024-04",
+        "total_eur": 10000000.0,
+        "Military": 10000000.0
+      },
+      {
+        "month": "2024-05",
+        "total_eur": 41850000.0,
+        "Humanitarian": 26350000.0,
+        "Military": 15500000.0
+      },
+      {
+        "month": "2024-06",
+        "total_eur": 16000000.0,
+        "Military": 16000000.0
+      },
+      {
+        "month": "2024-07",
+        "total_eur": 54000000.0,
+        "Humanitarian": 54000000.0
+      },
+      {
+        "month": "2024-08",
+        "total_eur": 17250000.0,
+        "Humanitarian": 5250000.0,
+        "Military": 12000000.0
+      },
+      {
+        "month": "2024-09",
+        "total_eur": 12000000.0,
+        "Military": 12000000.0
+      },
+      {
+        "month": "2024-10",
+        "total_eur": 35000000.0,
+        "Military": 35000000.0
+      },
+      {
+        "month": "2024-11",
+        "total_eur": 60500000.0,
+        "Financial": 10000000.0,
+        "Humanitarian": 500000.0,
+        "Military": 50000000.0
+      },
+      {
+        "month": "2024-12",
+        "total_eur": 126020000.0,
+        "Humanitarian": 20000.0,
+        "Military": 126000000.0
+      },
+      {
+        "month": "2025-01",
+        "total_eur": 80000000.0,
+        "Military": 80000000.0
+      },
+      {
+        "month": "2025-02",
+        "total_eur": 2000000.0,
+        "Military": 2000000.0
+      },
+      {
+        "month": "2025-04",
+        "total_eur": 71000000.0,
+        "Humanitarian": 1000000.0,
+        "Military": 70000000.0
+      },
+      {
+        "month": "2025-05",
+        "total_eur": 13000000.0,
+        "Military": 13000000.0
+      },
+      {
+        "month": "2025-07",
+        "total_eur": 2000000.0,
+        "Military": 2000000.0
+      },
+      {
+        "month": "2025-09",
+        "total_eur": 1000000.0,
+        "Humanitarian": 1000000.0
+      },
+      {
+        "month": "2025-10",
+        "total_eur": 46000000.0,
+        "Humanitarian": 46000000.0
+      },
+      {
+        "month": "2025-11",
+        "total_eur": 20000000.0,
+        "Military": 20000000.0
+      },
+      {
+        "month": "2025-12",
+        "total_eur": 314000000.0,
+        "Military": 314000000.0
+      }
+    ]
+  },
+  "Luxembourg": {
+    "total_eur": 1628862120.5005522,
+    "n_packages": 71,
+    "by_type": {
+      "Financial": 1300000.0,
+      "Humanitarian": 128334200.0,
+      "Military": 1499227920.5005522
+    },
+    "monthly": [
+      {
+        "month": "2022-02",
+        "total_eur": 1050000000.0,
+        "Military": 1050000000.0
+      },
+      {
+        "month": "2022-05",
+        "total_eur": 4000000.0,
+        "Humanitarian": 4000000.0
+      },
+      {
+        "month": "2022-10",
+        "total_eur": 21447920.500552073,
+        "Military": 21447920.500552073
+      },
+      {
+        "month": "2022-12",
+        "total_eur": 3000000.0,
+        "Military": 3000000.0
+      },
+      {
+        "month": "2023-02",
+        "total_eur": 30135000.0,
+        "Humanitarian": 335000.0,
+        "Military": 29800000.0
+      },
+      {
+        "month": "2023-03",
+        "total_eur": 32000.0,
+        "Humanitarian": 32000.0
+      },
+      {
+        "month": "2023-06",
+        "total_eur": 21468000.0,
+        "Humanitarian": 13468000.0,
+        "Military": 8000000.0
+      },
+      {
+        "month": "2023-07",
+        "total_eur": 1300000.0,
+        "Financial": 1300000.0
+      },
+      {
+        "month": "2023-08",
+        "total_eur": 300000.0,
+        "Humanitarian": 300000.0
+      },
+      {
+        "month": "2023-09",
+        "total_eur": 10000000.0,
+        "Military": 10000000.0
+      },
+      {
+        "month": "2024-01",
+        "total_eur": 69776000.0,
+        "Humanitarian": 276000.0,
+        "Military": 69500000.0
+      },
+      {
+        "month": "2024-06",
+        "total_eur": 14000000.0,
+        "Military": 14000000.0
+      },
+      {
+        "month": "2024-07",
+        "total_eur": 2000000.0,
+        "Military": 2000000.0
+      },
+      {
+        "month": "2024-08",
+        "total_eur": 56000000.0,
+        "Humanitarian": 56000000.0
+      },
+      {
+        "month": "2024-09",
+        "total_eur": 9000000.0,
+        "Humanitarian": 9000000.0
+      },
+      {
+        "month": "2024-10",
+        "total_eur": 22423200.0,
+        "Humanitarian": 11923200.0,
+        "Military": 10500000.0
+      },
+      {
+        "month": "2024-11",
+        "total_eur": 83480000.0,
+        "Military": 83480000.0
+      },
+      {
+        "month": "2024-12",
+        "total_eur": 3000000.0,
+        "Humanitarian": 2000000.0,
+        "Military": 1000000.0
+      },
+      {
+        "month": "2025-01",
+        "total_eur": 15000000.0,
+        "Military": 15000000.0
+      },
+      {
+        "month": "2025-04",
+        "total_eur": 35000000.0,
+        "Humanitarian": 11000000.0,
+        "Military": 24000000.0
+      },
+      {
+        "month": "2025-05",
+        "total_eur": 30000000.0,
+        "Military": 30000000.0
+      },
+      {
+        "month": "2025-07",
+        "total_eur": 10000000.0,
+        "Humanitarian": 10000000.0
+      },
+      {
+        "month": "2025-08",
+        "total_eur": 112500000.0,
+        "Military": 112500000.0
+      },
+      {
+        "month": "2025-10",
+        "total_eur": 15000000.0,
+        "Military": 15000000.0
+      },
+      {
+        "month": "2025-12",
+        "total_eur": 10000000.0,
+        "Humanitarian": 10000000.0
+      }
+    ]
+  },
+  "Malta": {
+    "total_eur": 2540000.0,
+    "n_packages": 5,
+    "by_type": {
+      "Humanitarian": 2540000.0
+    },
+    "monthly": [
+      {
+        "month": "2022-11",
+        "total_eur": 1150000.0,
+        "Humanitarian": 1150000.0
+      },
+      {
+        "month": "2022-12",
+        "total_eur": 550000.0,
+        "Humanitarian": 550000.0
+      },
+      {
+        "month": "2023-01",
+        "total_eur": 740000.0,
+        "Humanitarian": 740000.0
+      },
+      {
+        "month": "2025-05",
+        "total_eur": 100000.0,
+        "Humanitarian": 100000.0
+      }
+    ]
+  },
+  "Netherlands": {
+    "total_eur": 22850763000.0,
+    "n_packages": 142,
+    "by_type": {
+      "Financial": 1402320000.0,
+      "Humanitarian": 2454875000.0,
+      "Military": 18993568000.0
+    },
+    "monthly": [
+      {
+        "month": "2022-01",
+        "total_eur": 3500000.0,
+        "Military": 3500000.0
+      },
+      {
+        "month": "2022-02",
+        "total_eur": 278568000.0,
+        "Military": 278568000.0
+      },
+      {
+        "month": "2022-03",
+        "total_eur": 1500000.0,
+        "Humanitarian": 1500000.0
+      },
+      {
+        "month": "2022-04",
+        "total_eur": 120000000.0,
+        "Military": 120000000.0
+      },
+      {
+        "month": "2022-05",
+        "total_eur": 205000000.0,
+        "Financial": 200000000.0,
+        "Humanitarian": 5000000.0
+      },
+      {
+        "month": "2022-06",
+        "total_eur": 19320000.0,
+        "Financial": 19320000.0
+      },
+      {
+        "month": "2022-07",
+        "total_eur": 95000000.0,
+        "Financial": 80000000.0,
+        "Humanitarian": 15000000.0
+      },
+      {
+        "month": "2022-08",
+        "total_eur": 78500000.0,
+        "Financial": 68500000.0,
+        "Military": 10000000.0
+      },
+      {
+        "month": "2022-10",
+        "total_eur": 100000000.0,
+        "Military": 100000000.0
+      },
+      {
+        "month": "2022-11",
+        "total_eur": 133000000.0,
+        "Humanitarian": 108000000.0,
+        "Military": 25000000.0
+      },
+      {
+        "month": "2022-12",
+        "total_eur": 2632000000.0,
+        "Financial": 625000000.0,
+        "Humanitarian": 447000000.0,
+        "Military": 1559999999.9999998
+      },
+      {
+        "month": "2023-01",
+        "total_eur": 280000000.0,
+        "Military": 280000000.0
+      },
+      {
+        "month": "2023-03",
+        "total_eur": 255000000.0,
+        "Humanitarian": 180000000.0,
+        "Military": 75000000.0
+      },
+      {
+        "month": "2023-04",
+        "total_eur": 451375000.0,
+        "Humanitarian": 108875000.0,
+        "Military": 342500000.0
+      },
+      {
+        "month": "2023-05",
+        "total_eur": 57000000.0,
+        "Financial": 40000000.0,
+        "Humanitarian": 17000000.0
+      },
+      {
+        "month": "2023-06",
+        "total_eur": 107000000.0,
+        "Financial": 65000000.0,
+        "Humanitarian": 2000000.0,
+        "Military": 40000000.0
+      },
+      {
+        "month": "2023-07",
+        "total_eur": 52000000.0,
+        "Financial": 52000000.0
+      },
+      {
+        "month": "2023-09",
+        "total_eur": 102000000.0,
+        "Financial": 102000000.0
+      },
+      {
+        "month": "2023-11",
+        "total_eur": 2220500000.0,
+        "Financial": 88500000.0,
+        "Humanitarian": 132000000.0,
+        "Military": 2000000000.0
+      },
+      {
+        "month": "2023-12",
+        "total_eur": 152000000.0,
+        "Financial": 62000000.0,
+        "Humanitarian": 90000000.0
+      },
+      {
+        "month": "2024-01",
+        "total_eur": 185000000.0,
+        "Military": 185000000.0
+      },
+      {
+        "month": "2024-02",
+        "total_eur": 284500000.0,
+        "Humanitarian": 184500000.0,
+        "Military": 100000000.0
+      },
+      {
+        "month": "2024-03",
+        "total_eur": 150000000.0,
+        "Military": 150000000.0
+      },
+      {
+        "month": "2024-04",
+        "total_eur": 4632000000.0,
+        "Humanitarian": 400000000.0,
+        "Military": 4232000000.0
+      },
+      {
+        "month": "2024-06",
+        "total_eur": 560000000.0,
+        "Military": 560000000.0
+      },
+      {
+        "month": "2024-07",
+        "total_eur": 10000000.0,
+        "Humanitarian": 10000000.0
+      },
+      {
+        "month": "2024-10",
+        "total_eur": 591000000.0,
+        "Military": 591000000.0
+      },
+      {
+        "month": "2024-11",
+        "total_eur": 60000000.0,
+        "Military": 60000000.0
+      },
+      {
+        "month": "2025-01",
+        "total_eur": 277000000.0,
+        "Humanitarian": 20000000.0,
+        "Military": 257000000.0
+      },
+      {
+        "month": "2025-03",
+        "total_eur": 681000000.0,
+        "Humanitarian": 181000000.0,
+        "Military": 500000000.0
+      },
+      {
+        "month": "2025-04",
+        "total_eur": 6347000000.0,
+        "Humanitarian": 252000000.0,
+        "Military": 6095000000.0
+      },
+      {
+        "month": "2025-06",
+        "total_eur": 270000000.0,
+        "Military": 270000000.0
+      },
+      {
+        "month": "2025-08",
+        "total_eur": 700000000.0,
+        "Humanitarian": 200000000.0,
+        "Military": 500000000.0
+      },
+      {
+        "month": "2025-09",
+        "total_eur": 219000000.0,
+        "Military": 219000000.0
+      },
+      {
+        "month": "2025-10",
+        "total_eur": 391000000.0,
+        "Humanitarian": 101000000.0,
+        "Military": 290000000.0
+      },
+      {
+        "month": "2025-11",
+        "total_eur": 150000000.0,
+        "Military": 150000000.0
+      }
+    ]
+  },
+  "New Zealand": {
+    "total_eur": 80978400.0,
+    "n_packages": 29,
+    "by_type": {
+      "Financial": 3360000.0000000005,
+      "Humanitarian": 36492000.0,
+      "Military": 41126400.0
+    },
+    "monthly": [
+      {
+        "month": "2022-02",
+        "total_eur": 2240000.0,
+        "Humanitarian": 2240000.0
+      },
+      {
+        "month": "2022-03",
+        "total_eur": 10774400.000000002,
+        "Military": 10774400.000000002
+      },
+      {
+        "month": "2022-06",
+        "total_eur": 2520000.0000000005,
+        "Military": 2520000.0000000005
+      },
+      {
+        "month": "2022-11",
+        "total_eur": 7532000.0,
+        "Military": 7532000.0
+      },
+      {
+        "month": "2022-12",
+        "total_eur": 1680000.0000000002,
+        "Humanitarian": 1680000.0000000002
+      },
+      {
+        "month": "2023-03",
+        "total_eur": 1960000.0,
+        "Humanitarian": 1960000.0
+      },
+      {
+        "month": "2023-07",
+        "total_eur": 20132000.0,
+        "Humanitarian": 19712000.0,
+        "Military": 420000.00000000006
+      },
+      {
+        "month": "2024-02",
+        "total_eur": 5320000.000000001,
+        "Financial": 1680000.0000000002,
+        "Military": 3640000.0000000005
+      },
+      {
+        "month": "2024-08",
+        "total_eur": 1380000.0,
+        "Humanitarian": 1380000.0
+      },
+      {
+        "month": "2024-10",
+        "total_eur": 8960000.0,
+        "Humanitarian": 5600000.000000001,
+        "Military": 3360000.0
+      },
+      {
+        "month": "2025-02",
+        "total_eur": 1680000.0000000002,
+        "Financial": 1680000.0000000002
+      },
+      {
+        "month": "2025-04",
+        "total_eur": 8400000.0,
+        "Military": 8400000.0
+      },
+      {
+        "month": "2025-06",
+        "total_eur": 8400000.0,
+        "Humanitarian": 3920000.0000000005,
+        "Military": 4480000.0
+      }
+    ]
+  },
+  "Norway": {
+    "total_eur": 32934668085.424,
+    "n_packages": 160,
+    "by_type": {
+      "Financial": 7769704000.0,
+      "Humanitarian": 2178036719.424,
+      "Military": 22986927366.0
+    },
+    "monthly": [
+      {
+        "month": "1900-04",
+        "total_eur": 40392000.0,
+        "Humanitarian": 40392000.0
+      },
+      {
+        "month": "1900-06",
+        "total_eur": 30800000.0,
+        "Humanitarian": 30800000.0
+      },
+      {
+        "month": "1900-11",
+        "total_eur": 96800000.0,
+        "Humanitarian": 96800000.0
+      },
+      {
+        "month": "1900-12",
+        "total_eur": 344520000.0,
+        "Financial": 344520000.0
+      },
+      {
+        "month": "2022-01",
+        "total_eur": 49280000.0,
+        "Military": 49280000.0
+      },
+      {
+        "month": "2022-02",
+        "total_eur": 30666666.0,
+        "Military": 30666666.0
+      },
+      {
+        "month": "2022-04",
+        "total_eur": 67320000.0,
+        "Humanitarian": 32120000.0,
+        "Military": 35200000.0
+      },
+      {
+        "month": "2022-05",
+        "total_eur": 290400000.0,
+        "Financial": 290400000.0
+      },
+      {
+        "month": "2022-06",
+        "total_eur": 2640000.0,
+        "Humanitarian": 2640000.0
+      },
+      {
+        "month": "2022-09",
+        "total_eur": 263999999.99999997,
+        "Military": 263999999.99999997
+      },
+      {
+        "month": "2022-10",
+        "total_eur": 131999999.99999999,
+        "Military": 131999999.99999999
+      },
+      {
+        "month": "2022-11",
+        "total_eur": 46200000.0,
+        "Military": 46200000.0
+      },
+      {
+        "month": "2022-12",
+        "total_eur": 7040000.0,
+        "Financial": 4400000.0,
+        "Humanitarian": 2640000.0
+      },
+      {
+        "month": "2023-01",
+        "total_eur": 3520000.0,
+        "Humanitarian": 3520000.0
+      },
+      {
+        "month": "2023-02",
+        "total_eur": 8822440000.0,
+        "Financial": 2889744000.0,
+        "Humanitarian": 503976000.0,
+        "Military": 5428720000.0
+      },
+      {
+        "month": "2023-03",
+        "total_eur": 176000000.0,
+        "Financial": 176000000.0
+      },
+      {
+        "month": "2023-06",
+        "total_eur": 48400000.0,
+        "Financial": 48400000.0
+      },
+      {
+        "month": "2023-07",
+        "total_eur": 4400000.0,
+        "Financial": 4400000.0
+      },
+      {
+        "month": "2023-08",
+        "total_eur": 131999999.99999999,
+        "Financial": 131999999.99999999
+      },
+      {
+        "month": "2023-09",
+        "total_eur": 176000000.0,
+        "Financial": 88000000.0,
+        "Humanitarian": 88000000.0
+      },
+      {
+        "month": "2023-11",
+        "total_eur": 162800000.0,
+        "Financial": 17600000.0,
+        "Humanitarian": 105600000.0,
+        "Military": 39600000.0
+      },
+      {
+        "month": "2023-12",
+        "total_eur": 66616000.0,
+        "Financial": 11880000.0,
+        "Humanitarian": 25256000.0,
+        "Military": 29480000.0
+      },
+      {
+        "month": "2024-01",
+        "total_eur": 7040000.0,
+        "Humanitarian": 7040000.0
+      },
+      {
+        "month": "2024-02",
+        "total_eur": 2640000.0,
+        "Financial": 2640000.0
+      },
+      {
+        "month": "2024-03",
+        "total_eur": 0.0,
+        "Military": 0.0
+      },
+      {
+        "month": "2024-04",
+        "total_eur": 71720000.0,
+        "Financial": 6160000.0,
+        "Humanitarian": 65559999.99999999
+      },
+      {
+        "month": "2024-05",
+        "total_eur": 14960000.0,
+        "Humanitarian": 14960000.0
+      },
+      {
+        "month": "2024-06",
+        "total_eur": 385476700.0,
+        "Humanitarian": 101200000.0,
+        "Military": 284276700.0
+      },
+      {
+        "month": "2024-07",
+        "total_eur": 4333768000.0,
+        "Financial": 1939080000.0,
+        "Humanitarian": 6808000.0,
+        "Military": 2387880000.0
+      },
+      {
+        "month": "2024-09",
+        "total_eur": 96800000.0,
+        "Financial": 22000000.0,
+        "Humanitarian": 8800000.0,
+        "Military": 65999999.99999999
+      },
+      {
+        "month": "2024-10",
+        "total_eur": 439104320.424,
+        "Financial": 44000000.0,
+        "Humanitarian": 245504320.424,
+        "Military": 149600000.0
+      },
+      {
+        "month": "2024-11",
+        "total_eur": 402160000.0,
+        "Financial": 1760000.0,
+        "Humanitarian": 268399999.99999997,
+        "Military": 132000000.0
+      },
+      {
+        "month": "2024-12",
+        "total_eur": 365457999.0,
+        "Humanitarian": 123457999.0,
+        "Military": 242000000.0
+      },
+      {
+        "month": "2025-01",
+        "total_eur": 14432000.0,
+        "Humanitarian": 14432000.0
+      },
+      {
+        "month": "2025-02",
+        "total_eur": 448800000.0,
+        "Financial": 396000000.0,
+        "Military": 52800000.0
+      },
+      {
+        "month": "2025-03",
+        "total_eur": 684144000.0,
+        "Financial": 141600000.0,
+        "Humanitarian": 82544000.0,
+        "Military": 460000000.0
+      },
+      {
+        "month": "2025-04",
+        "total_eur": 4618944000.0,
+        "Financial": 214280000.0,
+        "Humanitarian": 4664000.0,
+        "Military": 4400000000.0
+      },
+      {
+        "month": "2025-05",
+        "total_eur": 124200000.0,
+        "Military": 124200000.0
+      },
+      {
+        "month": "2025-06",
+        "total_eur": 1525280000.0,
+        "Humanitarian": 5280000.0,
+        "Military": 1520000000.0
+      },
+      {
+        "month": "2025-07",
+        "total_eur": 352000000.0,
+        "Military": 352000000.0
+      },
+      {
+        "month": "2025-08",
+        "total_eur": 6284080000.0,
+        "Financial": 761640000.0,
+        "Military": 5522440000.0
+      },
+      {
+        "month": "2025-09",
+        "total_eur": 136368000.0,
+        "Humanitarian": 64768000.0,
+        "Military": 71600000.0
+      },
+      {
+        "month": "2025-10",
+        "total_eur": 554400000.0,
+        "Financial": 233200000.0,
+        "Humanitarian": 145200000.0,
+        "Military": 176000000.0
+      },
+      {
+        "month": "2025-11",
+        "total_eur": 169680000.0,
+        "Humanitarian": 53680000.0,
+        "Military": 115999999.99999999
+      },
+      {
+        "month": "2025-12",
+        "total_eur": 908978400.0,
+        "Humanitarian": 33994400.0,
+        "Military": 874984000.0
+      }
+    ]
+  },
+  "Poland": {
+    "total_eur": 23308150754.0,
+    "n_packages": 25,
+    "by_type": {
+      "Financial": 951600000.0,
+      "Humanitarian": 164550754.0,
+      "Military": 22192000000.0
+    },
+    "monthly": [
+      {
+        "month": "2022-02",
+        "total_eur": 920000000.0,
+        "Financial": 920000000.0
+      },
+      {
+        "month": "2022-03",
+        "total_eur": 6600000.0,
+        "Financial": 6600000.0
+      },
+      {
+        "month": "2022-04",
+        "total_eur": 57136599.999999985,
+        "Humanitarian": 57136599.999999985
+      },
+      {
+        "month": "2022-05",
+        "total_eur": 100000000.0,
+        "Humanitarian": 100000000.0
+      },
+      {
+        "month": "2022-06",
+        "total_eur": 21600000000.0,
+        "Military": 21600000000.0
+      },
+      {
+        "month": "2023-07",
+        "total_eur": 25000000.0,
+        "Financial": 25000000.0
+      },
+      {
+        "month": "2024-03",
+        "total_eur": 100000000.0,
+        "Military": 100000000.0
+      },
+      {
+        "month": "2024-11",
+        "total_eur": 2464154.0,
+        "Humanitarian": 2464154.0
+      },
+      {
+        "month": "2024-12",
+        "total_eur": 202970000.0,
+        "Humanitarian": 2970000.0,
+        "Military": 200000000.0
+      },
+      {
+        "month": "2025-03",
+        "total_eur": 92000000.0,
+        "Military": 92000000.0
+      },
+      {
+        "month": "2025-05",
+        "total_eur": 200000000.0,
+        "Military": 200000000.0
+      },
+      {
+        "month": "2025-09",
+        "total_eur": 1980000.0,
+        "Humanitarian": 1980000.0
+      }
+    ]
+  },
+  "Portugal": {
+    "total_eur": 1025455000.0,
+    "n_packages": 23,
+    "by_type": {
+      "Financial": 105000.0,
+      "Humanitarian": 1850000.0,
+      "Military": 1023500000.0
+    },
+    "monthly": [
+      {
+        "month": "2022-04",
+        "total_eur": 100000.0,
+        "Humanitarian": 100000.0
+      },
+      {
+        "month": "2022-05",
+        "total_eur": 1100000.0,
+        "Financial": 0.0,
+        "Humanitarian": 1100000.0
+      },
+      {
+        "month": "2022-12",
+        "total_eur": 50000.0,
+        "Humanitarian": 50000.0
+      },
+      {
+        "month": "2024-03",
+        "total_eur": 100000000.0,
+        "Military": 100000000.0
+      },
+      {
+        "month": "2024-05",
+        "total_eur": 26000000.0,
+        "Military": 26000000.0
+      },
+      {
+        "month": "2024-07",
+        "total_eur": 100000000.0,
+        "Military": 100000000.0
+      },
+      {
+        "month": "2024-10",
+        "total_eur": 221000000.0,
+        "Military": 221000000.0
+      },
+      {
+        "month": "2024-11",
+        "total_eur": 52000000.0,
+        "Military": 52000000.0
+      },
+      {
+        "month": "2025-02",
+        "total_eur": 105000.0,
+        "Financial": 105000.0
+      },
+      {
+        "month": "2025-04",
+        "total_eur": 20500000.0,
+        "Military": 20500000.0
+      },
+      {
+        "month": "2025-05",
+        "total_eur": 444000000.0,
+        "Military": 444000000.0
+      },
+      {
+        "month": "2025-10",
+        "total_eur": 60000000.0,
+        "Military": 60000000.0
+      },
+      {
+        "month": "2025-12",
+        "total_eur": 600000.0,
+        "Humanitarian": 600000.0
+      }
+    ]
+  },
+  "Romania": {
+    "total_eur": 171731600.0,
+    "n_packages": 8,
+    "by_type": {
+      "Humanitarian": 117600000.0,
+      "Military": 54131600.0
+    },
+    "monthly": [
+      {
+        "month": "2022-01",
+        "total_eur": 1000000.0,
+        "Humanitarian": 1000000.0
+      },
+      {
+        "month": "2022-02",
+        "total_eur": 3000000.0,
+        "Military": 3000000.0
+      },
+      {
+        "month": "2022-05",
+        "total_eur": 3200000.0,
+        "Humanitarian": 3200000.0
+      },
+      {
+        "month": "2022-10",
+        "total_eur": 368000.0,
+        "Military": 368000.0
+      },
+      {
+        "month": "2023-02",
+        "total_eur": 1000000.0,
+        "Humanitarian": 1000000.0
+      },
+      {
+        "month": "2023-03",
+        "total_eur": 112400000.0,
+        "Humanitarian": 112400000.0
+      },
+      {
+        "month": "2023-05",
+        "total_eur": 763600.0,
+        "Military": 763600.0
+      },
+      {
+        "month": "2025-12",
+        "total_eur": 50000000.0,
+        "Military": 50000000.0
+      }
+    ]
+  },
+  "Slovakia": {
+    "total_eur": 218600476.0,
+    "n_packages": 30,
+    "by_type": {
+      "Financial": 5000000.0,
+      "Humanitarian": 29000476.0,
+      "Military": 184600000.0
+    },
+    "monthly": [
+      {
+        "month": "2022-02",
+        "total_eur": 21700000.0,
+        "Military": 21700000.0
+      },
+      {
+        "month": "2022-03",
+        "total_eur": 32200000.0,
+        "Military": 32200000.0
+      },
+      {
+        "month": "2022-08",
+        "total_eur": 84000000.0,
+        "Humanitarian": 16000000.0,
+        "Military": 68000000.0
+      },
+      {
+        "month": "2022-09",
+        "total_eur": 5000000.0,
+        "Humanitarian": 5000000.0
+      },
+      {
+        "month": "2022-12",
+        "total_eur": 45000000.0,
+        "Military": 45000000.0
+      },
+      {
+        "month": "2023-02",
+        "total_eur": 13500000.0,
+        "Military": 13500000.0
+      },
+      {
+        "month": "2023-06",
+        "total_eur": 1840000.0,
+        "Humanitarian": 1840000.0
+      },
+      {
+        "month": "2023-07",
+        "total_eur": 9200000.0,
+        "Financial": 5000000.0,
+        "Military": 4200000.0
+      },
+      {
+        "month": "2024-04",
+        "total_eur": 610476.0,
+        "Humanitarian": 610476.0
+      },
+      {
+        "month": "2024-11",
+        "total_eur": 500000.0,
+        "Humanitarian": 500000.0
+      },
+      {
+        "month": "2025-03",
+        "total_eur": 750000.0,
+        "Humanitarian": 750000.0
+      },
+      {
+        "month": "2025-09",
+        "total_eur": 3500000.0,
+        "Humanitarian": 3500000.0
+      },
+      {
+        "month": "2025-10",
+        "total_eur": 800000.0,
+        "Humanitarian": 800000.0
+      }
+    ]
+  },
+  "Slovenia": {
+    "total_eur": 93072425.0,
+    "n_packages": 46,
+    "by_type": {
+      "Humanitarian": 36192425.0,
+      "Military": 56880000.0
+    },
+    "monthly": [
+      {
+        "month": "2022-02",
+        "total_eur": 2078000.0,
+        "Humanitarian": 2078000.0
+      },
+      {
+        "month": "2022-04",
+        "total_eur": 1080000.0,
+        "Humanitarian": 1080000.0
+      },
+      {
+        "month": "2022-05",
+        "total_eur": 100000.0,
+        "Humanitarian": 100000.0
+      },
+      {
+        "month": "2022-06",
+        "total_eur": 14520000.0,
+        "Humanitarian": 1640000.0,
+        "Military": 12880000.0
+      },
+      {
+        "month": "2022-11",
+        "total_eur": 133939.0,
+        "Humanitarian": 133939.0
+      },
+      {
+        "month": "2022-12",
+        "total_eur": 1983061.0,
+        "Humanitarian": 1983061.0
+      },
+      {
+        "month": "2023-04",
+        "total_eur": 2300000.0,
+        "Humanitarian": 2300000.0
+      },
+      {
+        "month": "2023-06",
+        "total_eur": 228405.0,
+        "Humanitarian": 228405.0
+      },
+      {
+        "month": "2023-09",
+        "total_eur": 750000.0,
+        "Humanitarian": 750000.0
+      },
+      {
+        "month": "2023-11",
+        "total_eur": 5200000.0,
+        "Humanitarian": 5200000.0
+      },
+      {
+        "month": "2024-03",
+        "total_eur": 1000000.0,
+        "Military": 1000000.0
+      },
+      {
+        "month": "2024-04",
+        "total_eur": 2000000.0,
+        "Humanitarian": 2000000.0
+      },
+      {
+        "month": "2024-06",
+        "total_eur": 1200000.0,
+        "Humanitarian": 1200000.0
+      },
+      {
+        "month": "2024-11",
+        "total_eur": 4000000.0,
+        "Humanitarian": 4000000.0
+      },
+      {
+        "month": "2025-02",
+        "total_eur": 2000000.0,
+        "Humanitarian": 2000000.0
+      },
+      {
+        "month": "2025-07",
+        "total_eur": 4499020.0,
+        "Humanitarian": 4499020.0
+      },
+      {
+        "month": "2025-10",
+        "total_eur": 43000000.0,
+        "Military": 43000000.0
+      },
+      {
+        "month": "2025-11",
+        "total_eur": 7000000.0,
+        "Humanitarian": 7000000.0
+      }
+    ]
+  },
+  "South Korea": {
+    "total_eur": 3105567440.0,
+    "n_packages": 36,
+    "by_type": {
+      "Financial": 2475200000.0,
+      "Humanitarian": 611617840.0,
+      "Military": 18749600.0
+    },
+    "monthly": [
+      {
+        "month": "2022-01",
+        "total_eur": 736000.0,
+        "Military": 736000.0
+      },
+      {
+        "month": "2022-02",
+        "total_eur": 9200000.0,
+        "Humanitarian": 9200000.0
+      },
+      {
+        "month": "2022-04",
+        "total_eur": 33488000.0,
+        "Humanitarian": 27600000.0,
+        "Military": 5888000.0
+      },
+      {
+        "month": "2022-05",
+        "total_eur": 9181600.0,
+        "Humanitarian": 8096000.0,
+        "Military": 1085600.0
+      },
+      {
+        "month": "2022-06",
+        "total_eur": 46000000.0,
+        "Humanitarian": 46000000.0
+      },
+      {
+        "month": "2022-08",
+        "total_eur": 1104000.0,
+        "Humanitarian": 1104000.0
+      },
+      {
+        "month": "2023-02",
+        "total_eur": 119600000.0,
+        "Humanitarian": 119600000.0
+      },
+      {
+        "month": "2023-05",
+        "total_eur": 0.0,
+        "Financial": 0.0
+      },
+      {
+        "month": "2023-07",
+        "total_eur": 64400000.0,
+        "Financial": 9200000.0,
+        "Humanitarian": 55200000.0
+      },
+      {
+        "month": "2023-08",
+        "total_eur": 534000000.0,
+        "Financial": 350000000.0,
+        "Humanitarian": 184000000.0
+      },
+      {
+        "month": "2023-09",
+        "total_eur": 1932000000.0,
+        "Financial": 1932000000.0
+      },
+      {
+        "month": "2024-02",
+        "total_eur": 92000000.0,
+        "Financial": 92000000.0
+      },
+      {
+        "month": "2024-04",
+        "total_eur": 92000000.0,
+        "Financial": 92000000.0
+      },
+      {
+        "month": "2024-05",
+        "total_eur": 25760000.0,
+        "Humanitarian": 14720000.0,
+        "Military": 11040000.0
+      },
+      {
+        "month": "2024-07",
+        "total_eur": 9200000.0,
+        "Humanitarian": 9200000.0
+      },
+      {
+        "month": "2024-08",
+        "total_eur": 7360000.0,
+        "Humanitarian": 7360000.0
+      },
+      {
+        "month": "2025-03",
+        "total_eur": 92000000.0,
+        "Humanitarian": 92000000.0
+      },
+      {
+        "month": "2025-04",
+        "total_eur": 4379200.0,
+        "Humanitarian": 4379200.0
+      },
+      {
+        "month": "2025-08",
+        "total_eur": 510600.0,
+        "Humanitarian": 510600.0
+      },
+      {
+        "month": "2025-10",
+        "total_eur": 19126800.0,
+        "Humanitarian": 19126800.0
+      },
+      {
+        "month": "2025-11",
+        "total_eur": 13337240.0,
+        "Humanitarian": 13337240.0
+      },
+      {
+        "month": "2025-12",
+        "total_eur": 184000.0,
+        "Humanitarian": 184000.0
+      }
+    ]
+  },
+  "Spain": {
+    "total_eur": 3965707413.0,
+    "n_packages": 34,
+    "by_type": {
+      "Financial": 470700000.0,
+      "Humanitarian": 284241498.0,
+      "Military": 3210765915.0
+    },
+    "monthly": [
+      {
+        "month": "2022-02",
+        "total_eur": 150000.0,
+        "Humanitarian": 150000.0
+      },
+      {
+        "month": "2022-03",
+        "total_eur": 48000000.0,
+        "Humanitarian": 48000000.0
+      },
+      {
+        "month": "2022-04",
+        "total_eur": 1161542.0,
+        "Humanitarian": 1161542.0
+      },
+      {
+        "month": "2022-06",
+        "total_eur": 268060000.0,
+        "Financial": 149700000.0,
+        "Military": 118360000.0
+      },
+      {
+        "month": "2022-12",
+        "total_eur": 112804714.0,
+        "Financial": 100000000.0,
+        "Military": 12804714.0
+      },
+      {
+        "month": "2023-04",
+        "total_eur": 100000000.0,
+        "Financial": 100000000.0
+      },
+      {
+        "month": "2023-07",
+        "total_eur": 70000000.0,
+        "Financial": 70000000.0
+      },
+      {
+        "month": "2023-11",
+        "total_eur": 5880000.0,
+        "Humanitarian": 5880000.0
+      },
+      {
+        "month": "2024-05",
+        "total_eur": 1021100000.0,
+        "Financial": 51000000.0,
+        "Humanitarian": 16500000.0,
+        "Military": 953600000.0
+      },
+      {
+        "month": "2024-08",
+        "total_eur": 360000.0,
+        "Humanitarian": 360000.0
+      },
+      {
+        "month": "2025-01",
+        "total_eur": 5650000.0,
+        "Humanitarian": 5650000.0
+      },
+      {
+        "month": "2025-02",
+        "total_eur": 1000000000.0,
+        "Military": 1000000000.0
+      },
+      {
+        "month": "2025-08",
+        "total_eur": 4350000.0,
+        "Humanitarian": 4350000.0
+      },
+      {
+        "month": "2025-10",
+        "total_eur": 189956.0,
+        "Humanitarian": 189956.0
+      },
+      {
+        "month": "2025-11",
+        "total_eur": 1247000000.0,
+        "Humanitarian": 202000000.0,
+        "Military": 1045000000.0
+      }
+    ]
+  },
+  "Sweden": {
+    "total_eur": 41818457666.32,
+    "n_packages": 234,
+    "by_type": {
+      "Financial": 2757040000.0,
+      "Humanitarian": 1273145600.0,
+      "Military": 37788272066.32
+    },
+    "monthly": [
+      {
+        "month": "2022-02",
+        "total_eur": 318912000.0,
+        "Humanitarian": 8800000.0,
+        "Military": 310112000.0
+      },
+      {
+        "month": "2022-04",
+        "total_eur": 0.0,
+        "Financial": 0.0
+      },
+      {
+        "month": "2022-05",
+        "total_eur": 70400000.0,
+        "Humanitarian": 70400000.0
+      },
+      {
+        "month": "2022-07",
+        "total_eur": 46000000.0,
+        "Financial": 46000000.0
+      },
+      {
+        "month": "2022-08",
+        "total_eur": 88000000.0,
+        "Financial": 44000000.0,
+        "Military": 44000000.0
+      },
+      {
+        "month": "2022-11",
+        "total_eur": 291280000.0,
+        "Financial": 12320000.0,
+        "Humanitarian": 14960000.0,
+        "Military": 263999999.99999997
+      },
+      {
+        "month": "2022-12",
+        "total_eur": 103637600.0,
+        "Financial": 52800000.0,
+        "Military": 50837600.0
+      },
+      {
+        "month": "2023-01",
+        "total_eur": 1893760000.0,
+        "Humanitarian": 1760000.0,
+        "Military": 1892000000.0
+      },
+      {
+        "month": "2023-02",
+        "total_eur": 1821028000.0,
+        "Humanitarian": 45760000.0,
+        "Military": 1775268000.0
+      },
+      {
+        "month": "2023-06",
+        "total_eur": 434284400.0,
+        "Humanitarian": 25084400.0,
+        "Military": 409200000.0
+      },
+      {
+        "month": "2023-07",
+        "total_eur": 522000000.0,
+        "Humanitarian": 522000000.0
+      },
+      {
+        "month": "2023-08",
+        "total_eur": 675400000.0,
+        "Humanitarian": 11000000.0,
+        "Military": 664400000.0
+      },
+      {
+        "month": "2023-12",
+        "total_eur": 114400000.0,
+        "Financial": 105600000.0,
+        "Humanitarian": 8800000.0
+      },
+      {
+        "month": "2024-02",
+        "total_eur": 1793512000.0,
+        "Humanitarian": 15912000.0,
+        "Military": 1777600000.0
+      },
+      {
+        "month": "2024-03",
+        "total_eur": 33696000.0,
+        "Humanitarian": 3696000.0,
+        "Military": 30000000.0
+      },
+      {
+        "month": "2024-05",
+        "total_eur": 15180857120.0,
+        "Humanitarian": 113080000.0,
+        "Military": 15067777120.0
+      },
+      {
+        "month": "2024-06",
+        "total_eur": 223434146.32,
+        "Military": 223434146.32
+      },
+      {
+        "month": "2024-07",
+        "total_eur": 440000.0,
+        "Humanitarian": 440000.0
+      },
+      {
+        "month": "2024-08",
+        "total_eur": 5280000.0,
+        "Humanitarian": 880000.0,
+        "Military": 4400000.0
+      },
+      {
+        "month": "2024-09",
+        "total_eur": 1126400000.0,
+        "Military": 1126400000.0
+      },
+      {
+        "month": "2024-10",
+        "total_eur": 184680000.0,
+        "Humanitarian": 121680000.0,
+        "Military": 63000000.0
+      },
+      {
+        "month": "2024-11",
+        "total_eur": 5253600.0,
+        "Humanitarian": 5253600.0
+      },
+      {
+        "month": "2024-12",
+        "total_eur": 26400000.0,
+        "Humanitarian": 26400000.0
+      },
+      {
+        "month": "2025-01",
+        "total_eur": 4164160000.0,
+        "Military": 4164160000.0
+      },
+      {
+        "month": "2025-02",
+        "total_eur": 107316000.0,
+        "Humanitarian": 107316000.0
+      },
+      {
+        "month": "2025-03",
+        "total_eur": 2057294800.0,
+        "Financial": 8800000.0,
+        "Humanitarian": 35283600.0,
+        "Military": 2013211200.0
+      },
+      {
+        "month": "2025-05",
+        "total_eur": 1158872000.0,
+        "Humanitarian": 0.0,
+        "Military": 1158872000.0
+      },
+      {
+        "month": "2025-06",
+        "total_eur": 2200000.0,
+        "Humanitarian": 2200000.0
+      },
+      {
+        "month": "2025-07",
+        "total_eur": 13640000.0,
+        "Humanitarian": 13640000.0
+      },
+      {
+        "month": "2025-08",
+        "total_eur": 9680000.0,
+        "Humanitarian": 9680000.0
+      },
+      {
+        "month": "2025-09",
+        "total_eur": 100760000.0,
+        "Humanitarian": 100760000.0
+      },
+      {
+        "month": "2025-10",
+        "total_eur": 6007520000.0,
+        "Financial": 2487520000.0,
+        "Military": 3520000000.0
+      },
+      {
+        "month": "2025-11",
+        "total_eur": 3229600000.0,
+        "Military": 3229600000.0
+      },
+      {
+        "month": "2025-12",
+        "total_eur": 8360000.0,
+        "Humanitarian": 8360000.0
+      }
+    ]
+  },
+  "Switzerland": {
+    "total_eur": 6047846626.459999,
+    "n_packages": 81,
+    "by_type": {
+      "Financial": 256093300.0,
+      "Humanitarian": 5791753326.46
+    },
+    "monthly": [
+      {
+        "month": "2022-01",
+        "total_eur": 3090000.0,
+        "Financial": 3090000.0
+      },
+      {
+        "month": "2022-02",
+        "total_eur": 309000000.0,
+        "Humanitarian": 309000000.0
+      },
+      {
+        "month": "2022-04",
+        "total_eur": 53360000.0,
+        "Financial": 53360000.0
+      },
+      {
+        "month": "2022-10",
+        "total_eur": 21939000.0,
+        "Humanitarian": 21939000.0
+      },
+      {
+        "month": "2022-11",
+        "total_eur": 61800000.0,
+        "Humanitarian": 61800000.0
+      },
+      {
+        "month": "2022-12",
+        "total_eur": 87035000.0,
+        "Financial": 38110000.0,
+        "Humanitarian": 48925000.0
+      },
+      {
+        "month": "2023-02",
+        "total_eur": 117420000.0,
+        "Humanitarian": 117420000.0
+      },
+      {
+        "month": "2023-03",
+        "total_eur": 5665000.0,
+        "Humanitarian": 5665000.0
+      },
+      {
+        "month": "2023-06",
+        "total_eur": 3708000.0,
+        "Humanitarian": 3708000.0
+      },
+      {
+        "month": "2023-07",
+        "total_eur": 14214000.0,
+        "Humanitarian": 14214000.0
+      },
+      {
+        "month": "2023-09",
+        "total_eur": 104030000.0,
+        "Humanitarian": 104030000.0
+      },
+      {
+        "month": "2023-12",
+        "total_eur": 1225700000.0,
+        "Humanitarian": 1225700000.0
+      },
+      {
+        "month": "2024-01",
+        "total_eur": 15068900.0,
+        "Humanitarian": 15068900.0
+      },
+      {
+        "month": "2024-03",
+        "total_eur": 2781000.0,
+        "Humanitarian": 2781000.0
+      },
+      {
+        "month": "2024-04",
+        "total_eur": 11536000.0,
+        "Humanitarian": 11536000.0
+      },
+      {
+        "month": "2024-05",
+        "total_eur": 11040000.0,
+        "Financial": 11040000.0
+      },
+      {
+        "month": "2024-06",
+        "total_eur": 51500000.0,
+        "Financial": 51500000.0
+      },
+      {
+        "month": "2024-09",
+        "total_eur": 129893300.0,
+        "Financial": 98993300.0,
+        "Humanitarian": 30900000.0
+      },
+      {
+        "month": "2024-12",
+        "total_eur": 46350000.0,
+        "Humanitarian": 46350000.0
+      },
+      {
+        "month": "2025-01",
+        "total_eur": 19055000.0,
+        "Humanitarian": 19055000.0
+      },
+      {
+        "month": "2025-04",
+        "total_eur": 9270000.0,
+        "Humanitarian": 9270000.0
+      },
+      {
+        "month": "2025-08",
+        "total_eur": 95996000.0,
+        "Humanitarian": 95996000.0
+      },
+      {
+        "month": "2025-09",
+        "total_eur": 30900000.0,
+        "Humanitarian": 30900000.0
+      },
+      {
+        "month": "2025-10",
+        "total_eur": 1807682426.46,
+        "Humanitarian": 1807682426.46
+      },
+      {
+        "month": "2025-11",
+        "total_eur": 7313000.0,
+        "Humanitarian": 7313000.0
+      },
+      {
+        "month": "2025-12",
+        "total_eur": 1802500000.0,
+        "Humanitarian": 1802500000.0
+      }
+    ]
+  },
+  "Taiwan": {
+    "total_eur": 98967200.0,
+    "n_packages": 26,
+    "by_type": {
+      "Financial": 4000000.0,
+      "Humanitarian": 94967200.0
+    },
+    "monthly": [
+      {
+        "month": "2022-04",
+        "total_eur": 7820000.0,
+        "Humanitarian": 7820000.0
+      },
+      {
+        "month": "2022-05",
+        "total_eur": 4416000.0,
+        "Humanitarian": 4416000.0
+      },
+      {
+        "month": "2022-06",
+        "total_eur": 460000.0,
+        "Humanitarian": 460000.0
+      },
+      {
+        "month": "2022-07",
+        "total_eur": 920000.0,
+        "Humanitarian": 920000.0
+      },
+      {
+        "month": "2022-10",
+        "total_eur": 51520000.0,
+        "Humanitarian": 51520000.0
+      },
+      {
+        "month": "2023-01",
+        "total_eur": 4370000.0,
+        "Humanitarian": 4370000.0
+      },
+      {
+        "month": "2023-04",
+        "total_eur": 1840000.0,
+        "Humanitarian": 1840000.0
+      },
+      {
+        "month": "2023-07",
+        "total_eur": 5980000.0,
+        "Humanitarian": 5980000.0
+      },
+      {
+        "month": "2023-08",
+        "total_eur": 552000.0,
+        "Humanitarian": 552000.0
+      },
+      {
+        "month": "2024-04",
+        "total_eur": 4600000.0,
+        "Humanitarian": 4600000.0
+      },
+      {
+        "month": "2024-06",
+        "total_eur": 1104000.0,
+        "Humanitarian": 1104000.0
+      },
+      {
+        "month": "2024-08",
+        "total_eur": 250000.0,
+        "Humanitarian": 250000.0
+      },
+      {
+        "month": "2024-12",
+        "total_eur": 8600000.0,
+        "Financial": 4000000.0,
+        "Humanitarian": 4600000.0
+      },
+      {
+        "month": "2025-07",
+        "total_eur": 3680000.0,
+        "Humanitarian": 3680000.0
+      },
+      {
+        "month": "2025-10",
+        "total_eur": 1015200.0,
+        "Humanitarian": 1015200.0
+      },
+      {
+        "month": "2025-12",
+        "total_eur": 1840000.0,
+        "Humanitarian": 1840000.0
+      }
+    ]
+  },
+  "United Kingdom": {
+    "total_eur": 38719434920.0,
+    "n_packages": 140,
+    "by_type": {
+      "Financial": 6466736000.0,
+      "Humanitarian": 1793998000.0,
+      "Military": 30458700919.999996
+    },
+    "monthly": [
+      {
+        "month": "2022-01",
+        "total_eur": 183279999.99999997,
+        "Financial": 136880000.0,
+        "Humanitarian": 46400000.0
+      },
+      {
+        "month": "2022-02",
+        "total_eur": 46400000.0,
+        "Financial": 0.0,
+        "Humanitarian": 46400000.0
+      },
+      {
+        "month": "2022-03",
+        "total_eur": 1462876000.0,
+        "Financial": 33756000.0,
+        "Humanitarian": 8119999.999999999,
+        "Military": 1421000000.0
+      },
+      {
+        "month": "2022-04",
+        "total_eur": 371200000.0,
+        "Financial": 371200000.0
+      },
+      {
+        "month": "2022-05",
+        "total_eur": 1565600000.0,
+        "Financial": 46000000.0,
+        "Humanitarian": 11600000.0,
+        "Military": 1508000000.0
+      },
+      {
+        "month": "2022-06",
+        "total_eur": 1171600000.0,
+        "Humanitarian": 11600000.0,
+        "Military": 1160000000.0
+      },
+      {
+        "month": "2022-07",
+        "total_eur": 201840000.0,
+        "Financial": 85840000.0,
+        "Humanitarian": 115999999.99999999
+      },
+      {
+        "month": "2022-08",
+        "total_eur": 1053279999.9999999,
+        "Military": 1053279999.9999999
+      },
+      {
+        "month": "2022-09",
+        "total_eur": 3553700000.0,
+        "Financial": 885700000.0,
+        "Military": 2668000000.0
+      },
+      {
+        "month": "2022-10",
+        "total_eur": 11600000.0,
+        "Military": 11600000.0
+      },
+      {
+        "month": "2022-11",
+        "total_eur": 365400000.0,
+        "Humanitarian": 17400000.0,
+        "Military": 348000000.0
+      },
+      {
+        "month": "2022-12",
+        "total_eur": 460000920.0,
+        "Financial": 460000000.0,
+        "Military": 920.0
+      },
+      {
+        "month": "2023-01",
+        "total_eur": 55680000.0,
+        "Military": 55680000.0
+      },
+      {
+        "month": "2023-02",
+        "total_eur": 331760000.0,
+        "Financial": 41760000.0,
+        "Military": 290000000.0
+      },
+      {
+        "month": "2023-03",
+        "total_eur": 11600000.0,
+        "Humanitarian": 11600000.0
+      },
+      {
+        "month": "2023-05",
+        "total_eur": 51040000.0,
+        "Humanitarian": 51040000.0
+      },
+      {
+        "month": "2023-06",
+        "total_eur": 4035886000.0,
+        "Financial": 3220000000.0,
+        "Humanitarian": 456286000.0,
+        "Military": 359600000.0
+      },
+      {
+        "month": "2023-08",
+        "total_eur": 222719999.99999997,
+        "Financial": 222719999.99999997
+      },
+      {
+        "month": "2023-10",
+        "total_eur": 18560000.0,
+        "Humanitarian": 18560000.0
+      },
+      {
+        "month": "2023-12",
+        "total_eur": 57999999.99999999,
+        "Military": 57999999.99999999
+      },
+      {
+        "month": "2024-02",
+        "total_eur": 294060000.0,
+        "Humanitarian": 9860000.0,
+        "Military": 284200000.0
+      },
+      {
+        "month": "2024-03",
+        "total_eur": 822720000.0,
+        "Financial": 474720000.0,
+        "Military": 348000000.0
+      },
+      {
+        "month": "2024-04",
+        "total_eur": 4059999999.9999995,
+        "Military": 4059999999.9999995
+      },
+      {
+        "month": "2024-06",
+        "total_eur": 187920000.0,
+        "Military": 187920000.0
+      },
+      {
+        "month": "2024-07",
+        "total_eur": 4059999999.9999995,
+        "Military": 4059999999.9999995
+      },
+      {
+        "month": "2024-08",
+        "total_eur": 1160000.0,
+        "Humanitarian": 1160000.0
+      },
+      {
+        "month": "2024-10",
+        "total_eur": 2668000000.0,
+        "Military": 2668000000.0
+      },
+      {
+        "month": "2024-11",
+        "total_eur": 453980000.0,
+        "Financial": 445280000.0,
+        "Military": 8700000.0
+      },
+      {
+        "month": "2024-12",
+        "total_eur": 4943980000.0,
+        "Financial": 6440000.0,
+        "Humanitarian": 347420000.0,
+        "Military": 4590120000.0
+      },
+      {
+        "month": "2025-01",
+        "total_eur": 89900000.0,
+        "Humanitarian": 4059999.9999999995,
+        "Military": 85840000.0
+      },
+      {
+        "month": "2025-02",
+        "total_eur": 1879199999.9999998,
+        "Military": 1879199999.9999998
+      },
+      {
+        "month": "2025-04",
+        "total_eur": 1324720000.0,
+        "Military": 1324720000.0
+      },
+      {
+        "month": "2025-05",
+        "total_eur": 60320000.0,
+        "Humanitarian": 60320000.0
+      },
+      {
+        "month": "2025-06",
+        "total_eur": 953519999.9999999,
+        "Military": 953519999.9999999
+      },
+      {
+        "month": "2025-08",
+        "total_eur": 463999.99999999994,
+        "Humanitarian": 463999.99999999994
+      },
+      {
+        "month": "2025-09",
+        "total_eur": 48024000.0,
+        "Humanitarian": 48024000.0
+      },
+      {
+        "month": "2025-10",
+        "total_eur": 371620000.0,
+        "Financial": 30000000.0,
+        "Humanitarian": 341620000.0
+      },
+      {
+        "month": "2025-11",
+        "total_eur": 412264000.0,
+        "Humanitarian": 6264000.0,
+        "Military": 406000000.0
+      },
+      {
+        "month": "2025-12",
+        "total_eur": 855560000.0,
+        "Financial": 6440000.0,
+        "Humanitarian": 179800000.0,
+        "Military": 669320000.0
+      }
+    ]
+  },
+  "United States": {
+    "total_eur": 940995475260.12,
+    "n_packages": 1172,
+    "by_type": {
+      "Financial": 77126360000.0,
+      "Humanitarian": 4393155260.12,
+      "Military": 859475960000.0
+    },
+    "monthly": [
+      {
+        "month": "2022-01",
+        "total_eur": 27103200000.0,
+        "Financial": 6900000000.0,
+        "Military": 20203200000.0
+      },
+      {
+        "month": "2022-02",
+        "total_eur": 371680000.0,
+        "Humanitarian": 49680000.0,
+        "Military": 322000000.0
+      },
+      {
+        "month": "2022-03",
+        "total_eur": 18062686314.8,
+        "Humanitarian": 191686314.8,
+        "Military": 17871000000.0
+      },
+      {
+        "month": "2022-04",
+        "total_eur": 31532632000.0,
+        "Financial": 460000000.0,
+        "Military": 31072632000.0
+      },
+      {
+        "month": "2022-05",
+        "total_eur": 907884700.3199999,
+        "Humanitarian": 355884700.32,
+        "Military": 552000000.0
+      },
+      {
+        "month": "2022-06",
+        "total_eur": 49606931679.96,
+        "Financial": 12300400000.0,
+        "Humanitarian": 1488171679.96,
+        "Military": 35818360000.0
+      },
+      {
+        "month": "2022-07",
+        "total_eur": 1412208976.44,
+        "Humanitarian": 358808976.44,
+        "Military": 1053400000.0
+      },
+      {
+        "month": "2022-08",
+        "total_eur": 56977270208.479996,
+        "Humanitarian": 33870208.480000004,
+        "Military": 56943400000.0
+      },
+      {
+        "month": "2022-09",
+        "total_eur": 32784892321.16,
+        "Financial": 4140000000.0,
+        "Humanitarian": 32892321.16,
+        "Military": 28612000000.0
+      },
+      {
+        "month": "2022-10",
+        "total_eur": 19827840000.0,
+        "Financial": 6900000000.0,
+        "Humanitarian": 1840000.0,
+        "Military": 12926000000.0
+      },
+      {
+        "month": "2022-11",
+        "total_eur": 8188000000.0,
+        "Financial": 4140000000.0,
+        "Military": 4048000000.0
+      },
+      {
+        "month": "2022-12",
+        "total_eur": 21458462745.760002,
+        "Financial": 460000000.0,
+        "Humanitarian": 344462745.76,
+        "Military": 20654000000.0
+      },
+      {
+        "month": "2023-01",
+        "total_eur": 57040000000.0,
+        "Military": 57040000000.0
+      },
+      {
+        "month": "2023-02",
+        "total_eur": 27048551744.239998,
+        "Financial": 2300000000.0,
+        "Humanitarian": 551744.24,
+        "Military": 24748000000.0
+      },
+      {
+        "month": "2023-03",
+        "total_eur": 39951000000.0,
+        "Military": 39951000000.0
+      },
+      {
+        "month": "2023-04",
+        "total_eur": 68655000000.0,
+        "Military": 68655000000.0
+      },
+      {
+        "month": "2023-05",
+        "total_eur": 12870800000.0,
+        "Financial": 2300000000.0,
+        "Military": 10570800000.0
+      },
+      {
+        "month": "2023-06",
+        "total_eur": 82338712000.0,
+        "Financial": 1150000000.0,
+        "Humanitarian": 90712000.0,
+        "Military": 81098000000.0
+      },
+      {
+        "month": "2023-07",
+        "total_eur": 44357336033.880005,
+        "Humanitarian": 565336033.88,
+        "Military": 43792000000.0
+      },
+      {
+        "month": "2023-08",
+        "total_eur": 5152000000.0,
+        "Military": 5152000000.0
+      },
+      {
+        "month": "2023-09",
+        "total_eur": 25277194204.64,
+        "Financial": 3450000000.0,
+        "Humanitarian": 194204.64,
+        "Military": 21827000000.0
+      },
+      {
+        "month": "2023-10",
+        "total_eur": 1656000000.0,
+        "Military": 1656000000.0
+      },
+      {
+        "month": "2023-11",
+        "total_eur": 3312000000.0,
+        "Military": 3312000000.0
+      },
+      {
+        "month": "2023-12",
+        "total_eur": 4554000000.0,
+        "Military": 4554000000.0
+      },
+      {
+        "month": "2024-01",
+        "total_eur": 6256000000.0,
+        "Military": 6256000000.0
+      },
+      {
+        "month": "2024-02",
+        "total_eur": 10235446171.48,
+        "Humanitarian": 230446171.48,
+        "Military": 10005000000.0
+      },
+      {
+        "month": "2024-03",
+        "total_eur": 7774000000.0,
+        "Military": 7774000000.0
+      },
+      {
+        "month": "2024-04",
+        "total_eur": 148787920000.0,
+        "Financial": 7501680000.0,
+        "Humanitarian": 92000000.0,
+        "Military": 141194240000.0
+      },
+      {
+        "month": "2024-05",
+        "total_eur": 7980080000.0,
+        "Financial": 3587080000.0,
+        "Military": 4393000000.0
+      },
+      {
+        "month": "2024-06",
+        "total_eur": 3739818158.96,
+        "Humanitarian": 289818158.96000004,
+        "Military": 3450000000.0
+      },
+      {
+        "month": "2024-07",
+        "total_eur": 10546880000.0,
+        "Military": 10546880000.0
+      },
+      {
+        "month": "2024-08",
+        "total_eur": 1495000000.0,
+        "Military": 1495000000.0
+      },
+      {
+        "month": "2024-09",
+        "total_eur": 21907960000.0,
+        "Military": 21907960000.0
+      },
+      {
+        "month": "2024-10",
+        "total_eur": 36999088000.0,
+        "Financial": 18400000000.0,
+        "Military": 18599088000.0
+      },
+      {
+        "month": "2024-11",
+        "total_eur": 6039800000.0,
+        "Humanitarian": 266800000.0,
+        "Military": 5773000000.0
+      },
+      {
+        "month": "2024-12",
+        "total_eur": 34647200000.0,
+        "Financial": 3137200000.0,
+        "Military": 31510000000.0
+      },
+      {
+        "month": "2025-09",
+        "total_eur": 4140000000.0,
+        "Military": 4140000000.0
+      }
+    ]
+  }
+}

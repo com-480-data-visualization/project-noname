@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Country Aid — Ukraine Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <h1>Ukraine Conflict <span>Data Dashboard</span></h1>
+    <nav class="header-nav">
+      <a href="index.html">Map</a>
+    </nav>
+  </header>
+
+  <main class="page-detail">
+    <a class="back-link" href="index.html">Back to map</a>
+
+    <div id="country-heading">
+      <div class="detail-heading" id="country-name">Loading…</div>
+      <div class="detail-sub" id="country-sub"></div>
+    </div>
+
+    <div id="no-data" class="no-data" style="display:none;">
+      <strong>No aid data available</strong>
+      <p>This country does not appear in the Ukraine Support Tracker dataset.</p>
+    </div>
+
+    <div id="data-section">
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="sc-label">Total aid pledged</div>
+          <div class="sc-value" id="stat-total">–</div>
+          <div class="sc-unit">EUR (approx.)</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-label">Aid packages</div>
+          <div class="sc-value" id="stat-n">–</div>
+          <div class="sc-unit">recorded commitments</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-label">Largest category</div>
+          <div class="sc-value" id="stat-top">–</div>
+          <div class="sc-unit">by EUR value</div>
+        </div>
+      </div>
+
+      <div class="charts-row">
+        <div class="chart-card">
+          <h3>Aid by type</h3>
+          <div id="donut-chart"></div>
+          <div class="chart-legend" id="donut-legend"></div>
+        </div>
+        <div class="chart-card">
+          <h3>Monthly aid over time</h3>
+          <div id="bar-chart"></div>
+          <div class="chart-legend" id="bar-legend">
+            <div class="legend-item"><span class="legend-dot" style="background:#5c7148"></span>Military</div>
+            <div class="legend-item"><span class="legend-dot" style="background:#d4900a"></span>Financial</div>
+            <div class="legend-item"><span class="legend-dot" style="background:#2e7ab5"></span>Humanitarian</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="js/country.js"></script>
+</body>
+</html>

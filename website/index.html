@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ukraine Conflict — Data Visualization</title>
+
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- D3 -->
+  <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="page-home">
+
+  <header class="site-header">
+    <h1>Ukraine Conflict <span>Data Dashboard</span></h1>
+    <nav class="header-nav">
+      <a href="index.html">Map</a>
+      <a href="https://acleddata.com/" target="_blank">ACLED</a>
+      <a href="https://www.ifw-kiel.de/publications/ukraine-support-tracker-data-6453/" target="_blank">Support Tracker</a>
+    </nav>
+  </header>
+
+  <!-- Map -->
+  <div id="map-container">
+    <div id="map"></div>
+
+    <!-- Hover tooltip (bottom-left) -->
+    <div id="map-tooltip">
+      <div class="tt-name" id="tt-name">–</div>
+      <div class="tt-value" id="tt-value"></div>
+      <div class="tt-hint" id="tt-hint"></div>
+    </div>
+
+    <!-- Legend (bottom-right) -->
+    <div id="map-legend">
+      <h4>Aid to Ukraine</h4>
+      <div id="legend-items"></div>
+      <div style="margin-top:10px;">
+        <h4>Conflict events</h4>
+        <div id="legend-events"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Timeline -->
+  <section id="timeline-section">
+    <h2>Timeline of key events</h2>
+    <svg id="timeline-svg"></svg>
+    <div id="event-card">
+      <span class="ec-close" id="ec-close">×</span>
+      <div class="ec-date" id="ec-date"></div>
+      <div class="ec-title" id="ec-title"></div>
+      <div class="ec-desc" id="ec-desc"></div>
+    </div>
+  </section>
+
+  <script src="js/map.js"></script>
+  <script src="js/timeline.js"></script>
+</body>
+</html>

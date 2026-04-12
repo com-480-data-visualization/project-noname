@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oblast Events — Ukraine Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <h1>Ukraine Conflict <span>Data Dashboard</span></h1>
+    <nav class="header-nav">
+      <a href="index.html">Map</a>
+    </nav>
+  </header>
+
+  <main class="page-detail">
+    <a class="back-link" href="index.html">Back to map</a>
+
+    <div class="detail-heading" id="oblast-name">Loading…</div>
+    <div class="detail-sub" id="oblast-sub"></div>
+
+    <div id="no-data" class="no-data" style="display:none;">
+      <strong>No conflict data available</strong>
+      <p>This region does not have recorded events in the ACLED dataset.</p>
+    </div>
+
+    <div id="data-section">
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="sc-label">Total violent events</div>
+          <div class="sc-value" id="stat-events">–</div>
+          <div class="sc-unit">excluding strategic developments</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-label">Recorded fatalities</div>
+          <div class="sc-value" id="stat-fatalities">–</div>
+          <div class="sc-unit">from conflict events</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-label">Most common event</div>
+          <div class="sc-value" id="stat-top-type" style="font-size:1.1rem;">–</div>
+        </div>
+      </div>
+
+      <div class="charts-row">
+        <div class="chart-card">
+          <h3>Events by type</h3>
+          <div id="type-chart"></div>
+        </div>
+        <div class="chart-card">
+          <h3>Monthly events over time</h3>
+          <div id="time-chart"></div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="js/oblast.js"></script>
+</body>
+</html>
