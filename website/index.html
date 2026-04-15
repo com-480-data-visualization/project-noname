@@ -25,9 +25,50 @@
     </nav>
   </header>
 
+<!-- Timeline -->
+  <section id="timeline-section">
+    <h2>Timeline of key events</h2>
+    <svg id="timeline-svg"></svg>
+    <div id="event-card">
+    <span class="ec-close" id="ec-close">×</span>
+    <div class="ec-date" id="ec-date"></div>
+    <div class="ec-title" id="ec-title"></div>
+    <div class="ec-desc" id="ec-desc"></div>
+    </div>
+  </section>
+
   <!-- Map -->
   <div id="map-container">
-    <div id="map"></div>
+    <div id="main-layout" class="layout-default">
+
+    <div class="dual-map-wrapper">
+      <div class="map-wrapper">
+        <div id="map-frontline" class="sub-map"></div>
+        <div id="legend-frontline" class="map-legend">
+          <h4>Conflict events</h4>
+          <div id="legend-events"></div>
+        </div>
+      </div>
+
+      <div class="map-wrapper">
+        <div id="map-world" class="sub-map"></div>
+        <div id="legend-world" class="map-legend">
+          <h4>Aid to Ukraine</h4>
+          <div id="legend-items"></div>
+        </div>
+      </div>    
+    
+    </div>
+
+    <aside id="detail-panel">
+      <div class="panel-header">
+        <span id="panel-close-btn">&times;</span>
+        <h2 id="panel-title">Select a region</h2>
+      </div>
+      <div id="panel-body">
+        <p class="placeholder-text">Click on the map to see details</p>
+      </div>
+    </aside>
 
     <!-- Hover tooltip (bottom-left) -->
     <div id="map-tooltip">
@@ -36,28 +77,8 @@
       <div class="tt-hint" id="tt-hint"></div>
     </div>
 
-    <!-- Legend (bottom-right) -->
-    <div id="map-legend">
-      <h4>Aid to Ukraine</h4>
-      <div id="legend-items"></div>
-      <div style="margin-top:10px;">
-        <h4>Conflict events</h4>
-        <div id="legend-events"></div>
-      </div>
-    </div>
-  </div>
 
-  <!-- Timeline -->
-  <section id="timeline-section">
-    <h2>Timeline of key events</h2>
-    <svg id="timeline-svg"></svg>
-    <div id="event-card">
-      <span class="ec-close" id="ec-close">×</span>
-      <div class="ec-date" id="ec-date"></div>
-      <div class="ec-title" id="ec-title"></div>
-      <div class="ec-desc" id="ec-desc"></div>
-    </div>
-  </section>
+  
 
   <script src="js/map.js"></script>
   <script src="js/timeline.js"></script>

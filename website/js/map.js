@@ -3,19 +3,19 @@
 'use strict';
 
 // ── Leaflet map init ────────────────────────────────────────────────────────
-const map = L.map('map', {
-  center: [50, 20],
-  zoom: 4,
-  minZoom: 2,
-  maxZoom: 12,
-  zoomControl: true,
-});
 
-L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
-  attribution: '© OpenTopoMap contributors',
-  maxZoom: 17,
-  opacity: 0.85,
-}).addTo(map);
+const mapFrontline = L.map('map-frontline', {
+  scrollWheelZoom: false
+}).setView([48.37, 31.16], 6);
+
+
+const mapWorld = L.map('map-world', {
+  scrollWheelZoom: false
+}).setView([20, 0], 2);
+
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(mapFrontline);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(mapWorld);
 
 // ── Colour helpers ──────────────────────────────────────────────────────────
 const AID_COLORS = [
@@ -68,6 +68,41 @@ function fmtEur(v) {
 
 function fmtNum(v) {
   return v.toLocaleString('en-US');
+}
+
+function openDetailPanel(name, data, type) {
+    const layout = document.getElementById('main-layout');
+    const title = document.getElementById('panel-title');
+    const body = document.getElementById('panel-body');
+
+    layout.classList.add('panel-open');
+
+    title.innerText = name;
+
+    if (type === 'aid') {
+        body.innerHTML = `
+            <div class="stat-card">
+                <div class="sc-label">Total Aid Pledged</div>
+                <div class="sc-value">${fmtEur(data ? data.total_eur : 0)}</div>
+                <div class="sc-unit">EUR (approx.)</div>
+            </div>
+            <p class="placeholder-text" style="margin-top:20px;">Charts will be loaded here...</p>
+        `;
+    } else {
+        body.innerHTML = `
+            <div class="stat-card">
+                <div class="sc-label">Total Events Recorded</div>
+                <div class="sc-value">${fmtNum(data ? data.total_events : 0)}</div>
+                <div class="sc-unit">recorded in ACLED</div>
+            </div>
+            <p class="placeholder-text" style="margin-top:20px;">Conflict timeline will be loaded here...</p>
+        `;
+    }
+
+    setTimeout(() => {
+        mapFrontline.invalidateSize();
+        mapWorld.invalidateSize();
+    }, 450);
 }
 
 // ── Country name normalisation (GeoJSON ADMIN → aid_by_country key) ─────────
@@ -206,17 +241,17 @@ Promise.all([
 
       layer.on('click', () => {
         if (name === 'Ukraine') {
-          map.flyToBounds(layer.getBounds(), { duration: 1.2 });
+          mapFrontline.flyToBounds(layer.getBounds(), { duration: 1.2 });
           // Make oblasts visible
           uaLayer.setStyle(f => uaLayerStyle(f, acledData));
         } else if (name === 'Russia') {
-          map.flyToBounds(layer.getBounds(), { duration: 1.4 });
+          mapFrontline.flyToBounds(layer.getBounds(), { duration: 1.4 });
         } else {
-          window.location.href = 'country.html?country=' + encodeURIComponent(name);
+          openDetailPanel(name, entry, 'aid');
         }
       });
     },
-  }).addTo(map);
+  }).addTo(mapWorld);
 
   // ── 2. Ukraine oblasts ──────────────────────────────────────────────────
   function uaLayerStyle(feature, acledData) {
@@ -257,10 +292,10 @@ Promise.all([
 
       layer.on('click', e => {
         L.DomEvent.stopPropagation(e);
-        window.location.href = 'oblast.html?country=Ukraine&oblast=' + encodeURIComponent(acledKey);
+        openDetailPanel(geoName, data, 'conflict');
       });
     },
-  }).addTo(map);
+  }).addTo(mapFrontline);
 
   // ── 3. Russia oblasts ───────────────────────────────────────────────────
   const ruLayer = L.geoJSON(ruGeo, {
@@ -299,10 +334,10 @@ Promise.all([
 
       layer.on('click', e => {
         L.DomEvent.stopPropagation(e);
-        window.location.href = 'oblast.html?country=Russia&oblast=' + encodeURIComponent(acledKey);
+        openDetailPanel(nameLatin, data, 'conflict');
       });
     },
-  }).addTo(map);
+  }).addTo(mapFrontline);
 
   // ── 4. Legend ───────────────────────────────────────────────────────────
   buildLegend(aidData, acledData);
@@ -343,3 +378,12 @@ function buildLegend(aidData, acledData) {
     evContainer.appendChild(row);
   });
 }
+
+document.getElementById('panel-close-btn').onclick = function() {
+    document.getElementById('main-layout').classList.remove('panel-open');
+    
+    setTimeout(() => {
+        mapFrontline.invalidateSize();
+        mapWorld.invalidateSize();
+    }, 450);
+};
