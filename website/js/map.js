@@ -1,21 +1,32 @@
-/* map.js — Leaflet world map with choropleth + oblast drill-down */
+/* map.js — single Leaflet map, zoom-based transition between oblast and world views */
 
 'use strict';
 
-// ── Leaflet map init ────────────────────────────────────────────────────────
+// ── Zoom threshold ──────────────────────────────────────────────────────────
+// Below ZOOM_WORLD: world choropleth (aid). At/above ZOOM_OBLAST: oblast view (conflict).
+const ZOOM_WORLD  = 4;   // world layer fully visible
+const ZOOM_OBLAST = 5;   // oblast layer fully visible
+// Between the two values opacity fades smoothly
 
-const mapFrontline = L.map('map-frontline', {
-  scrollWheelZoom: false
-}).setView([48.37, 31.16], 6);
+// ── Map init ────────────────────────────────────────────────────────────────
+const map = L.map('map', {
+  scrollWheelZoom: true,
+  zoomControl: true,
+}).setView([48.37, 31.16], 5);   // centred on Ukraine
 
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '© OpenStreetMap contributors',
+  opacity: 0.6,
+}).addTo(map);
 
-const mapWorld = L.map('map-world', {
-  scrollWheelZoom: false
-}).setView([20, 0], 2);
+// ── Custom panes (enable CSS opacity transitions) ───────────────────────────
+const worldPane  = map.createPane('worldPane');
+worldPane.style.zIndex    = 400;
+worldPane.style.transition = 'opacity 0.55s ease';
 
-
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(mapFrontline);
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(mapWorld);
+const oblastPane = map.createPane('oblastPane');
+oblastPane.style.zIndex    = 410;
+oblastPane.style.transition = 'opacity 0.55s ease';
 
 // ── Colour helpers ──────────────────────────────────────────────────────────
 const AID_COLORS = [
@@ -24,16 +35,15 @@ const AID_COLORS = [
 ];
 
 function aidColor(total) {
-  if (!total || total === 0) return '#1e2d3d';   // no-data grey-blue
+  if (!total || total === 0) return '#1e2d3d';
   const scale = d3.scaleLog()
-    .domain([1e8, 5e11])                           // 100M → 500B EUR
+    .domain([1e8, 5e11])
     .range([0, AID_COLORS.length - 1])
     .clamp(true);
   return AID_COLORS[Math.round(scale(total))];
 }
 
-// Event-density colours for oblasts (yellow → red)
-const CONFLICT_COLORS = ['#fffde7','#ffeb3b','#ff9800','#f44336','#7f0000'];
+const CONFLICT_COLORS = ['#fffde7', '#ffeb3b', '#ff9800', '#f44336', '#7f0000'];
 
 function conflictColor(events) {
   if (!events || events === 0) return 'rgba(255,255,255,0.05)';
@@ -44,7 +54,7 @@ function conflictColor(events) {
   return CONFLICT_COLORS[Math.round(scale(events))];
 }
 
-// ── Tooltip helper ──────────────────────────────────────────────────────────
+// ── Tooltip ─────────────────────────────────────────────────────────────────
 const tooltip = document.getElementById('map-tooltip');
 const ttName  = document.getElementById('tt-name');
 const ttValue = document.getElementById('tt-value');
@@ -65,50 +75,21 @@ function fmtEur(v) {
   if (v >= 1e6)  return '€' + (v / 1e6).toFixed(0) + ' M';
   return '€' + v.toFixed(0);
 }
+function fmtNum(v) { return v.toLocaleString('en-US'); }
 
-function fmtNum(v) {
-  return v.toLocaleString('en-US');
+// ── Navigation to detail pages ──────────────────────────────────────────────
+function goToCountry(name) {
+  window.location.href = 'country.html?country=' + encodeURIComponent(name);
 }
 
-function openDetailPanel(name, data, type) {
-    const layout = document.getElementById('main-layout');
-    const title = document.getElementById('panel-title');
-    const body = document.getElementById('panel-body');
-
-    layout.classList.add('panel-open');
-
-    title.innerText = name;
-
-    if (type === 'aid') {
-        body.innerHTML = `
-            <div class="stat-card">
-                <div class="sc-label">Total Aid Pledged</div>
-                <div class="sc-value">${fmtEur(data ? data.total_eur : 0)}</div>
-                <div class="sc-unit">EUR (approx.)</div>
-            </div>
-            <p class="placeholder-text" style="margin-top:20px;">Charts will be loaded here...</p>
-        `;
-    } else {
-        body.innerHTML = `
-            <div class="stat-card">
-                <div class="sc-label">Total Events Recorded</div>
-                <div class="sc-value">${fmtNum(data ? data.total_events : 0)}</div>
-                <div class="sc-unit">recorded in ACLED</div>
-            </div>
-            <p class="placeholder-text" style="margin-top:20px;">Conflict timeline will be loaded here...</p>
-        `;
-    }
-
-    setTimeout(() => {
-        mapFrontline.invalidateSize();
-        mapWorld.invalidateSize();
-    }, 450);
+function goToOblast(country, oblast) {
+  window.location.href = 'oblast.html?country=' + encodeURIComponent(country) +
+                         '&oblast=' + encodeURIComponent(oblast);
 }
 
-// ── Country name normalisation (GeoJSON ADMIN → aid_by_country key) ─────────
+// ── Name normalisers ────────────────────────────────────────────────────────
 const COUNTRY_NAME_FIXES = {
   'United States of America': 'United States',
-  'Czech Republic':           'Czech Republic',
   'Czechia':                  'Czech Republic',
   'Republic of Korea':        'South Korea',
   'Korea':                    'South Korea',
@@ -119,78 +100,125 @@ const COUNTRY_NAME_FIXES = {
   'North Macedonia':          'North Macedonia',
   'The Bahamas':              'Bahamas',
 };
+function normaliseCountry(name) { return COUNTRY_NAME_FIXES[name] || name; }
 
-function normaliseCountry(name) {
-  return COUNTRY_NAME_FIXES[name] || name;
-}
-
-// ── Oblast name normalisation ───────────────────────────────────────────────
-// Map GeoJSON feature name → ACLED admin1 name
-
-// Ukraine: geoBoundaries uses "Kharkiv Oblast", ACLED uses "Kharkiv"
 const UA_NAME_FIXES = {
   'Autonomous Republic of Crimea': 'Crimea',
-  'Kyiv':                          'Kyiv City',   // city
+  'Kyiv':                          'Kyiv City',
   'Odessa Oblast':                 'Odesa',
   'Sevastopol':                    'Sevastopol',
 };
-
 function normaliseUkraineOblast(shapeName) {
   if (UA_NAME_FIXES[shapeName]) return UA_NAME_FIXES[shapeName];
-  // Strip " Oblast" suffix
   return shapeName.replace(' Oblast', '').trim();
 }
 
-// Russia: click_that_hood uses name_latin like "Voronezh Oblast"
 const RU_NAME_FIXES = {
-  'Chechen Republic':            'Republic of Chechnya',
-  'Altai Republic':              'Republic of Altai',
-  'Altai Krai':                  'Altai',
-  'Krasnoyarsk Krai':            'Krasnoyarsk',
-  'Khabarovsk Krai':             'Khabarovsk',
-  'Primorsky Krai':              'Primorskiy',
-  'Perm Krai':                   'Perm',
-  'Kamchatka Krai':              'Kamchatka',
-  'Zabaykalsky Krai':            'Zabaykalskiy',
-  'Stavropol Krai':              'Stavropol',
-  'Krasnodar Krai':              'Krasnodar',
-  'Tyumen Oblast':               'Tyumen',
-  'Leningrad Oblast':            'Leningrad',
-  'Moscow Oblast':               'Moscow Oblast',
-  'Moscow':                      'Moscow',
-  'Saint Petersburg':            'Saint Petersburg',
-  'Nenets Autonomous Okrug':     'Nenets',
-  'Yamalo-Nenets Autonomous Okrug': 'Yamalo-Nenets',
-  'Khanty-Mansi Autonomous Okrug':  'Khanty-Mansi',
-  'Chuvash Republic':            'Republic of Chuvash',
-  'Republic of Tatarstan':       'Republic of Tatarstan',
-  'Republic of Bashkortostan':   'Republic of Bashkortostan',
-  'Republic of Buryatia':        'Republic of Buryatia',
-  'Republic of Sakha (Yakutia)': 'Republic of Sakha',
-  'Tuva Republic':               'Republic of Tuva',
-  'Republic of Khakassia':       'Republic of Khakassia',
-  'Republic of Komi':            'Republic of Komi',
-  'Republic of Mari El':         'Republic of Mari El',
-  'Republic of Mordovia':        'Republic of Mordovia',
-  'Republic of Ingushetia':      'Republic of Ingushetia',
-  'Karachay-Cherkess Republic':  'Republic of Karachay-Cherkessia',
-  'Republic of Kabardino-Balkaria': 'Republic of Kabardino-Balkaria',
-  'Republic of North Ossetia - Alania': 'Republic of North Ossetia-Alania',
-  'Republic of Dagestan':        'Republic of Dagestan',
-  'Republic of Adygea':          'Republic of Adygea',
-  'Republic of Kalmykia':        'Republic of Kalmykia',
-  'Republic of Karelia':         'Republic of Karelia',
-  'Udmurt Republic':             'Udmurt Republic',
+  'Chechen Republic':                    'Republic of Chechnya',
+  'Altai Republic':                      'Republic of Altai',
+  'Altai Krai':                          'Altai',
+  'Krasnoyarsk Krai':                    'Krasnoyarsk',
+  'Khabarovsk Krai':                     'Khabarovsk',
+  'Primorsky Krai':                      'Primorskiy',
+  'Perm Krai':                           'Perm',
+  'Kamchatka Krai':                      'Kamchatka',
+  'Zabaykalsky Krai':                    'Zabaykalskiy',
+  'Stavropol Krai':                      'Stavropol',
+  'Krasnodar Krai':                      'Krasnodar',
+  'Tyumen Oblast':                       'Tyumen',
+  'Leningrad Oblast':                    'Leningrad',
+  'Moscow Oblast':                       'Moscow Oblast',
+  'Moscow':                              'Moscow',
+  'Saint Petersburg':                    'Saint Petersburg',
+  'Nenets Autonomous Okrug':             'Nenets',
+  'Yamalo-Nenets Autonomous Okrug':      'Yamalo-Nenets',
+  'Khanty-Mansi Autonomous Okrug':       'Khanty-Mansi',
+  'Chuvash Republic':                    'Republic of Chuvash',
+  'Republic of Tatarstan':               'Republic of Tatarstan',
+  'Republic of Bashkortostan':           'Republic of Bashkortostan',
+  'Republic of Buryatia':               'Republic of Buryatia',
+  'Republic of Sakha (Yakutia)':         'Republic of Sakha',
+  'Tuva Republic':                       'Republic of Tuva',
+  'Republic of Khakassia':               'Republic of Khakassia',
+  'Republic of Komi':                    'Republic of Komi',
+  'Republic of Mari El':                 'Republic of Mari El',
+  'Republic of Mordovia':                'Republic of Mordovia',
+  'Republic of Ingushetia':              'Republic of Ingushetia',
+  'Karachay-Cherkess Republic':          'Republic of Karachay-Cherkessia',
+  'Republic of Kabardino-Balkaria':      'Republic of Kabardino-Balkaria',
+  'Republic of North Ossetia - Alania':  'Republic of North Ossetia-Alania',
+  'Republic of Dagestan':                'Republic of Dagestan',
+  'Republic of Adygea':                  'Republic of Adygea',
+  'Republic of Kalmykia':               'Republic of Kalmykia',
+  'Republic of Karelia':                 'Republic of Karelia',
+  'Udmurt Republic':                     'Udmurt Republic',
 };
-
 function normaliseRussiaOblast(nameLatin) {
   if (!nameLatin) return null;
   if (RU_NAME_FIXES[nameLatin]) return RU_NAME_FIXES[nameLatin];
-  // Strip " Oblast" suffix for simple cases
   return nameLatin.replace(' Oblast', '').trim();
 }
 
-// ── Load data and render ────────────────────────────────────────────────────
+// ── Legend builder ──────────────────────────────────────────────────────────
+function buildLegend(mode) {
+  const title = document.getElementById('legend-title');
+  const body  = document.getElementById('legend-body');
+  body.innerHTML = '';
+
+  const hint = document.getElementById('zoom-hint-text');
+
+  if (mode === 'conflict') {
+    title.textContent = 'Conflict events';
+    hint.textContent  = 'Zoom out to see global aid';
+    [
+      { label: 'None',    color: 'rgba(255,255,255,0.15)' },
+      { label: '< 100',   color: CONFLICT_COLORS[1] },
+      { label: '100–1k',  color: CONFLICT_COLORS[2] },
+      { label: '1k–10k',  color: CONFLICT_COLORS[3] },
+      { label: '> 10k',   color: CONFLICT_COLORS[4] },
+    ].forEach(b => {
+      const row = document.createElement('div');
+      row.className = 'legend-row';
+      row.innerHTML = `<span class="legend-swatch" style="background:${b.color}"></span>${b.label}`;
+      body.appendChild(row);
+    });
+  } else {
+    title.textContent = 'Aid to Ukraine (log scale)';
+    hint.textContent  = 'Zoom in on Ukraine to see conflict events';
+    [
+      { label: 'No data',     color: '#1e2d3d' },
+      { label: '< €1B',       color: AID_COLORS[1] },
+      { label: '€1B – €10B',  color: AID_COLORS[3] },
+      { label: '€10B – €50B', color: AID_COLORS[5] },
+      { label: '> €50B',      color: AID_COLORS[6] },
+    ].forEach(b => {
+      const row = document.createElement('div');
+      row.className = 'legend-row';
+      row.innerHTML = `<span class="legend-swatch" style="background:${b.color}"></span>${b.label}`;
+      body.appendChild(row);
+    });
+  }
+}
+
+// ── Zoom-based pane opacity ─────────────────────────────────────────────────
+// CSS transition (0.55s) on the panes handles the smooth crossfade.
+function applyZoomOpacity() {
+  const z = map.getZoom();
+  // For discrete scroll-wheel zoom, CSS transition on the panes gives the smooth fade
+  if (z >= ZOOM_OBLAST) {
+    worldPane.style.opacity  = 0;
+    oblastPane.style.opacity = 1;
+  } else {
+    worldPane.style.opacity  = 1;
+    oblastPane.style.opacity = 0;
+  }
+  buildLegend(z >= ZOOM_OBLAST ? 'conflict' : 'aid');
+}
+
+// zoomend fires once per zoom change; CSS transition on the panes handles the smooth fade
+map.on('zoomend', applyZoomOpacity);
+
+// ── Load data ───────────────────────────────────────────────────────────────
 Promise.all([
   fetch('data/world_countries.geojson').then(r => r.json()),
   fetch('data/ukraine_oblasts.geojson').then(r => r.json()),
@@ -199,13 +227,15 @@ Promise.all([
   fetch('data/acled_by_oblast.json').then(r => r.json()),
 ]).then(([worldGeo, uaGeo, ruGeo, aidData, acledData]) => {
 
-  // ── 1. World countries choropleth ───────────────────────────────────────
+  // ── 1. World countries choropleth (worldPane) ───────────────────────────
   const countriesLayer = L.geoJSON(worldGeo, {
+    pane: 'worldPane',
     style: feature => {
       const name  = normaliseCountry(feature.properties.ADMIN || feature.properties.name || '');
       const entry = aidData[name];
       const total = entry ? entry.total_eur : 0;
       return {
+        pane:        'worldPane',
         fillColor:   aidColor(total),
         fillOpacity: 0.75,
         color:       '#2a3a4a',
@@ -218,19 +248,13 @@ Promise.all([
       const name    = normaliseCountry(rawName);
       const entry   = aidData[name];
 
-      // Special handling for Ukraine and Russia — zoom to them instead
-      const isSpecial = ['Ukraine', 'Russia'].includes(name);
-
       layer.on('mouseover', () => {
         layer.setStyle({ weight: 2, color: '#ffd700', opacity: 1 });
         layer.bringToFront();
         if (entry) {
-          showTooltip(rawName, fmtEur(entry.total_eur) + ' pledged',
-            isSpecial ? 'Click to explore oblasts' : 'Click for details');
+          showTooltip(rawName, fmtEur(entry.total_eur) + ' pledged', 'Click for details');
         } else {
-          showTooltip(rawName,
-            isSpecial ? '' : 'No aid data',
-            isSpecial ? 'Click to explore oblasts' : '');
+          showTooltip(rawName, 'No aid data', '');
         }
       });
 
@@ -241,27 +265,26 @@ Promise.all([
 
       layer.on('click', () => {
         if (name === 'Ukraine') {
-          mapFrontline.flyToBounds(layer.getBounds(), { duration: 1.2 });
-          // Make oblasts visible
-          uaLayer.setStyle(f => uaLayerStyle(f, acledData));
+          map.flyToBounds(layer.getBounds(), { duration: 1.2 });
         } else if (name === 'Russia') {
-          mapFrontline.flyToBounds(layer.getBounds(), { duration: 1.4 });
+          map.flyToBounds(layer.getBounds(), { duration: 1.4, maxZoom: 4 });
         } else {
-          openDetailPanel(name, entry, 'aid');
+          goToCountry(name);
         }
       });
     },
-  }).addTo(mapWorld);
+  }).addTo(map);
 
-  // ── 2. Ukraine oblasts ──────────────────────────────────────────────────
-  function uaLayerStyle(feature, acledData) {
-    const geoName = feature.properties.shapeName || '';
+  // ── 2. Ukraine oblasts (oblastPane) ────────────────────────────────────
+  function uaLayerStyle(feature) {
+    const geoName  = feature.properties.shapeName || '';
     const acledKey = normaliseUkraineOblast(geoName);
-    const events = acledData.Ukraine && acledData.Ukraine[acledKey]
+    const events   = acledData.Ukraine && acledData.Ukraine[acledKey]
       ? acledData.Ukraine[acledKey].total_events : 0;
     return {
+      pane:        'oblastPane',
       fillColor:   conflictColor(events),
-      fillOpacity: 0.55,
+      fillOpacity: 0.60,
       color:       '#ffd700',
       weight:      1.5,
       opacity:     0.9,
@@ -269,7 +292,8 @@ Promise.all([
   }
 
   const uaLayer = L.geoJSON(uaGeo, {
-    style: f => uaLayerStyle(f, acledData),
+    pane: 'oblastPane',
+    style: uaLayerStyle,
     onEachFeature: (feature, layer) => {
       const geoName  = feature.properties.shapeName || 'Unknown';
       const acledKey = normaliseUkraineOblast(geoName);
@@ -284,27 +308,24 @@ Promise.all([
           'Click for details'
         );
       });
-
-      layer.on('mouseout', () => {
-        uaLayer.resetStyle(layer);
-        hideTooltip();
-      });
-
+      layer.on('mouseout', () => { uaLayer.resetStyle(layer); hideTooltip(); });
       layer.on('click', e => {
         L.DomEvent.stopPropagation(e);
-        openDetailPanel(geoName, data, 'conflict');
+        goToOblast('Ukraine', acledKey);
       });
     },
-  }).addTo(mapFrontline);
+  }).addTo(map);
 
-  // ── 3. Russia oblasts ───────────────────────────────────────────────────
+  // ── 3. Russia oblasts (oblastPane) ──────────────────────────────────────
   const ruLayer = L.geoJSON(ruGeo, {
+    pane: 'oblastPane',
     style: feature => {
       const nameLatin = feature.properties.name_latin || '';
       const acledKey  = normaliseRussiaOblast(nameLatin);
-      const events = acledData.Russia && acledKey && acledData.Russia[acledKey]
+      const events    = acledData.Russia && acledKey && acledData.Russia[acledKey]
         ? acledData.Russia[acledKey].total_events : 0;
       return {
+        pane:        'oblastPane',
         fillColor:   conflictColor(events),
         fillOpacity: 0.45,
         color:       '#c0392b',
@@ -315,7 +336,7 @@ Promise.all([
     onEachFeature: (feature, layer) => {
       const nameLatin = feature.properties.name_latin || feature.properties.name || 'Unknown';
       const acledKey  = normaliseRussiaOblast(nameLatin);
-      const data = acledData.Russia && acledKey && acledData.Russia[acledKey];
+      const data      = acledData.Russia && acledKey && acledData.Russia[acledKey];
 
       layer.on('mouseover', () => {
         layer.setStyle({ weight: 2.5, color: '#ffffff', opacity: 1 });
@@ -326,64 +347,17 @@ Promise.all([
           'Click for details'
         );
       });
-
-      layer.on('mouseout', () => {
-        ruLayer.resetStyle(layer);
-        hideTooltip();
-      });
-
+      layer.on('mouseout', () => { ruLayer.resetStyle(layer); hideTooltip(); });
       layer.on('click', e => {
         L.DomEvent.stopPropagation(e);
-        openDetailPanel(nameLatin, data, 'conflict');
+        goToOblast('Russia', acledKey);
       });
     },
-  }).addTo(mapFrontline);
+  }).addTo(map);
 
-  // ── 4. Legend ───────────────────────────────────────────────────────────
-  buildLegend(aidData, acledData);
+  // ── Initial opacity + legend ─────────────────────────────────────────────
+  applyZoomOpacity();
 
 }).catch(err => {
   console.error('Failed to load map data:', err);
 });
-
-// ── Legend builder ──────────────────────────────────────────────────────────
-function buildLegend(aidData, acledData) {
-  const container = document.getElementById('legend-items');
-  const breaks = [
-    { label: 'No data',    color: '#1e2d3d' },
-    { label: '< €1B',      color: AID_COLORS[1] },
-    { label: '€1B – €10B', color: AID_COLORS[3] },
-    { label: '€10B – €50B',color: AID_COLORS[5] },
-    { label: '> €50B',     color: AID_COLORS[6] },
-  ];
-  breaks.forEach(b => {
-    const row = document.createElement('div');
-    row.className = 'legend-row';
-    row.innerHTML = `<span class="legend-swatch" style="background:${b.color}"></span>${b.label}`;
-    container.appendChild(row);
-  });
-
-  const evContainer = document.getElementById('legend-events');
-  const evBreaks = [
-    { label: 'None',    color: 'rgba(255,255,255,0.05)' },
-    { label: '< 100',   color: CONFLICT_COLORS[1] },
-    { label: '100–1k',  color: CONFLICT_COLORS[2] },
-    { label: '1k–10k',  color: CONFLICT_COLORS[3] },
-    { label: '> 10k',   color: CONFLICT_COLORS[4] },
-  ];
-  evBreaks.forEach(b => {
-    const row = document.createElement('div');
-    row.className = 'legend-row';
-    row.innerHTML = `<span class="legend-swatch" style="background:${b.color}"></span>${b.label}`;
-    evContainer.appendChild(row);
-  });
-}
-
-document.getElementById('panel-close-btn').onclick = function() {
-    document.getElementById('main-layout').classList.remove('panel-open');
-    
-    setTimeout(() => {
-        mapFrontline.invalidateSize();
-        mapWorld.invalidateSize();
-    }, 450);
-};

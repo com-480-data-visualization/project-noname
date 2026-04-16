@@ -12,7 +12,12 @@
   <!-- D3 -->
   <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
 
+  <!-- css -->
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- javascript -->
+  <script src="js/map.js" defer></script>
+  <script src="js/timeline.js" defer></script>
 </head>
 <body class="page-home">
 
@@ -25,15 +30,15 @@
     </nav>
   </header>
 
-<!-- Timeline -->
+  <!-- Timeline -->
   <section id="timeline-section">
     <h2>Timeline of key events</h2>
     <svg id="timeline-svg"></svg>
     <div id="event-card">
-    <span class="ec-close" id="ec-close">×</span>
-    <div class="ec-date" id="ec-date"></div>
-    <div class="ec-title" id="ec-title"></div>
-    <div class="ec-desc" id="ec-desc"></div>
+      <span class="ec-close" id="ec-close">×</span>
+      <div class="ec-date" id="ec-date"></div>
+      <div class="ec-title" id="ec-title"></div>
+      <div class="ec-desc" id="ec-desc"></div>
     </div>
   </section>
 
@@ -41,46 +46,30 @@
   <div id="map-container">
     <div id="main-layout" class="layout-default">
 
-    <div class="dual-map-wrapper">
-      <div class="map-wrapper">
-        <div id="map-frontline" class="sub-map"></div>
-        <div id="legend-frontline" class="map-legend">
-          <h4>Conflict events</h4>
-          <div id="legend-events"></div>
+      <div class="map-area">
+        <div id="map"></div>
+
+        <!-- Legend overlay (switches content based on zoom) -->
+        <div id="map-legend" class="map-legend">
+          <h4 id="legend-title">Conflict events</h4>
+          <div id="legend-body"></div>
+        </div>
+
+        <!-- Zoom hint -->
+        <div id="zoom-hint">
+          <span id="zoom-hint-text">Zoom out to see global aid</span>
+        </div>
+
+        <!-- Hover tooltip -->
+        <div id="map-tooltip">
+          <div class="tt-name" id="tt-name">–</div>
+          <div class="tt-value" id="tt-value"></div>
+          <div class="tt-hint" id="tt-hint"></div>
         </div>
       </div>
 
-      <div class="map-wrapper">
-        <div id="map-world" class="sub-map"></div>
-        <div id="legend-world" class="map-legend">
-          <h4>Aid to Ukraine</h4>
-          <div id="legend-items"></div>
-        </div>
-      </div>    
-    
     </div>
+  </div>
 
-    <aside id="detail-panel">
-      <div class="panel-header">
-        <span id="panel-close-btn">&times;</span>
-        <h2 id="panel-title">Select a region</h2>
-      </div>
-      <div id="panel-body">
-        <p class="placeholder-text">Click on the map to see details</p>
-      </div>
-    </aside>
-
-    <!-- Hover tooltip (bottom-left) -->
-    <div id="map-tooltip">
-      <div class="tt-name" id="tt-name">–</div>
-      <div class="tt-value" id="tt-value"></div>
-      <div class="tt-hint" id="tt-hint"></div>
-    </div>
-
-
-  
-
-  <script src="js/map.js"></script>
-  <script src="js/timeline.js"></script>
 </body>
 </html>
