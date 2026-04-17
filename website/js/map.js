@@ -92,7 +92,6 @@ function goToOblast(country, oblast) {
 // ── Name normalisers ────────────────────────────────────────────────────────
 const COUNTRY_NAME_FIXES = {
   'United States of America': 'United States',
-  'Czechia':                  'Czech Republic',
   'Republic of Korea':        'South Korea',
   'Korea':                    'South Korea',
   'Russian Federation':       'Russia',
