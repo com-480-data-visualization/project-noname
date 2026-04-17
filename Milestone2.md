@@ -24,7 +24,7 @@ At the high zoom level, a button allows to switch from the oblast visualization 
 
 The core tools are Leaflet.js for the tiled map (Web GIS as introduced in Lecture 8.2), D3 and lecture 5 and 8: choropleth design, spatial data, interaction and Interactive D3 — event listeners, linked views, real-time synchronisation across components.
 
-### 4. Oblast Statistics Page
+### 3. Oblast Statistics Page
 
 Clicking on an oblast opens a per-oblast breakdown of ACLED data: total violent events (excluding strategic developments), breakdown by event type, monthly time series, fatality count, and ranking among all oblasts.
 
@@ -32,14 +32,14 @@ The charts — bar charts, line charts, and stat cards — are all D3 work (Lect
 
 ![Oblast events timeline sketch](figures/milestone%202/ve_timeline.png)
 
-### 5. Country Statistics Page
+### 4. Country Statistics Page
 
 Clicking on a country opens a per-country breakdown of Ukraine Support Tracker data: total aid in EUR, aid split by category (military, financial, humanitarian), monthly time series, number of aid packages, and aid normalised by GDP.
 
 The visualisations include a donut chart for aid composition, a stacked bar chart for the monthly time series, and summary stat cards — all in D3 (Lecture 4.2). Lecture 6 is also key for this visualization. Lecture 11 will again be relevant for the time series and ranking charts.
 
 ![Country in-depth panel](figures/milestone%202/country.png)
-### 6. General Statistics Page
+### 5. General Statistics Page
 
 Aggregate war statistics not tied to any specific region: global time series of conflict events and fatalities, ranking of donor countries by total aid and by aid/GDP, a pie chart of event types, total casualties, and a scatterplot of monthly attack intensity versus prior-month international aid.
 
