@@ -49,15 +49,15 @@ As above, the key topics are covered in lectures 4, 6, and 11.
 
 ## Extra Ideas — Enhancements
 
-- **Map layer toggle.** Currently the conflict and aid views switch automatically on zoom. We are considering adding an explicit button to let the user switch between the two layers at any zoom level, which would give a clearer and less ambiguous experience. We may offer both options, or settle on one based on usability testing.
+- Instead of having the map views switch automatically on zoom or a button for the two visualizations at high zoom level, we are considering keeping two separate maps.
 
-- **Pictogram casualties.** Replace raw fatality numbers with isotype-style arrays of human-shaped pictograms in the detail panel to communicate the human cost more viscerally. Directly inspired by Lecture 12 (Storytelling — stories must be emotional and impactful).
+- **Pictogram casualties.** Replace raw fatality numbers with isotype-style arrays of human-shaped pictograms in the detail oblast panel to communicate the human cost more viscerally. 
 
 - **Comparison of oblasts/countries.** Allow the user to select two oblasts or two countries simultaneously and display a side-by-side panel comparing their statistics over time. This requires linked views and brushing (Lecture 5.1) and builds on the map's ability to compare location-bound attributes (Lecture 8.1).
 
 - **Battlefront inference.** Cluster "Battle"-type ACLED events geographically over time to approximate the evolving front line and render it as a contour overlay on the map. Goes beyond standard course content but builds on Lectures 8.1 and 8.2.
 
-- **Attack–aid correlation scatterplot.** For each month, plot the number of attacks against total aid received the prior month, separately for Ukraine and Russia, to probe whether aid volumes correlate with offensive activity (Lecture 6.2 — position on a common scale; Lecture 11).
+- **Attack–aid correlation scatterplot.** For each month, plot the number of attacks against total aid received the prior month, separately for Ukraine and Russia, to probe whether aid volumes correlate with offensive activity.
 
 ---
 
@@ -66,9 +66,12 @@ As above, the key topics are covered in lectures 4, 6, and 11.
 The main development steps, each independently implementable:
 
 1. **Data processing and normalisation** — aligning ACLED and Kiel Institute data with GeoJSON boundaries.
-2. **Dual-map layout and navigation** — constructing the zoom-based interface with both the frontline and aid views.
-3. **Interactive side panel** — developing the detail panel for oblast and country drill-down.
-4. **Dynamic UI synchronisation** — implementing event listeners to sync hover, click, and time-filtering across the timeline, maps, and detail panel.
+2. **Timeline**.
+3. **Dual-map layout and navigation** — constructing the zoom-based interface with both the countries and oblasts views.
+4. **Event level map** — constructing the warfare visualization and connecting it with the timeline.
+5. **Overall numbers and plots** — creating the page with aggregated statistics over all the countries and oblasts.
+6. **Interactive side panel** — developing the detailed pages for oblast and country drill-down. The two are independent but very similar.
+7. **Dynamic UI synchronisation** — implementing event listeners to sync hover, click, and time-filtering across the timeline, maps, and detail panel.
 
 ---
 
