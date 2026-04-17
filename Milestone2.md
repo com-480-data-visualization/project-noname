@@ -38,6 +38,7 @@ Clicking on a country opens a per-country breakdown of Ukraine Support Tracker d
 
 The visualisations include a donut chart for aid composition, a stacked bar chart for the monthly time series, and summary stat cards — all in D3 (Lecture 4.2). Lecture 6 is also key for this visualization. Lecture 11 will again be relevant for the time series and ranking charts.
 
+![Country in-depth panel](figures/milestone%202/country.png)
 ### 6. General Statistics Page
 
 Aggregate war statistics not tied to any specific region: global time series of conflict events and fatalities, ranking of donor countries by total aid and by aid/GDP, a pie chart of event types, total casualties, and a scatterplot of monthly attack intensity versus prior-month international aid.
