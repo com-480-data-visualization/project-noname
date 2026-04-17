@@ -14,9 +14,11 @@ const map = L.map('map', {
   zoomControl: true,
 }).setView([48.37, 31.16], 5);   // centred on Ukraine
 
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '© OpenStreetMap contributors',
-  opacity: 0.6,
+L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png', {
+  attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors © <a href="https://carto.com/">CARTO</a>',
+  subdomains: 'abcd',
+  maxZoom: 19,
+  opacity: 0.8,
 }).addTo(map);
 
 // ── Custom panes (enable CSS opacity transitions) ───────────────────────────
