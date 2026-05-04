@@ -1,17 +1,20 @@
 /* map.js — single Leaflet map, zoom-based transition between oblast and world views */
 
-'use strict';
+'use strict'; // segnala errori di sintassi e altre problematiche potenzialmente pericolose
 
-// ── Zoom threshold ──────────────────────────────────────────────────────────
-// Below ZOOM_WORLD: world choropleth (aid). At/above ZOOM_OBLAST: oblast view (conflict).
-const ZOOM_WORLD  = 4;   // world layer fully visible
-const ZOOM_OBLAST = 5;   // oblast layer fully visible
-// Between the two values opacity fades smoothly
+// // ── Zoom threshold ──────────────────────────────────────────────────────────
+// // Below ZOOM_WORLD: world choropleth (aid). At/above ZOOM_OBLAST: oblast view (conflict).
+// const ZOOM_WORLD  = 4;   // world layer fully visible
+// const ZOOM_OBLAST = 5;   // oblast layer fully visible
+// // Between the two values opacity fades smoothly
 
 // ── Map init ────────────────────────────────────────────────────────────────
 const map = L.map('map', {
   scrollWheelZoom: true,
   zoomControl: true,
+  minZoom: 2,
+  maxBounds: [[-90, -360], [90, 360]],
+  maxBoundsViscosity: 1.0,
 }).setView([48.37, 31.16], 5);   // centred on Ukraine
 
 L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png', {
@@ -22,13 +25,22 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png'
 }).addTo(map);
 
 // ── Custom panes (enable CSS opacity transitions) ───────────────────────────
+// panes are like lucid layers that sit on top of the base map; we can control their z-index and opacity independently
 const worldPane  = map.createPane('worldPane');
 worldPane.style.zIndex    = 400;
-worldPane.style.transition = 'opacity 0.55s ease';
+worldPane.style.transition = 'opacity 0.55s ease'; // takes 0.55s to fade and does it smoothly (ease)
 
 const oblastPane = map.createPane('oblastPane');
 oblastPane.style.zIndex    = 410;
 oblastPane.style.transition = 'opacity 0.55s ease';
+
+const battlefrontPane = map.createPane('battlefrontPane');
+battlefrontPane.style.zIndex    = 420;
+battlefrontPane.style.transition = 'opacity 0.55s ease';
+
+worldPane.style.opacity       = 0;
+oblastPane.style.opacity      = 0;
+battlefrontPane.style.opacity = 0;
 
 // ── Colour helpers ──────────────────────────────────────────────────────────
 const AID_COLORS = [
@@ -38,11 +50,11 @@ const AID_COLORS = [
 
 function aidColor(total) {
   if (!total || total === 0) return '#1e2d3d';
-  const scale = d3.scaleLog()
-    .domain([1e8, 5e11])
-    .range([0, AID_COLORS.length - 1])
-    .clamp(true);
-  return AID_COLORS[Math.round(scale(total))];
+  const scale = d3.scaleLog() // creates log function
+    .domain([1e7, 5e11]) // its domain
+    .range([0, AID_COLORS.length - 1]) // its image
+    .clamp(true); // if value is outside the domain, it will be clamped to the nearest limit (instead of extrapolating the log function)
+  return AID_COLORS[Math.round(scale(total))]; // applies it to total and rounds to nearest integer to get the index of the color in the AID_COLORS array
 }
 
 const CONFLICT_COLORS = ['#fffde7', '#ffeb3b', '#ff9800', '#f44336', '#7f0000'];
@@ -57,11 +69,13 @@ function conflictColor(events) {
 }
 
 // ── Tooltip ─────────────────────────────────────────────────────────────────
+// take elements created in index.html
 const tooltip = document.getElementById('map-tooltip');
-const ttName  = document.getElementById('tt-name');
+const ttName  = document.getElementById('tt-name'); // tt stands for tooltip
 const ttValue = document.getElementById('tt-value');
 const ttHint  = document.getElementById('tt-hint');
 
+// hide and show tooltip (says css to make it visible or not)
 function showTooltip(name, value, hint) {
   ttName.textContent  = name;
   ttValue.textContent = value;
@@ -71,17 +85,17 @@ function showTooltip(name, value, hint) {
 function hideTooltip() { tooltip.classList.remove('visible'); }
 
 // ── Number formatters ───────────────────────────────────────────────────────
-function fmtEur(v) {
+function fmtEur(v) { // fromats numbers as euros, adding T,B,M for trillions, billions and millions to avoid long numbers
   if (v >= 1e12) return '€' + (v / 1e12).toFixed(1) + ' T';
   if (v >= 1e9)  return '€' + (v / 1e9).toFixed(1) + ' B';
   if (v >= 1e6)  return '€' + (v / 1e6).toFixed(0) + ' M';
   return '€' + v.toFixed(0);
-}
-function fmtNum(v) { return v.toLocaleString('en-US'); }
+} 
+function fmtNum(v) { return v.toLocaleString('en-US'); } // introduces commas as thousand separators
 
 // ── Navigation to detail pages ──────────────────────────────────────────────
-function goToCountry(name) {
-  window.location.href = 'country.html?country=' + encodeURIComponent(name);
+function goToCountry(name) { 
+  window.location.href = 'country.html?country=' + encodeURIComponent(name); // encodeURIComponent is used to make sure that the country name is properly encoded for use in a URL, handling spaces and special characters
 }
 
 function goToOblast(country, oblast) {
@@ -90,6 +104,7 @@ function goToOblast(country, oblast) {
 }
 
 // ── Name normalisers ────────────────────────────────────────────────────────
+// Three functions to normalize oblast or country names between the different datasets
 const COUNTRY_NAME_FIXES = {
   'United States of America': 'United States',
   'Republic of Korea':        'South Korea',
@@ -101,7 +116,7 @@ const COUNTRY_NAME_FIXES = {
   'North Macedonia':          'North Macedonia',
   'The Bahamas':              'Bahamas',
 };
-function normaliseCountry(name) { return COUNTRY_NAME_FIXES[name] || name; }
+function normaliseCountry(name) { return COUNTRY_NAME_FIXES[name] || name; } // replaces name with that in country_name_fixes if it is in there, otherwise keeps it the same
 
 const UA_NAME_FIXES = {
   'Autonomous Republic of Crimea': 'Crimea',
@@ -110,8 +125,8 @@ const UA_NAME_FIXES = {
   'Sevastopol':                    'Sevastopol',
 };
 function normaliseUkraineOblast(shapeName) {
-  if (UA_NAME_FIXES[shapeName]) return UA_NAME_FIXES[shapeName];
-  return shapeName.replace(' Oblast', '').trim();
+  if (UA_NAME_FIXES[shapeName]) return UA_NAME_FIXES[shapeName]; // for those in the dictionary, return the fixed name
+  return shapeName.replace(' Oblast', '').trim(); // for hte others removes the word "Oblast" and any extra spaces at the beginning or end of the name
 }
 
 const RU_NAME_FIXES = {
@@ -166,11 +181,8 @@ function buildLegend(mode) {
   const body  = document.getElementById('legend-body');
   body.innerHTML = '';
 
-  const hint = document.getElementById('zoom-hint-text');
-
   if (mode === 'conflict') {
     title.textContent = 'Conflict events';
-    hint.textContent  = 'Zoom out to see global aid';
     [
       { label: 'None',    color: 'rgba(255,255,255,0.15)' },
       { label: '< 100',   color: CONFLICT_COLORS[1] },
@@ -183,9 +195,16 @@ function buildLegend(mode) {
       row.innerHTML = `<span class="legend-swatch" style="background:${b.color}"></span>${b.label}`;
       body.appendChild(row);
     });
+  } else if (mode === 'battlefront') {
+    title.textContent = 'Battlefront';
+    const note = document.createElement('div');
+    note.className = 'legend-row';
+    note.style.fontStyle = 'italic';
+    note.style.color = 'var(--text-muted)';
+    note.textContent = 'Coming soon';
+    body.appendChild(note);
   } else {
     title.textContent = 'Aid to Ukraine (log scale)';
-    hint.textContent  = 'Zoom in on Ukraine to see conflict events';
     [
       { label: 'No data',     color: '#1e2d3d' },
       { label: '< €1B',       color: AID_COLORS[1] },
@@ -201,23 +220,42 @@ function buildLegend(mode) {
   }
 }
 
-// ── Zoom-based pane opacity ─────────────────────────────────────────────────
-// CSS transition (0.55s) on the panes handles the smooth crossfade.
-function applyZoomOpacity() {
-  const z = map.getZoom();
-  // For discrete scroll-wheel zoom, CSS transition on the panes gives the smooth fade
-  if (z >= ZOOM_OBLAST) {
-    worldPane.style.opacity  = 0;
-    oblastPane.style.opacity = 1;
-  } else {
-    worldPane.style.opacity  = 1;
-    oblastPane.style.opacity = 0;
+// ── View mode switcher ───────────────────────────────────────────────────────
+let currentMode = null;
+
+function setMapMode(mode) {
+  currentMode = mode;
+  sessionStorage.setItem('mapView', mode);
+  document.querySelectorAll('.view-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.view === mode);
+  });
+
+  if (mode === 'states') {
+    worldPane.style.opacity       = 1;
+    oblastPane.style.opacity      = 0;
+    battlefrontPane.style.opacity = 0;
+    buildLegend('aid');
+  } else if (mode === 'oblasts') {
+    worldPane.style.opacity       = 0;
+    oblastPane.style.opacity      = 1;
+    battlefrontPane.style.opacity = 0;
+    map.flyTo([48.37, 31.16], 5, { duration: 1.2 });
+    buildLegend('conflict');
+  } else if (mode === 'battlefront') {
+    worldPane.style.opacity       = 0;
+    oblastPane.style.opacity      = 0;
+    battlefrontPane.style.opacity = 1;
+    map.flyTo([48.37, 31.16], 6, { duration: 1.2 });
+    buildLegend('battlefront');
   }
-  buildLegend(z >= ZOOM_OBLAST ? 'conflict' : 'aid');
 }
 
-// zoomend fires once per zoom change; CSS transition on the panes handles the smooth fade
-map.on('zoomend', applyZoomOpacity);
+document.querySelectorAll('.view-btn').forEach(btn => {
+  btn.addEventListener('click', e => {
+    e.stopPropagation();
+    setMapMode(btn.dataset.view);
+  });
+});
 
 // ── Load data ───────────────────────────────────────────────────────────────
 Promise.all([
@@ -356,8 +394,8 @@ Promise.all([
     },
   }).addTo(map);
 
-  // ── Initial opacity + legend ─────────────────────────────────────────────
-  applyZoomOpacity();
+  // ── Initial mode ─────────────────────────────────────────────────────────
+  setMapMode(sessionStorage.getItem('mapView') || 'states');
 
 }).catch(err => {
   console.error('Failed to load map data:', err);

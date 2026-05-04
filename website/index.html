@@ -24,6 +24,7 @@
   <header class="site-header">
     <h1>Ukraine Conflict <span>Data Dashboard</span></h1>
     <nav class="header-nav">
+      <a href="statistics.html">Conflict Overview</a>
       <a href="index.html">Map</a>
       <a href="https://acleddata.com/" target="_blank">ACLED</a>
       <a href="https://www.ifw-kiel.de/publications/ukraine-support-tracker-data-6453/" target="_blank">Support Tracker</a>
@@ -49,16 +50,23 @@
       <div class="map-area">
         <div id="map"></div>
 
-        <!-- Legend overlay (switches content based on zoom) -->
+        <!-- View switcher -->
+        <div id="view-switcher">
+          <button class="view-btn" data-view="states">States</button>
+          <button class="view-btn" data-view="oblasts">Oblasts</button>
+          <button class="view-btn" data-view="battlefront">Battlefront</button>
+        </div>
+
+        <!-- Legend overlay (switches content based on view) -->
         <div id="map-legend" class="map-legend">
           <h4 id="legend-title">Conflict events</h4>
           <div id="legend-body"></div>
         </div>
 
         <!-- Zoom hint -->
-        <div id="zoom-hint">
+        <!-- <div id="zoom-hint">
           <span id="zoom-hint-text">Zoom out to see global aid</span>
-        </div>
+        </div> -->
 
         <!-- Hover tooltip -->
         <div id="map-tooltip">
