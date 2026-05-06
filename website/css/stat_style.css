@@ -1,0 +1,221 @@
+/* ============================================================
+   Ukraine Visualization — Statistics Page Dedicated Styles
+   ============================================================ */
+
+:root {
+  --bg-dark:      #0d1520;
+  --bg-panel:     #131f30;
+  --bg-card:      rgba(255,255,255,0.06);
+  --border:       rgba(255,255,255,0.10);
+  --accent-yellow:#ffd700;
+  --text-primary: #e8ecf0;
+  --text-muted:   #8a9ab0;
+  --red:          #c0392b;
+  --font:         system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body { 
+  background: var(--bg-dark); 
+  color: var(--text-primary); 
+  font-family: var(--font);
+  line-height: 1.5;
+}
+
+/* ── Header (Maintain common styles) ── */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  height: 52px;
+  background: var(--bg-panel);
+  border-bottom: 1px solid var(--border);
+}
+.site-header h1 { font-size: 1rem; color: var(--accent-yellow); }
+.site-header h1 span { color: var(--text-muted); font-weight: 400; }
+.header-nav { display: flex; gap: 20px; }
+.header-nav a { font-size: 0.82rem; color: var(--text-muted); text-decoration: none; }
+.header-nav a:hover { color: var(--text-primary); }
+
+/* ── Main Container ── */
+.page-detail {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 24px;
+}
+
+.detail-heading { font-size: 1.8rem; font-weight: 700; margin-bottom: 8px; }
+.detail-sub { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 32px; }
+
+/* ── Top Summary Card ── */
+.stats-row {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 36px;
+  flex-wrap: wrap;
+}
+.stat-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+  flex: 1;
+  min-width: 250px;
+}
+.sc-label { font-size: 0.72rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px; }
+.sc-value { font-size: 1.8rem; font-weight: 700; color: var(--accent-yellow); }
+.sc-unit { font-size: 0.8rem; color: var(--text-muted); }
+
+/* ── Integrated Support Analysis Section (Key Layout) ── */
+.combined-layout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  height: 360px;
+  margin-top: 15px;
+}
+
+/* Donut chart container (small and left) */
+#aid-donut-container {
+  flex: 0.7; 
+  min-width: 260px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Time series graph container (widely expandable) */
+#aid-line-container {
+  flex: 1.6;
+  min-width: 450px;
+}
+
+/* Center legend column */
+.legend-column {
+  width: 140px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  max-height: 350px;
+  overflow-y: auto;
+}
+
+/* Legend items and highlight effects */
+.legend-item {
+  cursor: pointer;
+  font-size: 11px;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+  padding: 4px;
+}
+.legend-item:hover, .legend-item.active {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+.legend-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+
+#ranking-table {
+    width: 100%;
+    height: auto; 
+    overflow: hidden !important; 
+    flex-grow: 1;  
+}
+
+/* Optimize card internal margins */
+.bottom-charts-row .chart-card {
+    height: 480px; 
+    padding: 20px 20px 10px 20px; 
+    display: flex;
+    flex-direction: column;
+}
+
+/* ── Chart Card Common Styles ── */
+.chart-card {
+  min-height: 360px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px 24px;
+}
+.chart-card h3 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.chart-guide {
+  font-size: 10px;
+  color: #64748b;
+  font-style: italic;
+}
+
+/* ── Bottom Grid Layout ── */
+.charts-row {
+  display: grid;
+  grid-template-columns: 3.5fr 6.5fr;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+.charts-row.split-equal {
+  grid-template-columns: 1fr 1fr 1fr;  
+}
+
+.event-legend-item {
+  transition: opacity 0.3s ease;
+}
+.event-legend-item.active {
+  font-weight: bold;
+}
+
+/* Adjust the ratio of the bottom 3 card rows */
+.bottom-charts-row {
+    display: grid;
+    grid-template-columns: 1fr 0.8fr 2.2fr; 
+    gap: 20px;
+    margin-top: 24px;
+}
+
+/* Fix card height to maintain alignment */
+.bottom-charts-row .chart-card {
+    height: 480px;  
+    display: flex;
+    flex-direction: column;
+}
+
+/* ── D3 Common Elements (Tooltip, Axis, Grid) ── */
+.chart-tooltip {
+  position: absolute;
+  padding: 10px;
+  background: rgba(10, 15, 25, 0.95);
+  border: 1px solid #334155;
+  color: #fff;
+  border-radius: 5px;
+  font-size: 11px;
+  pointer-events: none;
+  z-index: 1000;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+.tooltip-date { border-bottom: 1px solid #334155; display: block; margin-bottom: 5px; padding-bottom: 3px; font-weight: bold; }
+.mouse-line { stroke: #475569; stroke-width: 1px; stroke-dasharray: 4,4; }
+.axis text { fill: var(--text-muted); font-size: 10px; }
+.grid line { stroke: var(--border); stroke-opacity: 0.5; }
+
+/* ── Responsive ── */
+@media (max-width: 1100px) {
+  .combined-layout { flex-direction: column; height: auto; gap: 30px; }
+  #aid-donut-container, #aid-line-container, .legend-column { width: 100%; flex: none; }
+  .legend-column { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+}

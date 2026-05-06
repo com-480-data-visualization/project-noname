@@ -1,15 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Overall statistics — Ukraine Dashboard</title>
-  <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <title>Ukraine Visualization | Overall Stats</title>
+    <!-- Leaflet & D3.js  -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link rel="stylesheet" href="css/stat_style.css">
 </head>
-<body>
-  <header>
-    <h1></h1>
-  </header>
+<body class="page-home">
+
+    <header class="site-header">
+        <h1>Ukraine Visualization <span>| Overall Stats</span></h1>
+        <nav class="header-nav">
+            <a href="index.html">Map View</a>
+            <a href="statistics.html" style="color: var(--accent-yellow);">Statistics</a>
+        </nav>
+    </header>
+
+    <main class="page-detail">
+        <h2 class="detail-heading">Overall Conflict Statistics</h2>
+        <p class="detail-sub">Summary of Overall Support Status and Dispute Damage Statistics</p>
+
+        <!-- Summary Statistics Section -->
+        <section class="stats-row">
+            <div class="stat-card">
+                <div class="sc-label">Total Casualties</div>
+                <div class="sc-value" id="total-casualties">0</div>
+                <div class="sc-unit">Total confirmed deaths & injuries</div>
+            </div>
+            <div class="stat-card">
+                <div class="sc-label">Attacks Against Civilians</div>
+                <div class="sc-value" id="civilian-attacks">0</div>
+                <div class="sc-unit" id="civilian-casualties">Incidents (0 casualties)</div>
+            </div>
+            <div class="stat-card">
+                <div class="sc-label">Total Support</div>
+                <div class="sc-value" id="total-money">€0B</div>
+                <div class="sc-unit">Total financial/military aid</div>
+            </div>
+        </section>
+
+        <!-- Events by Type -->
+        <div class="charts-row" style="margin-top: 24px;">
+            <div class="chart-card">
+                <h3>Event Distribution by Type</h3>
+                    <p class="chart-guide"><span class="info-icon">ⓘ</span> Select types to see detailed amounts</p>
+                <div id="donut-event-type" style="height: 200px;"></div>
+                </div>
+            <div class="chart-card">
+                <h3>EVENTS BY PARTY / TYPE</h3>
+                <div class="chart-guide-container">
+                    <p class="chart-guide"><span class="info-icon">ⓘ</span> Select legend labels to filter data</p>
+                </div>
+                <div id="ts-events" class="chart-container" style="height: 250px;"></div>
+            </div>
+        </div>
+
+        <!-- AID ALLOCATION ANALYSIS -->
+        <div class="chart-card combined-aid-container">
+            <div class="header-group">
+                <h3>AID ALLOCATION ANALYSIS</h3>
+                <p class="chart-guide"><span class="info-icon">ⓘ</span> Click a country in the central legend to highlight data on both sides</p>
+            </div>
+
+            <div class="combined-layout">
+                <div class="side-chart" id="aid-donut-container">
+                    <div id="aid-donut" style="height: 400px;"></div>
+                </div>
+
+                <div id="central-legend" class="legend-column"></div>
+
+                <div class="side-chart" id="aid-line-container">
+                    <div id="ts-aid-cumulative" style="height: 400px;"></div>
+                </div>
+            </div>
+        </div>
+
+        
+        <!-- Rest of the data -->
+        <div class="bottom-charts-row" style="margin-top: 24px;">
+            <div class="chart-card">
+                <h3>AID ALLOCATION BY TYPE</h3>
+                <p class="chart-guide"><span class="info-icon">ⓘ</span> Hover over segments to see detailed amounts</p>
+                <div id="aid-type-donut" style="height: 300px;"></div>
+            </div>
+            <div class="chart-card">
+                <h3>Country Ranking (Aid/GDP)</h3>
+                <div id="ranking-table" style="overflow-y: auto; height: 320px;"></div>
+            </div>
+            <div class="chart-card">
+                <h3>Time Series of Deaths</h3>
+                <div class="chart-guide-container">
+                    <p class="chart-guide"><span class="info-icon">ⓘ</span> Hover over the graph for monthly details</p>
+                </div>
+                <div id="ts-deaths" style="height: 250px;"></div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/statistics.js"></script>
 </body>
 </html>
