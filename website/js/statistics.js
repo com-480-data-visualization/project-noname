@@ -89,18 +89,59 @@ function toggleEventHighlight(label) {
 
 
 
-function updateSummaryCards(oblasts, countries) {
-    const totalFatalities = d3.sum(oblasts, d => d.fatalities || 0);
-    const civilianViolence = d3.sum(oblasts, d => d.by_type?.["Violence against civilians"] || 0);
-    const totalEvents = d3.sum(oblasts, d => d.total_events || 0);
-    const totalAidEur = d3.sum(countries, d => d.total_eur || 0);
+/**
+ * Aggregates conflict statistics and updates the macro summary dashboard cards.
+ */
+function updateSummaryCards(oblastsArray, countriesArray) {
+    let totalCasualties = 0;
+    let battlesCount = 0;
+    let explosionsCount = 0;
+    let civilianAttacksCount = 0;
 
-    document.getElementById('total-casualties').innerText = totalFatalities.toLocaleString();
-    document.getElementById('civilian-attacks').innerText = civilianViolence.toLocaleString();
-    document.getElementById('civilian-casualties').innerText = 
-        `${totalEvents.toLocaleString()} Total Events (${civilianViolence.toLocaleString()} Civilian Violence)`;
+    oblastsArray.forEach(oblast => {
+        if (!oblast) return;
+
+        // 1. Calculate total casualties from monthly object or total death fallback
+        if (oblast.monthly) {
+            Object.values(oblast.monthly).forEach(count => {
+                totalCasualties += (+count || 0);
+            });
+        } else {
+            totalCasualties += (+oblast.total_deaths || +oblast.deaths || 0);
+        }
+
+        // 2. Aggregate counts by conflict type (handles both aggregated object and raw arrays)
+        if (oblast.by_type) {
+            battlesCount += (oblast.by_type["Battles"] || oblast.by_type["battles"] || 0);
+            
+            explosionsCount += (oblast.by_type["Explosions"] || 
+                                 oblast.by_type["Explosions/Remote violence"] || 
+                                 oblast.by_type["explosions"] || 0);
+            
+            civilianAttacksCount += (oblast.by_type["Violence against civilians"] || 
+                                     oblast.by_type["Civilian violence"] || 
+                                     oblast.by_type["civilian_violence"] || 0);
+        } else if (oblast.events && Array.isArray(oblast.events)) {
+            oblast.events.forEach(ev => {
+                if (ev.event_type === "Battles") battlesCount++;
+                else if (ev.event_type === "Explosions" || ev.event_type === "Explosions/Remote violence") explosionsCount++;
+                else if (ev.event_type === "Violence against civilians") civilianAttacksCount++;
+            });
+        }
+    });
+
+    // 3. Calculate total financial and military support
+    const totalAidEur = countriesArray.reduce((sum, c) => sum + (c.total_eur || 0), 0);
+
+    // 4. Bind finalized metrics directly to the DOM interface
+    d3.select("#total-casualties").text(totalCasualties.toLocaleString());
+    d3.select("#total-money").text("€" + (totalAidEur / 1000000000).toFixed(1) + "B");
+
+    d3.select("#explosions-attacks").text(explosionsCount.toLocaleString());
+    d3.select("#battles-attacks").text(battlesCount.toLocaleString());
+    d3.select("#civilian-attacks").text(civilianAttacksCount.toLocaleString());
     
-    document.getElementById('total-money').innerText = `€${(totalAidEur / 1000000000).toFixed(1)}B`;
+    d3.select("#civilian-casualties").text(`${civilianAttacksCount.toLocaleString()} Incidents Total`);
 }
 
 /**

@@ -30,20 +30,33 @@
     </div>
 
     <div id="data-section">
-      <div class="stats-row">
-        <div class="stat-card">
+      <div class="stats-row" style="display: flex; gap: 15px; flex-wrap: wrap;">
+        <div class="stat-card" style="flex: 1; min-width: 180px;">
           <div class="sc-label">Total aid pledged</div>
           <div class="sc-value" id="stat-total">–</div>
           <div class="sc-unit">EUR (approx.)</div>
         </div>
-        <div class="stat-card">
+        
+        <div class="stat-card" style="flex: 1; min-width: 150px;">
+          <div class="sc-label">Global Rank</div>
+          <div class="sc-value" id="stat-rank" style="color: var(--accent-yellow);">–</div>
+          <div class="sc-unit" id="stat-rank-suffix">in total support</div>
+        </div>
+
+        <div class="stat-card" style="flex: 1; min-width: 150px;">
+          <div class="sc-label">Aid over GDP</div>
+          <div class="sc-value" id="stat-gdp-ratio" style="color: var(--accent-yellow);">–</div>
+          <div class="sc-unit">of national GDP (%)</div>
+        </div>
+
+        <div class="stat-card" style="flex: 1; min-width: 150px;">
           <div class="sc-label">Aid packages</div>
           <div class="sc-value" id="stat-n">–</div>
           <div class="sc-unit">recorded commitments</div>
         </div>
-        <div class="stat-card">
+        <div class="stat-card" style="flex: 1; min-width: 150px;">
           <div class="sc-label">Largest category</div>
-          <div class="sc-value" id="stat-top">–</div>
+          <div class="sc-value" id="stat-top" style="font-size: 1.15rem; line-height: 2.2rem;">–</div>
           <div class="sc-unit">by EUR value</div>
         </div>
       </div>

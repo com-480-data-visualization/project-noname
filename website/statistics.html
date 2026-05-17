@@ -23,23 +23,40 @@
         <p class="detail-sub">Summary of Overall Support Status and Dispute Damage Statistics</p>
 
         <!-- Summary Statistics Section -->
-        <section class="stats-row">
-            <div class="stat-card">
-                <div class="sc-label">Total Casualties</div>
-                <div class="sc-value" id="total-casualties">0</div>
-                <div class="sc-unit">Total confirmed deaths & injuries</div>
-            </div>
-            <div class="stat-card">
-                <div class="sc-label">Attacks Against Civilians</div>
-                <div class="sc-value" id="civilian-attacks">0</div>
-                <div class="sc-unit" id="civilian-casualties">Incidents (0 casualties)</div>
-            </div>
-            <div class="stat-card">
-                <div class="sc-label">Total Support</div>
-                <div class="sc-value" id="total-money">€0B</div>
-                <div class="sc-unit">Total financial/military aid</div>
-            </div>
-        </section>
+        <div class="stats-matrix" style="margin-bottom: 32px;">
+    
+            <section class="stats-row" style="margin-bottom: 20px;">
+                <div class="stat-card">
+                    <div class="sc-label">Total Casualties</div>
+                    <div class="sc-value" id="total-casualties">0</div>
+                    <div class="sc-unit">Total confirmed deaths & injuries</div>
+                </div>
+                <div class="stat-card">
+                    <div class="sc-label">Total Support</div>
+                    <div class="sc-value" id="total-money">€0B</div>
+                    <div class="sc-unit">Total financial/military aid</div>
+                </div>
+            </section>
+
+            <section class="stats-row">
+                <div class="stat-card">
+                    <div class="sc-label">Explosions / Remote Violence</div>
+                    <div class="sc-value" id="explosions-attacks">0</div>
+                    <div class="sc-unit">Air strikes, shelling, and drone drops</div>
+                </div>
+                <div class="stat-card">
+                    <div class="sc-label">Battles</div>
+                    <div class="sc-value" id="battles-attacks">0</div>
+                    <div class="sc-unit">Armed clashes and ground combats</div>
+                </div>
+                <div class="stat-card">
+                    <div class="sc-label">Attacks Against Civilians</div>
+                    <div class="sc-value" id="civilian-attacks">0</div>
+                    <div class="sc-unit" id="civilian-casualties">0 Incidents (0 casualties)</div>
+                </div>
+            </section>
+
+        </div>
 
         <!-- Events by Type -->
         <div class="charts-row" style="margin-top: 24px;">
