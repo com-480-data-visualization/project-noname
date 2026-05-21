@@ -583,7 +583,7 @@ a:hover {
     color: var(--accent-yellow);
 }
 
-#battlefront-controls {
+#bf-controls {
     position: absolute;
     top: 72px;
     right: 16px;
@@ -598,31 +598,31 @@ a:hover {
     pointer-events: none;
     transition: opacity 0.3s ease, transform 0.3s ease;
 
-    width: 330px;
+    width: 280px;
     padding: 10px 12px;
     background: rgba(8, 18, 32, 0.94);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
 
-    color: #e8ecf0;
+    color: #fff;
     font-size: 14px;
 }
 
-#battlefront-controls.visible {
+#bf-controls.visible {
     opacity: 1;
     transform: translateY(0);
     pointer-events: auto;
 }
 
-#battlefront-controls label {
+#bf-controls label {
     display: flex;
     align-items: center;
     gap: 8px;
-    color: #9aa8b8;
+    color: #fff;
 }
 
-#battlefront-controls input[type="month"] {
+#bf-controls input[type="month"] {
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.12);
     outline: none;
@@ -636,7 +636,7 @@ a:hover {
     min-width: 120px;
 }
 
-#battlefront-controls input[type="checkbox"] {
+#bf-controls input[type="checkbox"] {
     appearance: auto;
     -webkit-appearance: checkbox;
 
@@ -648,20 +648,83 @@ a:hover {
     cursor: pointer;
 }
 
-#battlefront-controls input[type="month"]::-webkit-calendar-picker-indicator {
+#bf-controls input[type="month"]::-webkit-calendar-picker-indicator {
     filter: invert(1);
     opacity: 0.8;
     cursor: pointer;
 }
 
-#battlefront-controls select {
+#bf-controls select {
     cursor: pointer;
     min-width: 180px;
 }
 
-#battlefront-controls select option {
+#bf-controls select option {
     background: #0b1624;
     color: #ffffff;
+}
+
+.bf-render-row {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    color: #fff;
+}
+
+.bf-render-row label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 12px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.bf-render-row input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid #64748b;
+    background: transparent;
+    display: grid;
+    place-items: center;
+}
+
+.bf-render-row input[type="radio"]::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ffd700;
+    transform: scale(0);
+    transition: transform 0.2s ease;
+}
+
+.bf-render-row input[type="radio"]:checked {
+    border-color: #ffd700;
+}
+
+.bf-render-row input[type="radio"]:checked::before {
+    transform: scale(1);
+}
+
+.bf-frontline-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: -4px;
+    margin-bottom: 2px;
+    justify-content: center;
+    color: #fff;
+    font-weight: 500;
+
 }
 
 .bf-month-row {
@@ -740,7 +803,7 @@ a:hover {
     border-top: 1px solid rgba(255, 255, 255, 0.08);
 
     font-size: 13px;
-    color: #cbd5e1;
+    color: #fff;
     line-height: 1.5;
 }
 
@@ -751,7 +814,7 @@ a:hover {
 }
 
 .bf-stat-label {
-    color: #94a3b8;
+    color: #fff;
 }
 
 .bf-display-mode {
@@ -825,43 +888,45 @@ a:hover {
 
 .bf-playback {
     display: flex;
-    flex-direction: column;
-    gap: 8px;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
 }
 
 #bf-play {
-    width: 100%;
-    height: 36px;
+    width: 50px;
+    height: 32px;
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     background: rgba(255, 215, 0, 0.10);
     border: 1px solid rgba(255, 215, 0, 0.45);
     color: #ffd700;
     border-radius: 10px;
-
-    font-size: 14px;
-    font-weight: 700;
     cursor: pointer;
 }
 
 .bf-speed-row {
     display: flex;
     align-items: center;
-    gap: 8px;
-    width: 100%;
+    gap: 12px;
+    width: max-content;
 }
 
 .bf-speed-row span {
     flex-shrink: 0;
-    color: #cbd5e1;
+    color: #fff;
     font-size: 14px;
 }
 
-#bf-speed {
-    flex: 1;
+.bf-playback #bf-speed {
+    flex: none !important;
+    width: max-content !important;
     min-width: 0;
-    width: 100%;
-
-    box-sizing: border-box;
+    height: 32px;
 
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.14);

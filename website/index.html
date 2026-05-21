@@ -71,23 +71,24 @@
                 <button id="map-export">Export View</button>
 
                 <!-- Battlefront controls -->
-                <div id="battlefront-controls">
-                    <div class="bf-display-mode">
+                <div id="bf-controls">
+                    <div class="bf-render-row">
                         <label>
+
                             <input type="radio" name="bf-render-mode" value="points" checked>
-                            Points
+                            <span>Points</span>
                         </label>
 
                         <label>
                             <input type="radio" name="bf-render-mode" value="density">
-                            Density
-                        </label>
-                        <label>
-                            <input type="checkbox" id="bf-frontline-toggle">
-                            Frontline
-
+                            <span>Density</span>
                         </label>
                     </div>
+
+                    <label class="bf-frontline-row">
+                        <input type="checkbox" id="bf-frontline-toggle">
+                        <span>Frontline</span>
+                    </label>
 
                     <label class="bf-month-row">
                         Month:
@@ -123,7 +124,7 @@
                     <label class="bf-compare-row">
                         <input type="checkbox" id="bf-compare-toggle">
                         <span class="comparison-dot"></span>
-                        Compare with another month
+                        Compare months
                     </label>
 
                     <label class="bf-month-row" id="bf-compare-month-row">
@@ -134,7 +135,11 @@
                     <div id="bf-stats"></div>
 
                     <div class="bf-playback">
-                        <button id="bf-play">Play</button>
+                        <button id="bf-play" aria-label="Play">
+                            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                                <path d="M8 5v14l11-7z" />
+                            </svg>
+                        </button>
 
                         <label class="bf-speed-row">
                             <span>Speed:</span>

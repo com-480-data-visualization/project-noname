@@ -31,6 +31,7 @@ let battlefrontHeatLayer = null;
 let playbackTimer = null;
 let isPlaying = false;
 let activeHeatLayer = null;
+let dbscanLayer = null;
 
 // ── Custom panes (enable CSS opacity transitions) ───────────────────────────
 // panes are like lucid layers that sit on top of the base map; we can control their z-index and opacity independently
@@ -258,7 +259,7 @@ function setMapMode(mode) {
     }
 
     // Show battlefront controls only in battlefront mode
-    const bfControls = document.getElementById('battlefront-controls');
+    const bfControls = document.getElementById('bf-controls');
     if (bfControls) {
         bfControls.classList.toggle('visible', mode === 'battlefront');
     }
@@ -274,6 +275,10 @@ function setMapMode(mode) {
         battlefrontPane.style.opacity = 0;
 
         if (battlefrontLayer) map.removeLayer(battlefrontLayer);
+        if (activeHeatLayer && map.hasLayer(activeHeatLayer)) {
+            map.removeLayer(activeHeatLayer);
+            activeHeatLayer = null;
+        }
 
         map.flyTo([20, 0], 2, {
             duration: 2.0,
@@ -286,6 +291,10 @@ function setMapMode(mode) {
         battlefrontPane.style.opacity = 0;
 
         if (battlefrontLayer) map.removeLayer(battlefrontLayer);
+        if (activeHeatLayer && map.hasLayer(activeHeatLayer)) {
+            map.removeLayer(activeHeatLayer);
+            activeHeatLayer = null;
+        }
 
         if (previousMode === 'states') {
             worldPane.style.opacity = 1;
@@ -563,6 +572,10 @@ Promise.all([
         pane: 'battlefrontPane'
     });
 
+    dbscanLayer = L.layerGroup([], {
+        pane: 'battlefrontPane'
+    });
+
     const months = Object.keys(eventsByMonth).sort();
     const monthInput = document.getElementById('bf-month');
 
@@ -609,6 +622,10 @@ Promise.all([
         if (renderMode !== 'density' && activeHeatLayer && map.hasLayer(activeHeatLayer)) {
             map.removeLayer(activeHeatLayer);
             activeHeatLayer = null;
+        }
+
+        if (dbscanLayer && !map.hasLayer(dbscanLayer)) {
+            dbscanLayer.addTo(map);
         }
 
         const monthInput = document.getElementById('bf-month');
@@ -694,10 +711,128 @@ Promise.all([
             });
         }
 
+        function drawDbscanFronts(events) {
+            dbscanLayer.clearLayers();
+
+            const battleEvents = events.filter(e =>
+                e.type === 'Battles' && e.lat && e.lon
+            );
+
+            if (battleEvents.length < 8) return;
+
+            const maxDistanceKm = 65;
+            const minPoints = 6;
+
+            const visited = new Set();
+            const clustered = new Set();
+            const clusters = [];
+
+            function distanceKm(a, b) {
+                return turf.distance(
+                    turf.point([a.lon, a.lat]),
+                    turf.point([b.lon, b.lat]),
+                    { units: 'kilometers' }
+                );
+            }
+
+            function regionQuery(point) {
+                return battleEvents.filter(other =>
+                    distanceKm(point, other) <= maxDistanceKm
+                );
+            }
+
+            function expandCluster(point, neighbors, cluster) {
+                cluster.push(point);
+                clustered.add(point);
+
+                let i = 0;
+                while (i < neighbors.length) {
+                    const neighbor = neighbors[i];
+
+                    if (!visited.has(neighbor)) {
+                        visited.add(neighbor);
+
+                        const neighborNeighbors = regionQuery(neighbor);
+
+                        if (neighborNeighbors.length >= minPoints) {
+                            neighbors = neighbors.concat(
+                                neighborNeighbors.filter(n => !neighbors.includes(n))
+                            );
+                        }
+                    }
+
+                    if (!clustered.has(neighbor)) {
+                        cluster.push(neighbor);
+                        clustered.add(neighbor);
+                    }
+
+                    i++;
+                }
+            }
+
+            battleEvents.forEach(point => {
+                if (visited.has(point)) return;
+
+                visited.add(point);
+
+                const neighbors = regionQuery(point);
+
+                if (neighbors.length < minPoints) return;
+
+                const cluster = [];
+                expandCluster(point, neighbors, cluster);
+                clusters.push(cluster);
+            });
+
+            clusters.forEach(cluster => {
+                if (cluster.length < 8) return;
+
+                const points = turf.featureCollection(
+                    cluster.map(e => turf.point([e.lon, e.lat]))
+                );
+
+                let hull = turf.concave(points, {
+                    maxEdge: 75,
+                    units: 'kilometers'
+                });
+
+                if (!hull) return;
+
+                // Smooth/soften shape
+                hull = turf.buffer(hull, 12, {
+                    units: 'kilometers'
+                });
+
+                hull = turf.simplify(hull, {
+                    tolerance: 0.06,
+                    highQuality: true
+                });
+
+                L.geoJSON(hull, {
+                    pane: 'battlefrontPane',
+                    style: {
+                        color: '#ffd700',
+                        weight: 2,
+                        opacity: 0.85,
+                        fillColor: '#ff4d4d',
+                        fillOpacity: 0.12,
+                        dashArray: '6 4'
+                    }
+                }).addTo(dbscanLayer);
+            });
+        }
+
         const events = eventsByMonth[selectedMonth] || [];
         const filtered = events.filter(e => selectedTypes.includes(e.type));
 
         drawEvents(filtered, false);
+
+        const dbscanToggle = document.getElementById('bf-frontline-toggle');
+        if (dbscanToggle && dbscanToggle.checked) {
+            drawDbscanFronts(filtered);
+        } else {
+            dbscanLayer.clearLayers();
+        }
 
         const statsBox = document.getElementById('bf-stats');
 
@@ -751,24 +886,25 @@ Promise.all([
 
     const playBtn = document.getElementById('bf-play');
 
+    const playIcon = `<svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>`;
+    const pauseIcon = `<svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>`;
+
     function startPlaybackTimer() {
         clearInterval(playbackTimer);
 
         playbackTimer = setInterval(() => {
             const currentIndex = months.indexOf(monthInput.value);
             const nextIndex = currentIndex + 1;
-
             if (nextIndex >= months.length) {
                 clearInterval(playbackTimer);
                 playbackTimer = null;
                 isPlaying = false;
-                playBtn.textContent = 'Play';
+                playBtn.innerHTML = playIcon;
+                playBtn.setAttribute('aria-label', 'Play');
                 return;
             }
-
             monthInput.value = months[nextIndex];
             updateBattlefrontMap();
-
         }, Number(document.getElementById('bf-speed').value));
     }
 
@@ -778,15 +914,17 @@ Promise.all([
                 clearInterval(playbackTimer);
                 playbackTimer = null;
                 isPlaying = false;
-                playBtn.textContent = 'Play';
+
+                playBtn.innerHTML = playIcon;
+                playBtn.setAttribute('aria-label', 'Play');
                 return;
             }
-
             isPlaying = true;
-            playBtn.textContent = 'Pause';
-
+            playBtn.innerHTML = pauseIcon;
+            playBtn.setAttribute('aria-label', 'Pause');
             startPlaybackTimer();
         });
+
         document.getElementById('bf-speed').addEventListener('change', () => {
             if (isPlaying) {
                 startPlaybackTimer();
