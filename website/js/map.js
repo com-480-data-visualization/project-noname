@@ -248,6 +248,7 @@ function buildLegend(mode) {
 let currentMode = null;
 
 function setMapMode(mode) {
+    const previousMode = currentMode;
     currentMode = mode;
     sessionStorage.setItem('mapView', mode);
 
@@ -259,7 +260,7 @@ function setMapMode(mode) {
     // Show battlefront controls only in battlefront mode
     const bfControls = document.getElementById('battlefront-controls');
     if (bfControls) {
-        bfControls.style.display = mode === 'battlefront' ? 'flex' : 'none';
+        bfControls.classList.toggle('visible', mode === 'battlefront');
     }
 
     document.querySelectorAll('.view-btn').forEach(btn => {
@@ -274,33 +275,86 @@ function setMapMode(mode) {
 
         if (battlefrontLayer) map.removeLayer(battlefrontLayer);
 
+        map.flyTo([20, 0], 2, {
+            duration: 2.0,
+            easeLinearity: 0.9
+        });
+
         buildLegend('aid');
 
     } else if (mode === 'oblasts') {
-        worldPane.style.opacity = 0;
-        oblastPane.style.opacity = 1;
         battlefrontPane.style.opacity = 0;
 
         if (battlefrontLayer) map.removeLayer(battlefrontLayer);
 
-        map.flyTo([48.37, 31.16], 5, { duration: 1.2 });
+        if (previousMode === 'states') {
+            worldPane.style.opacity = 1;
+            oblastPane.style.opacity = 0;
+
+            map.flyTo([48.37, 31.16], 5, {
+                duration: 0.8,
+                easeLinearity: 0.25
+            });
+
+            setTimeout(() => {
+                worldPane.style.opacity = 0;
+                oblastPane.style.opacity = 1;
+            }, 700);
+
+        } else {
+            worldPane.style.opacity = 0;
+            oblastPane.style.opacity = 1;
+
+            map.flyTo([48.37, 31.16], 5, {
+                duration: 0.8,
+                easeLinearity: 0.25
+            });
+        }
 
         buildLegend('conflict');
 
     } else if (mode === 'battlefront') {
-        worldPane.style.opacity = 0;
-        oblastPane.style.opacity = 0;
-        battlefrontPane.style.opacity = 1;
 
-        if (battlefrontLayer && !map.hasLayer(battlefrontLayer)) {
-            battlefrontLayer.addTo(map);
-        }
+        if (previousMode === 'states') {
+            worldPane.style.opacity = 1;
+            oblastPane.style.opacity = 0;
+            battlefrontPane.style.opacity = 0;
 
-        map.flyTo([48.37, 31.16], 6, { duration: 1.2 });
+            map.flyTo([48.37, 31.16], 6, {
+                duration: 0.8,
+                easeLinearity: 0.25
+            });
 
+            setTimeout(() => {
+                worldPane.style.opacity = 0;
+                battlefrontPane.style.opacity = 1;
 
-        if (updateBattlefrontMap) {
-            updateBattlefrontMap();
+                if (battlefrontLayer && !map.hasLayer(battlefrontLayer)) {
+                    battlefrontLayer.addTo(map);
+                }
+
+                if (updateBattlefrontMap) {
+                    updateBattlefrontMap();
+                }
+            }, 700);
+
+        } else {
+            worldPane.style.opacity = 0;
+            oblastPane.style.opacity = 0;
+            battlefrontPane.style.opacity = 1;
+
+            if (battlefrontLayer && !map.hasLayer(battlefrontLayer)) {
+                battlefrontLayer.addTo(map);
+            }
+
+            map.flyTo([48.37, 31.16], 6, {
+                duration: 0.8,
+                easeLinearity: 0.25
+            });
+
+            if (updateBattlefrontMap) {
+                updateBattlefrontMap();
+            }
         }
     }
 }
@@ -309,6 +363,43 @@ document.querySelectorAll('.view-btn').forEach(btn => {
     btn.addEventListener('click', e => {
         e.stopPropagation();
         setMapMode(btn.dataset.view);
+    });
+});
+
+
+// ── Reset ─────────────────────────────────────────────────────────
+document.getElementById('map-reset').addEventListener('click', () => {
+    if (currentMode === 'states') {
+        map.flyTo([20, 0], 2, {
+            duration: 1.2,
+            easeLinearity: 0.9
+        });
+    } else if (currentMode === 'oblasts') {
+        map.flyTo([48.37, 31.16], 5, {
+            duration: 1.0,
+            easeLinearity: 0.8
+        });
+    } else if (currentMode === 'battlefront') {
+        map.flyTo([48.37, 31.16], 6, {
+            duration: 1.0,
+            easeLinearity: 0.8
+        });
+    }
+});
+
+// ── Export ─────────────────────────────────────────────────────────
+document.getElementById('map-export').addEventListener('click', () => {
+    const target = document.getElementById('map-container');
+
+    html2canvas(target, {
+        backgroundColor: null,
+        useCORS: true,
+        scale: 2
+    }).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'ukraine-conflict-dashboard.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
     });
 });
 
@@ -363,9 +454,15 @@ Promise.all([
                 if (currentMode !== 'states') return;
 
                 if (name === 'Ukraine') {
-                    map.flyToBounds(layer.getBounds(), { duration: 1.2 });
+                    map.flyToBounds(layer.getBounds(), {
+                        duration: 1.8,
+                        easeLinearity: 0.15
+                    });
                 } else if (name === 'Russia') {
-                    map.flyToBounds(layer.getBounds(), { duration: 1.4, maxZoom: 4 });
+                    map.flyToBounds(layer.getBounds(), {
+                        duration: 1.8,
+                        easeLinearity: 0.15
+                    });
                 } else {
                     goToCountry(name);
                 }
@@ -495,19 +592,15 @@ Promise.all([
 
     compareMonthInput.addEventListener('change', updateBattlefrontMap);
 
-    battlefrontHeatLayer = L.heatLayer([], {
-        pane: 'battlefrontPane',
-        radius: 15,
-        blur: 15,
-        maxZoom: 8,
-        minOpacity: 0.2,
-        gradient: {
-            0.25: 'rgba(59,130,246,0.35)',
-            0.50: 'rgba(250,204,21,0.65)',
-            0.75: 'rgba(249,115,22,0.85)',
-            1.00: 'rgba(239,68,68,1)'
-        }
-    });
+    function getBattlefrontMarkerRadius(isComparison = false) {
+        const z = map.getZoom();
+        let r;
+        if (z <= 4) r = 1.6;
+        else if (z <= 6) r = 2.5;
+        else if (z <= 8) r = 3.5;
+        else r = 5;
+        return isComparison ? r + 0.8 : r;
+    }
 
     updateBattlefrontMap = function () {
         battlefrontLayer.clearLayers();
@@ -582,16 +675,22 @@ Promise.all([
             events.forEach(e => {
                 if (!e.lat || !e.lon) return;
 
-                L.circleMarker([e.lat, e.lon], {
+                const marker = L.circleMarker([e.lat, e.lon], {
                     pane: 'battlefrontPane',
                     renderer: canvasRenderer,
-                    radius: isComparison ? 3.2 : 2.5,
+                    radius: getBattlefrontMarkerRadius(isComparison),
                     stroke: isComparison,
                     color: '#ffffff',
                     weight: isComparison ? 0.8 : 0,
                     fillColor: EVENT_TYPE_COLORS[e.type] || '#ffffff',
-                    fillOpacity: isComparison ? 0.25 : 0.55,
+                    fillOpacity: 0,
                 }).addTo(battlefrontLayer);
+
+                setTimeout(() => {
+                    marker.setStyle({
+                        fillOpacity: isComparison ? 0.25 : 0.55
+                    });
+                }, 10);
             });
         }
 
@@ -647,6 +746,9 @@ Promise.all([
     document.querySelectorAll('input[name="bf-render-mode"]')
         .forEach(r => r.addEventListener('change', updateBattlefrontMap));
 
+    document.getElementById('bf-frontline-toggle')
+        ?.addEventListener('change', updateBattlefrontMap);
+
     const playBtn = document.getElementById('bf-play');
 
     function startPlaybackTimer() {
@@ -691,6 +793,12 @@ Promise.all([
             }
         });
     }
+
+    map.on('zoomend', () => {
+        if (currentMode === 'battlefront') {
+            updateBattlefrontMap();
+        }
+    });
 
     // ── Initial mode ─────────────────────────────────────────────────────────
     setMapMode(sessionStorage.getItem('mapView') || 'states');

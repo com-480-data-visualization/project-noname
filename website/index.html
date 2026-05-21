@@ -20,6 +20,9 @@
     <!-- javascript -->
     <script src="js/map.js" defer></script>
     <script src="js/timeline.js" defer></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6/turf.min.js"></script>
 </head>
 
 <body class="page-home">
@@ -61,6 +64,12 @@
                     <button class="view-btn" data-view="battlefront">Battlefront</button>
                 </div>
 
+                <!-- Reset Button -->
+                <button id="map-reset">Reset View</button>
+
+                <!-- Export Button -->
+                <button id="map-export">Export View</button>
+
                 <!-- Battlefront controls -->
                 <div id="battlefront-controls">
                     <div class="bf-display-mode">
@@ -72,6 +81,11 @@
                         <label>
                             <input type="radio" name="bf-render-mode" value="density">
                             Density
+                        </label>
+                        <label>
+                            <input type="checkbox" id="bf-frontline-toggle">
+                            Frontline
+
                         </label>
                     </div>
 
