@@ -179,6 +179,9 @@ html, body {
 .event-legend-item.active {
   font-weight: bold;
 }
+#event-type-center-text {
+    pointer-events: none; 
+}
 
 /* Adjust the ratio of the bottom 3 card rows */
 .bottom-charts-row {

@@ -348,16 +348,15 @@ function renderEventTimeSeries(rawData) {
 /**
  * Cumulative Aid
  */
-function renderAidLineForCombined(top10, commonColor) {
+function renderAidLineForCombined(chartData, commonColor) {
     const selector = "#ts-aid-cumulative"; 
     const container = d3.select(selector);
     if (container.empty()) return;
-
     container.selectAll("*").remove();
 
-    // 1. Calculate time axis (X-axis) range
+    // 1. Data preprocessing
     const allMonths = new Set();
-    top10.forEach(c => {
+    chartData.forEach(c => {
         if (c.monthly) {
             c.monthly.forEach(m => {
                 if (m.month && m.month >= "2022-01") allMonths.add(m.month);
@@ -367,8 +366,7 @@ function renderAidLineForCombined(top10, commonColor) {
     const sortedMonths = Array.from(allMonths).sort();
     const parseTime = d3.timeParse("%Y-%m");
 
-    // 2. Cumulative data processing
-    const multiChartData = top10.map(c => {
+    const multiChartData = chartData.map(c => {
         let cumulative = 0;
         const monthlyMap = {};
         if (c.monthly) {
@@ -378,12 +376,15 @@ function renderAidLineForCombined(top10, commonColor) {
             country: c.country,
             values: sortedMonths.map(month => {
                 cumulative += (monthlyMap[month] || 0);
-                return { date: parseTime(month), value: cumulative / 1000000000 };
+                return { date: parseTime(month), value: cumulative / 1000000000 }; // 단위: B (Billions)
             })
         };
     });
 
-    // 3. Layout settings
+    // 2. Multi-selection state management
+    let selectedCountries = new Set();
+    
+    // 3. Chart Layout Settings
     const margin = {top: 30, right: 30, bottom: 40, left: 50}; 
     const width = container.node().getBoundingClientRect().width - margin.left - margin.right;
     const height = 400 - margin.top - margin.bottom; 
@@ -395,7 +396,6 @@ function renderAidLineForCombined(top10, commonColor) {
         .append("g")
         .attr("transform", `translate(${margin.left},${margin.top})`);
 
-    // 4. Scale Setting
     const x = d3.scaleTime().domain(d3.extent(sortedMonths.map(m => parseTime(m)))).range([0, width]);
     const y = d3.scaleLinear()
         .domain([0, d3.max(multiChartData, c => d3.max(c.values, v => v.value)) * 1.1])
@@ -405,78 +405,95 @@ function renderAidLineForCombined(top10, commonColor) {
         .call(d3.axisBottom(x).ticks(5).tickFormat(d3.timeFormat("%Y")).tickSize(-height));
     svg.append("g").attr("class", "axis grid").call(d3.axisLeft(y).ticks(5).tickSize(-width));
 
-    // 5. Draw Path
-    const lineGenerator = d3.line()
-        .x(d => x(d.date))
-        .y(d => y(d.value))
-        .curve(d3.curveMonotoneX);
+    // 4. Draw lines
+    const lineGenerator = d3.line().x(d => x(d.date)).y(d => y(d.value)).curve(d3.curveMonotoneX);
 
     multiChartData.forEach(d => {
         const safeName = d.country.replace(/\s+/g, '');
         svg.append("path")
-            .datum(d.values)
+            .datum(d) 
             .attr("class", `aid-line line-${safeName}`)
             .attr("fill", "none")
             .attr("stroke", commonColor(d.country)) 
             .attr("stroke-width", 2)
-            .attr("d", lineGenerator)
-            .style("cursor", "pointer");
+            .attr("d", d => lineGenerator(d.values));
     });
 
-    // Check and create tooltip elements (in case they are missing)
-    let tooltip = d3.select(".chart-tooltip");
-    if (tooltip.empty()) {
-        tooltip = d3.select("body").append("div").attr("class", "chart-tooltip").style("opacity", 0);
+    // 5. Legend Rendering
+    const legendContainer = d3.select("#central-legend");
+    legendContainer.selectAll("*").remove();
+
+    chartData.forEach(d => {
+        const item = legendContainer.append("div")
+            .attr("class", "legend-item")
+            .style("cursor", "pointer")
+            .style("padding", "5px")
+            .on("click", () => {
+                if (selectedCountries.has(d.country)) selectedCountries.delete(d.country);
+                else selectedCountries.add(d.country);
+                updateLineStyles();
+            });
+        item.append("div").attr("class", "legend-dot").style("background-color", commonColor(d.country));
+        item.append("span").text(d.country);
+    });
+
+    // 6. Multi-selection highlight control function
+    function updateLineStyles() {
+        const isNone = selectedCountries.size === 0;
+        d3.selectAll(".aid-line").transition().duration(200)
+            .style("opacity", function(d) {
+                return (isNone || selectedCountries.has(d.country)) ? 1 : 0.05;
+            })
+            .style("stroke-width", function(d) {
+                return (isNone || selectedCountries.has(d.country)) ? "4px" : "1px";
+            });
+
+        // Adjust legend transparency
+        d3.selectAll(".legend-item").style("opacity", function(d, i) {
+            const countryName = chartData[i].country;
+            return (isNone || selectedCountries.has(countryName)) ? 1 : 0.3;
+        });
     }
 
-    const mouseG = svg.append("g").attr("class", "mouse-over-effects");
-    const mouseLine = mouseG.append("line")
-        .attr("class", "mouse-line")
-        .attr("y1", 0).attr("y2", height).style("opacity", 0);
+    // 7. tooltips
+    let tooltip = d3.select(".chart-tooltip");
+    if (tooltip.empty()) tooltip = d3.select("body").append("div").attr("class", "chart-tooltip").style("opacity", 0);
 
+    const mouseG = svg.append("g").attr("class", "mouse-over-effects");
     mouseG.append("rect")
         .attr("width", width).attr("height", height).attr("fill", "none").attr("pointer-events", "all")
-        .on("mouseout", () => {
-            tooltip.style("opacity", 0);
-            mouseLine.style("opacity", 0);
-        })
+        .on("mouseout", () => tooltip.style("opacity", 0))
         .on("mousemove", function(event) {
             const [mouseX] = d3.pointer(event);
             const date = x.invert(mouseX);
             const bisect = d3.bisector(d => d.date).left;
 
-            const selectedName = window.selectedAidCountry; 
-            let tooltipContent = "";
+            let tooltipContent = `<span class="tooltip-date">${d3.timeFormat("%Y/%m")(date)}</span>`;
+            let hasData = false;
 
-            if (selectedName) {
-                tooltipContent = `<span class="tooltip-date">${d3.timeFormat("%Y/%m")(date)}</span>`;
-                const countryData = multiChartData.find(d => d.country === selectedName);
-                if (countryData) {
-                    const idx = bisect(countryData.values, date);
-                    const dataPoint = countryData.values[idx];
+            multiChartData.forEach(d => {
+                if (selectedCountries.size === 0 || selectedCountries.has(d.country)) {
+                    const idx = bisect(d.values, date);
+                    const dataPoint = d.values[idx];
                     if (dataPoint) {
-                        tooltipContent += `<div><span style="color:${commonColor(selectedName)}">●</span> ${selectedName}: <strong>€${dataPoint.value.toFixed(2)}B</strong></div>`;
+                        hasData = true;
+                        tooltipContent += `<div><span style="color:${commonColor(d.country)}">●</span> ${d.country}: <strong>€${dataPoint.value.toFixed(2)}B</strong></div>`;
                     }
                 }
-                mouseLine.attr("x1", mouseX).attr("x2", mouseX).style("opacity", 1);
-            } else {
-                tooltipContent = `<div style="text-align:center; padding: 2px;">
-                                    <strong style="color:#ffd700;">ⓘ Notice</strong><br>
-                                    Select country to view data
-                                  </div>`;
-                mouseLine.style("opacity", 0);
-            }
+            });
 
-            tooltip.style("opacity", 1).html(tooltipContent)
-                .style("left", (event.pageX + 15) + "px")
-                .style("top", (event.pageY - 28) + "px");
+            if (hasData) {
+                tooltip.style("opacity", 1)
+                    .html(tooltipContent)
+                    .style("left", (event.pageX + 15) + "px")
+                    .style("top", (event.pageY - 28) + "px");
+            }
         });
 }
 
 /**
  * Donut Chart
  */
-
 function renderAidDonut(countriesArray) {
     const selector = "#aid-type-donut"; 
     const container = d3.select(selector);
@@ -568,7 +585,12 @@ function renderAidDonut(countriesArray) {
         .attr("stroke", "#1a2634")
         .style("stroke-width", "2px")
         .style("cursor", "pointer")
-        .on("click", function(e, d) { handleAidTypeSelection(d.data.type, this); });
+        .on("mouseover", function(e, d) { 
+            if (activeAidType !== d.data.type) handleAidTypeSelection(d.data.type, this); 
+        })
+        .on("mouseout", function(e, d) { 
+            if (activeAidType === d.data.type) handleAidTypeSelection(d.data.type, this); 
+        });
 
     // 4. central text container
     const centerText = svg.append("text")
@@ -706,7 +728,6 @@ function renderRankingTable(countries, gdpRaw) {
         const officialName = nameMap[d.country] || d.country;
         const gdpEur = gdpLookup[officialName] || 0;
         
-        // Formula: (Subsidy EUR / GDP EUR) * 100
         const ratio = gdpEur > 0 ? ((d.total_eur / gdpEur) * 100) : 0;
         return { ...d, ratio };
     });
@@ -871,19 +892,13 @@ function renderDeathTimeSeries(acledRaw) {
 }
 
 
-/**
- * Top Integrated Dashboard 
- */
 function renderCombinedAidDashboard(countriesArray) {
-    // 1. Calculation of total based on all countries (for global weight)
     const totalGlobalEur = d3.sum(countriesArray, d => d.total_eur || 0);
 
-    // 2. Separate the top 10 countries from the rest (Others)
     const sortedAll = [...countriesArray].sort((a, b) => (b.total_eur || 0) - (a.total_eur || 0));
     const top10Raw = sortedAll.slice(0, 10);
     const othersRaw = sortedAll.slice(10);
 
-    // 3. Others Data Aggregation (Grand Sums and Time Series Sums)
     const othersTotalEur = d3.sum(othersRaw, d => d.total_eur || 0);
     const othersMonthlyMap = {};
     othersRaw.forEach(c => {
@@ -893,108 +908,40 @@ function renderCombinedAidDashboard(countriesArray) {
             });
         }
     });
-    const othersMonthly = Object.entries(othersMonthlyMap).map(([month, total_eur]) => ({
-        month, total_eur
-    }));
+    const othersMonthly = Object.entries(othersMonthlyMap).map(([month, total_eur]) => ({ month, total_eur }));
 
-    // 4. Final Dataset Configuration (Top 10 + Others)
     const chartDataWithOthers = [
         ...top10Raw,
         { country: "Others", total_eur: othersTotalEur, monthly: othersMonthly, isOthers: true }
     ];
 
-    // Color settings (Others differentiated by gray tones)
     const color = d3.scaleOrdinal()
         .domain(chartDataWithOthers.map(d => d.country))
         .range([...d3.schemeTableau10, "#7f8c8d"]);
 
-    // Layout numerical settings
-    const donutContainer = d3.select("#aid-donut");
-    const rect = donutContainer.node().getBoundingClientRect();
-    const width = rect.width || 300;
-    const height = 360;
-    const radius = Math.min(width / 2, height / 2) - 30;
+    // 1. Donut chart independent rendering (hover text only, without click/linking)
+    renderAidDonutForCombined(chartDataWithOthers, color, totalGlobalEur);
 
-    const arc = d3.arc().innerRadius(radius * 0.6).outerRadius(radius);
-    const arcHover = d3.arc().innerRadius(radius * 0.6).outerRadius(radius + 15);
-
-    // 5. Create center legend (including Others)
-    const legendContainer = d3.select("#central-legend");
-    legendContainer.selectAll("*").remove();
-
-    chartDataWithOthers.forEach(d => {
-        const item = legendContainer.append("div")
-            .attr("class", "legend-item")
-            .attr("id", `legend-${d.country.replace(/\s+/g, '')}`)
-            .on("click", () => toggleHighlight(d.country));
-
-        item.append("div").attr("class", "legend-dot").style("background-color", color(d.country));
-        item.append("span").text(d.country + (d.isOthers ? " (Aggregate)" : ""));
-    });
-
-    let activeCountry = null;
-    window.selectedAidCountry = null;
-
-    // 6. Highlight control function (applying global percentage)
-    function toggleHighlight(name) {
-        const safeName = name.replace(/\s+/g, '');
-        const centerText = d3.select("#donut-center-text");
-
-        if (activeCountry === name) {
-            activeCountry = null;
-            window.selectedAidCountry = null;
-            resetAll();
-        } else {
-            activeCountry = name;
-            window.selectedAidCountry = name;
-
-            const countryData = chartDataWithOthers.find(d => d.country === name);
-            const totalAmount = countryData ? (countryData.total_eur / 1000000000).toFixed(2) : "0.00";
-            
-            const percent = countryData ? ((countryData.total_eur / totalGlobalEur) * 100).toFixed(1) : "0.0";
-
-            d3.selectAll(".donut-slice").transition().duration(250).attr("d", arc).style("opacity", 0.1);
-            d3.select(`.slice-${safeName}`).transition().duration(300).attr("d", arcHover).style("opacity", 1);
-            
-            d3.selectAll(".aid-line").transition().duration(200).style("opacity", 0.05);
-            d3.select(`.line-${safeName}`).transition().duration(200).style("opacity", 1).style("stroke-width", "4px");
-            
-            d3.selectAll(".legend-item").style("opacity", 0.3).classed("active", false);
-            d3.select(`#legend-${safeName}`).style("opacity", 1).classed("active", true).style("font-weight", "bold");
-
-            centerText.selectAll("*").remove();
-            centerText.append("tspan").attr("x", 0).attr("dy", "-0.8em").style("font-size", "11px").style("fill", "#94a3b8").text(name.toUpperCase());
-            centerText.append("tspan").attr("x", 0).attr("dy", "1.4em").style("font-size", "18px").style("fill", color(name)).style("font-weight", "700").text(`€${totalAmount}B`);
-            centerText.append("tspan").attr("x", 0).attr("dy", "1.4em").style("font-size", "12px").style("fill", "#ffd700").text(`(${percent}% of Global Aid)`);
-        }
-    }
-
-    function resetAll() {
-        d3.selectAll(".donut-slice").transition().duration(250).attr("d", arc).style("opacity", 1);
-        d3.selectAll(".aid-line").transition().duration(200).style("opacity", 1).style("stroke-width", "2px");
-        d3.selectAll(".legend-item").style("opacity", 1).classed("active", false).style("font-weight", "normal");
-
-        const centerText = d3.select("#donut-center-text");
-        centerText.selectAll("*").remove();
-        centerText.append("tspan").attr("x", 0).attr("dy", "0.35em").style("font-size", "14px").style("fill", "#ecf0f1").text("SELECT COUNTRY");
-    }
-
-    renderAidDonutForCombined(chartDataWithOthers, color, arc, arcHover, toggleHighlight);
+    // 2. Line graph independent rendering (linked with legend)
     renderAidLineForCombined(chartDataWithOthers, color);
 }
 
 /**
  * Top Donut Chart Rendering 
  */
-function renderAidDonutForCombined(top10, commonColor, arc, arcHover, clickCallback) {
+function renderAidDonutForCombined(chartData, commonColor, totalGlobalEur) {
     const selector = "#aid-donut"; 
     const container = d3.select(selector);
     container.selectAll("*").remove();
 
-    const chartData = top10.map(d => ({ label: d.country, value: d.total_eur || 0, color: commonColor(d.country) }));
     const rect = container.node().getBoundingClientRect();
     const width = rect.width || 300;
-    const height = 360;
+    const height = 300; 
+    const radius = Math.min(width / 2, height / 2) - 40;
+
+    const arc = d3.arc().innerRadius(radius * 0.6).outerRadius(radius);
+    const arcHover = d3.arc().innerRadius(radius * 0.6).outerRadius(radius + 15);
+    const pie = d3.pie().value(d => d.total_eur).sort(null);
 
     const svg = container.append("svg")
         .attr("width", "100%").attr("height", height)
@@ -1002,34 +949,42 @@ function renderAidDonutForCombined(top10, commonColor, arc, arcHover, clickCallb
         .append("g")
         .attr("transform", `translate(${width / 2}, ${height / 2})`);
 
-    const pie = d3.pie().value(d => d.value).sort(null);
+    // Central Text Container
+    const centerText = svg.append("text")
+        .attr("id", "donut-center-text")
+        .attr("text-anchor", "middle")
+        .style("fill", "#ecf0f1").style("font-weight", "600");
+
+    centerText.append("tspan").attr("x", 0).attr("dy", "0.35em").style("font-size", "14px").text("SELECT COUNTRY");
+
+    function updateCenterText(label, value, colorValue) {
+        centerText.selectAll("tspan").remove();
+        if (!label) {
+            centerText.append("tspan").attr("x", 0).attr("dy", "0.35em").style("font-size", "14px").text("SELECT COUNTRY");
+            return;
+        }
+        const percent = ((value / totalGlobalEur) * 100).toFixed(1);
+        centerText.append("tspan").attr("x", 0).attr("dy", "-0.8em").style("font-size", "11px").style("fill", "#94a3b8").text(label.toUpperCase());
+        centerText.append("tspan").attr("x", 0).attr("dy", "1.4em").style("font-size", "18px").style("fill", colorValue).text(`€${(value / 1e9).toFixed(2)}B`);
+        centerText.append("tspan").attr("x", 0).attr("dy", "1.4em").style("font-size", "12px").style("fill", "#ffd700").text(`(${percent}% Share)`);
+    }
 
     svg.selectAll("path")
         .data(pie(chartData))
-        .enter()
-        .append("path")
-        .attr("class", d => `donut-slice slice-${d.data.label.replace(/\s+/g, '')}`)
+        .enter().append("path")
+        .attr("class", d => `donut-slice slice-${d.data.country.replace(/\s+/g, '')}`)
         .attr("d", arc)
-        .attr("fill", d => d.data.color)
-        .attr("stroke", "#1a2634")
-        .style("stroke-width", "2px")
+        .attr("fill", d => commonColor(d.data.country))
+        .attr("stroke", "#1a2634").style("stroke-width", "2px")
         .style("cursor", "pointer")
-        .on("mouseover", function(event, d) {
-            if (!window.selectedAidCountry) {
-                d3.select(this).transition().duration(200).attr("d", arcHover);
-            }
+        .on("mouseover", function(e, d) {
+            d3.select(this).transition().duration(200).attr("d", arcHover);
+            updateCenterText(d.data.country, d.data.total_eur, commonColor(d.data.country));
         })
-        .on("mouseout", function(event, d) {
-            if (!window.selectedAidCountry) {
-                d3.select(this).transition().duration(200).attr("d", arc);
-            }
-        })
-        .on("click", function(event, d) {
-            clickCallback(d.data.label);
+        .on("mouseout", function() {
+            d3.select(this).transition().duration(200).attr("d", arc);
+            updateCenterText(null);
         });
-
-    const centerText = svg.append("text").attr("id", "donut-center-text").attr("text-anchor", "middle").style("fill", "#ecf0f1").style("font-weight", "600");
-    centerText.append("tspan").attr("x", 0).attr("dy", "0.35em").style("font-size", "14px").text("SELECT COUNTRY");
 }
 
 
@@ -1126,7 +1081,12 @@ function renderEventTypeDonut(oblastsArray) {
         .attr("stroke", "#1a2634")
         .style("stroke-width", "2px")
         .style("cursor", "pointer")
-        .on("click", (e, d) => handleTypeSelection(d.data.label));
+        .on("mouseover", (e, d) => {
+            if (activeType !== d.data.label) handleTypeSelection(d.data.label);
+        })
+        .on("mouseout", (e, d) => {
+            if (activeType === d.data.label) handleTypeSelection(d.data.label);
+        });
 
     // 4. Central Text Initial Settings
     const centerText = svg.append("text")
@@ -1157,3 +1117,7 @@ function renderEventTypeDonut(oblastsArray) {
             .text(d.label);
     });
 }
+
+
+
+
