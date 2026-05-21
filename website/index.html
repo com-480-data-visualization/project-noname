@@ -1,83 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ukraine Conflict — Data Visualization</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ukraine Conflict — Data Visualization</title>
 
-  <!-- Leaflet -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <!-- Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script>
 
-  <!-- D3 -->
-  <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+    <!-- D3 -->
+    <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
 
-  <!-- css -->
-  <link rel="stylesheet" href="css/style.css">
+    <!-- css -->
+    <link rel="stylesheet" href="css/style.css">
 
-  <!-- javascript -->
-  <script src="js/map.js" defer></script>
-  <script src="js/timeline.js" defer></script>
+    <!-- javascript -->
+    <script src="js/map.js" defer></script>
+    <script src="js/timeline.js" defer></script>
 </head>
+
 <body class="page-home">
 
-  <header class="site-header">
-    <h1>Ukraine Conflict <span>Data Dashboard</span></h1>
-    <nav class="header-nav">
-      <a href="statistics.html">Conflict Overview</a>
-      <a href="index.html">Map</a>
-      <a href="https://acleddata.com/" target="_blank">ACLED</a>
-      <a href="https://www.ifw-kiel.de/publications/ukraine-support-tracker-data-6453/" target="_blank">Support Tracker</a>
-    </nav>
-  </header>
+    <header class="site-header">
+        <h1>Ukraine Conflict <span>Data Dashboard</span></h1>
+        <nav class="header-nav">
+            <a href="statistics.html">Conflict Overview</a>
+            <a href="index.html">Map</a>
+            <a href="https://acleddata.com/" target="_blank">ACLED</a>
+            <a href="https://www.ifw-kiel.de/publications/ukraine-support-tracker-data-6453/" target="_blank">Support
+                Tracker</a>
+        </nav>
+    </header>
 
-  <!-- Timeline -->
-  <section id="timeline-section">
-    <h2>Timeline of key events</h2>
-    <svg id="timeline-svg"></svg>
-    <div id="event-card">
-      <span class="ec-close" id="ec-close">×</span>
-      <div class="ec-date" id="ec-date"></div>
-      <div class="ec-title" id="ec-title"></div>
-      <div class="ec-desc" id="ec-desc"></div>
-    </div>
-  </section>
-
-  <!-- Map -->
-  <div id="map-container">
-    <div id="main-layout" class="layout-default">
-
-      <div class="map-area">
-        <div id="map"></div>
-
-        <!-- View switcher -->
-        <div id="view-switcher">
-          <button class="view-btn" data-view="states">States</button>
-          <button class="view-btn" data-view="oblasts">Oblasts</button>
-          <button class="view-btn" data-view="battlefront">Battlefront</button>
+    <!-- Timeline -->
+    <section id="timeline-section">
+        <h2>Timeline of key events</h2>
+        <svg id="timeline-svg"></svg>
+        <div id="event-card">
+            <span class="ec-close" id="ec-close">×</span>
+            <div class="ec-date" id="ec-date"></div>
+            <div class="ec-title" id="ec-title"></div>
+            <div class="ec-desc" id="ec-desc"></div>
         </div>
+    </section>
 
-        <!-- Legend overlay (switches content based on view) -->
-        <div id="map-legend" class="map-legend">
-          <h4 id="legend-title">Conflict events</h4>
-          <div id="legend-body"></div>
-        </div>
+    <!-- Map -->
+    <div id="map-container">
+        <div id="main-layout" class="layout-default">
 
-        <!-- Zoom hint -->
-        <!-- <div id="zoom-hint">
+            <div class="map-area">
+                <div id="map"></div>
+
+                <!-- View switcher -->
+                <div id="view-switcher">
+                    <button class="view-btn" data-view="states">States</button>
+                    <button class="view-btn" data-view="oblasts">Oblasts</button>
+                    <button class="view-btn" data-view="battlefront">Battlefront</button>
+                </div>
+
+                <!-- Battlefront controls -->
+                <div id="battlefront-controls">
+                    <div class="bf-display-mode">
+                        <label>
+                            <input type="radio" name="bf-render-mode" value="points" checked>
+                            Points
+                        </label>
+
+                        <label>
+                            <input type="radio" name="bf-render-mode" value="density">
+                            Density
+                        </label>
+                    </div>
+
+                    <label class="bf-month-row">
+                        Month:
+                        <input type="month" id="bf-month" value="2022-02">
+                    </label>
+
+                    <div class="bf-type-list">
+                        <label class="bf-type-item">
+                            <input type="checkbox" class="bf-type" value="Battles" checked>
+                            <span class="bf-color" style="background:#e74c3c;"></span>
+                            Battles
+                        </label>
+
+                        <label class="bf-type-item">
+                            <input type="checkbox" class="bf-type" value="Explosions/Remote violence" checked>
+                            <span class="bf-color" style="background:#f39c12;"></span>
+                            Explosions
+                        </label>
+
+                        <label class="bf-type-item">
+                            <input type="checkbox" class="bf-type" value="Violence against civilians" checked>
+                            <span class="bf-color" style="background:#9b59b6;"></span>
+                            Violence against civilians
+                        </label>
+
+                        <label class="bf-type-item">
+                            <input type="checkbox" class="bf-type" value="Strategic developments" checked>
+                            <span class="bf-color" style="background:#3498db;"></span>
+                            Strategic developments
+                        </label>
+                    </div>
+
+                    <label class="bf-compare-row">
+                        <input type="checkbox" id="bf-compare-toggle">
+                        <span class="comparison-dot"></span>
+                        Compare with another month
+                    </label>
+
+                    <label class="bf-month-row" id="bf-compare-month-row">
+                        Month:
+                        <input type="month" id="bf-month-compare">
+                    </label>
+
+                    <div id="bf-stats"></div>
+
+                    <div class="bf-playback">
+                        <button id="bf-play">Play</button>
+
+                        <label class="bf-speed-row">
+                            <span>Speed:</span>
+                            <select id="bf-speed">
+                                <option value="1500">Slow</option>
+                                <option value="900" selected>Normal</option>
+                                <option value="450">Fast</option>
+                            </select>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Legend overlay (switches content based on view) -->
+                <div id="map-legend" class="map-legend">
+                    <h4 id="legend-title">Conflict events</h4>
+                    <div id="legend-body"></div>
+                </div>
+
+                <!-- Zoom hint -->
+                <!-- <div id="zoom-hint">
           <span id="zoom-hint-text">Zoom out to see global aid</span>
         </div> -->
 
-        <!-- Hover tooltip -->
-        <div id="map-tooltip">
-          <div class="tt-name" id="tt-name">–</div>
-          <div class="tt-value" id="tt-value"></div>
-          <div class="tt-hint" id="tt-hint"></div>
-        </div>
-      </div>
+                <!-- Hover tooltip -->
+                <div id="map-tooltip">
+                    <div class="tt-name" id="tt-name">–</div>
+                    <div class="tt-value" id="tt-value"></div>
+                    <div class="tt-hint" id="tt-hint"></div>
+                </div>
+            </div>
 
+        </div>
     </div>
-  </div>
 
 </body>
+
 </html>
