@@ -235,7 +235,7 @@ function drawTimeChart(entry) {
 }
 
 /**
- * Render full-body fatality pictogram
+ * Render full-body fatality pictogram with Reference Scale
  */
 function renderTotalFatalitiesPictograms(totalFatalities) {
     const container = d3.select("#oblast-civilian-deaths");
@@ -243,44 +243,58 @@ function renderTotalFatalitiesPictograms(totalFatalities) {
 
     container.selectAll("*").remove();
 
-    if (totalFatalities === 0) {
-        container.html(`
-            <div style="text-align: center; color: var(--text-muted); font-size: 0.85rem; padding: 20px 0;">
-                🕊️ 0 fatalities recorded in this area.
-            </div>
-        `);
-        return;
-    }
-
+    // 1. Main Icon Logic
     const config = getScaleConfig(totalFatalities);
     const SCALE_FACTOR = config.factor;
     const iconSize = config.size; 
-
-    const totalIcons = totalFatalities / SCALE_FACTOR;
-    const fullIconsCount = Math.floor(totalIcons);
-    const remainder = totalIcons % 1;
-
     const cleanIconPath = "M12 2a3 3 0 1 0 3 3 3 3 0 0 0-3-3zm4 7h-8a2 2 0 0 0-2 2v5a1 1 0 0 0 2 0v-4h1v7a1 1 0 0 0 2 0v-5h2v5a1 1 0 0 0 2 0v-7h1v4a1 1 0 0 0 2 0v-5a2 2 0 0 0-2-2z";
 
-    let htmlContent = `<div style="display: flex; flex-wrap: wrap; gap: 0px; justify-content: center; align-items: center; max-height: 200px; overflow-y: auto; padding: 10px; background: rgba(0,0,0,0.1); border-radius: 8px;">`;
+    // Main Container (Background removed as requested)
+    const mainContent = container.append('div')
+        .style("display", "flex").style("flex-wrap", "wrap")
+        .style("gap", "0px").style("justify-content", "center")
+        .style("align-items", "center").style("margin-bottom", "15px");
 
-    for (let i = 0; i < fullIconsCount; i++) {
-        htmlContent += `<svg width="${iconSize}" height="${iconSize}" viewBox="0 0 24 24" fill="#ff6b6b" style="margin-right: -2px;"><path d="${cleanIconPath}"/></svg>`;
+    if (totalFatalities === 0) {
+        mainContent.html(`<div style="color: var(--text-muted); padding: 10px;">🕊️ 0 fatalities recorded.</div>`);
+    } else {
+        const totalIcons = totalFatalities / SCALE_FACTOR;
+        for (let i = 0; i < Math.floor(totalIcons); i++) {
+            mainContent.append('svg').attr("width", iconSize).attr("height", iconSize)
+                .attr("viewBox", "0 0 24 24").attr("fill", "#ff6b6b").style("margin-right", "-2px")
+                .html(`<path d="${cleanIconPath}"/>`);
+        }
+        if (totalIcons % 1 > 0) {
+            mainContent.append('svg').attr("width", iconSize).attr("height", iconSize)
+                .attr("viewBox", "0 0 24 24").attr("fill", "#ff6b6b").style("opacity", totalIcons % 1).style("margin-right", "-2px")
+                .html(`<path d="${cleanIconPath}"/>`);
+        }
     }
+
+    // 2. Reference Legend Section
+    const referenceConfigs = [
+        { factor: 5000, size: 80, label: "5k" },
+        { factor: 2000, size: 60, label: "2k" },
+        { factor: 500,  size: 40, label: "0.5k" },
+        { factor: 100,  size: 20, label: "0.1k" }
+    ];
+
+    const legendDiv = container.append('div')
+        .style("border-top", "1px solid #444").style("padding-top", "15px").style("margin-top", "5px");
     
-    if (remainder > 0) {
-        htmlContent += `<svg width="${iconSize}" height="${iconSize}" viewBox="0 0 24 24" fill="#ff6b6b" style="opacity: ${remainder}; margin-right: -2px;"><path d="${cleanIconPath}"/></svg>`;
-    }
+    legendDiv.append('div').style("text-align", "center").style("font-size", "0.7rem").style("color", "#888")
+        .text("Reference Scale (deaths/icon)");
 
-    htmlContent += `</div>`;
+    const legendIcons = legendDiv.append('div')
+        .style("display", "flex").style("justify-content", "space-around").style("align-items", "flex-end").style("margin-top", "10px");
 
-    htmlContent += `
-        <div style="text-align: center; font-size: 0.75rem; color: #aaa; margin-top: 5px;">
-            Unit: ${SCALE_FACTOR.toLocaleString()} deaths/icon
-        </div>
-    `;
-
-    container.html(htmlContent);
+    referenceConfigs.forEach(cfg => {
+        const item = legendIcons.append('div').style("display", "flex").style("flex-direction", "column").style("align-items", "center");
+        item.append('svg').attr("width", cfg.size).attr("height", cfg.size)
+            .attr("viewBox", "0 0 24 24").attr("fill", "#ff6b6b") 
+            .html(`<path d="${cleanIconPath}"/>`);
+        item.append('span').style("font-size", "0.65rem").style("color", "#777").text(cfg.label);
+    });
 }
 
 /**

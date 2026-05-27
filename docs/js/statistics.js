@@ -225,8 +225,8 @@ function renderEventTimeSeries(rawData) {
         .domain([0, d3.max(typeDataMap, t => d3.max(t.values, v => v.value)) * 1.1])
         .range([height, 0]);
 
-    const color = d3.scaleOrdinal().domain(eventTypes).range(["#3498db", "#5dade2", "#a29bfe"]);
-
+    const color = d3.scaleOrdinal().domain(eventTypes).range(["#e74c3c", "#f39c12", "#9b59b6"]);
+    
     // axis & grid
     svg.append("g").attr("class", "axis grid").attr("transform", `translate(0,${height})`)
         .call(d3.axisBottom(x).ticks(5).tickFormat(d3.timeFormat("20%y")).tickSize(-height));
@@ -376,15 +376,15 @@ function renderAidLineForCombined(chartData, commonColor) {
             country: c.country,
             values: sortedMonths.map(month => {
                 cumulative += (monthlyMap[month] || 0);
-                return { date: parseTime(month), value: cumulative / 1000000000 }; // 단위: B (Billions)
+                return { date: parseTime(month), value: cumulative / 1000000000 };
             })
         };
     });
 
-    // 2. Multi-selection state management
+    // 2. State management
     let selectedCountries = new Set();
     
-    // 3. Chart Layout Settings
+    // 3. Layout Settings
     const margin = {top: 30, right: 30, bottom: 40, left: 50}; 
     const width = container.node().getBoundingClientRect().width - margin.left - margin.right;
     const height = 400 - margin.top - margin.bottom; 
@@ -397,13 +397,15 @@ function renderAidLineForCombined(chartData, commonColor) {
         .attr("transform", `translate(${margin.left},${margin.top})`);
 
     const x = d3.scaleTime().domain(d3.extent(sortedMonths.map(m => parseTime(m)))).range([0, width]);
-    const y = d3.scaleLinear()
-        .domain([0, d3.max(multiChartData, c => d3.max(c.values, v => v.value)) * 1.1])
-        .range([height, 0]);
+    
+    // Y scale definition
+    const y = d3.scaleLinear().range([height, 0]);
 
     svg.append("g").attr("class", "axis grid").attr("transform", `translate(0,${height})`)
         .call(d3.axisBottom(x).ticks(5).tickFormat(d3.timeFormat("%Y")).tickSize(-height));
-    svg.append("g").attr("class", "axis grid").call(d3.axisLeft(y).ticks(5).tickSize(-width));
+    
+    // Add specific class 'y-axis' for dynamic updates
+    const yAxisGroup = svg.append("g").attr("class", "axis grid y-axis");
 
     // 4. Draw lines
     const lineGenerator = d3.line().x(d => x(d.date)).y(d => y(d.value)).curve(d3.curveMonotoneX);
@@ -411,7 +413,7 @@ function renderAidLineForCombined(chartData, commonColor) {
     multiChartData.forEach(d => {
         const safeName = d.country.replace(/\s+/g, '');
         svg.append("path")
-            .datum(d) 
+            .datum(d)
             .attr("class", `aid-line line-${safeName}`)
             .attr("fill", "none")
             .attr("stroke", commonColor(d.country)) 
@@ -437,25 +439,29 @@ function renderAidLineForCombined(chartData, commonColor) {
         item.append("span").text(d.country);
     });
 
-    // 6. Multi-selection highlight control function
     function updateLineStyles() {
         const isNone = selectedCountries.size === 0;
-        d3.selectAll(".aid-line").transition().duration(200)
-            .style("opacity", function(d) {
-                return (isNone || selectedCountries.has(d.country)) ? 1 : 0.05;
-            })
-            .style("stroke-width", function(d) {
-                return (isNone || selectedCountries.has(d.country)) ? "4px" : "1px";
-            });
+        
+        const activeData = isNone ? multiChartData : multiChartData.filter(d => selectedCountries.has(d.country));
+        const newMax = d3.max(activeData, c => d3.max(c.values, v => v.value)) || 1;
+        y.domain([0, newMax * 1.1]);
 
-        // Adjust legend transparency
+        yAxisGroup.transition().duration(500).call(d3.axisLeft(y).ticks(5).tickSize(-width));
+        
+        d3.selectAll(".aid-line").transition().duration(500)
+            .style("opacity", d => (isNone || selectedCountries.has(d.country)) ? 1 : 0.05)
+            .style("stroke-width", d => (isNone || selectedCountries.has(d.country)) ? "4px" : "1px")
+            .attr("d", d => lineGenerator(d.values)); // 라인 재계산
+
         d3.selectAll(".legend-item").style("opacity", function(d, i) {
             const countryName = chartData[i].country;
             return (isNone || selectedCountries.has(countryName)) ? 1 : 0.3;
         });
     }
 
-    // 7. tooltips
+    updateLineStyles();
+
+    // 7. Tooltip
     let tooltip = d3.select(".chart-tooltip");
     if (tooltip.empty()) tooltip = d3.select("body").append("div").attr("class", "chart-tooltip").style("opacity", 0);
 
@@ -467,7 +473,6 @@ function renderAidLineForCombined(chartData, commonColor) {
             const [mouseX] = d3.pointer(event);
             const date = x.invert(mouseX);
             const bisect = d3.bisector(d => d.date).left;
-
             let tooltipContent = `<span class="tooltip-date">${d3.timeFormat("%Y/%m")(date)}</span>`;
             let hasData = false;
 
@@ -1025,7 +1030,7 @@ function renderEventTypeDonut(oblastsArray) {
 
     const color = d3.scaleOrdinal()
         .domain(chartData.map(d => d.label))
-        .range(["#3498db", "#5dade2", "#a29bfe", "#34495e", "#95a5a6"]);
+        .range(["#e74c3c", "#f39c12", "#9b59b6", "#34495e", "#95a5a6"]);
 
     const svg = container.append("svg")
         .attr("width", "100%").attr("height", height)
