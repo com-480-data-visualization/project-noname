@@ -2,10 +2,10 @@
  * Ukraine Conflict Visualization - Overall Statistics Final Logic
  */
 
-let currentEventMode = 'type'; 
-let globalOblastsData = null; 
+let currentEventMode = 'type';
+let globalOblastsData = null;
 let activeEventType = null;
-window.eventArc = null;      
+window.eventArc = null;
 window.eventArcHover = null;
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -38,18 +38,21 @@ document.addEventListener('DOMContentLoaded', async () => {
         renderEventTypeDonut(oblastsArray);
         renderEventTimeSeries(oblastsArray);
 
-        renderCombinedAidDashboard(countriesArray);    
-        
+        renderCombinedAidDashboard(countriesArray);
+
         renderAidDonut(countriesArray);
         renderRankingTable(countriesArray, gdpRaw);
         renderDeathTimeSeries(acledRaw);
-        
+
 
     } catch (err) {
         console.error("Error loading or processing data:", err);
     }
 });
 
+function safeClassName(name) {
+    return name.replace(/[^a-zA-Z0-9]/g, '');
+}
 
 function toggleEventHighlight(label) {
     const safeName = label.replace(/\s+/g, '');
@@ -62,7 +65,7 @@ function toggleEventHighlight(label) {
         d3.selectAll(donutSelector).transition().duration(250).attr("d", window.eventArc).style("opacity", 1);
         d3.selectAll(lineSelector).transition().duration(250).style("opacity", 1).style("stroke-width", "2px");
         d3.selectAll(legendSelector).style("opacity", 1).classed("active", false);
-        
+
         // reset center text
         const centerText = d3.select("#event-type-center-text");
         centerText.selectAll("*").remove();
@@ -81,8 +84,8 @@ function toggleEventHighlight(label) {
         // 3. Highlight bottom legend
         d3.selectAll(legendSelector).style("opacity", 0.3).classed("active", false);
         d3.select(`#event-legend-${safeName}`).style("opacity", 1).classed("active", true);
-        
-        
+
+
     }
 }
 
@@ -113,14 +116,14 @@ function updateSummaryCards(oblastsArray, countriesArray) {
         // 2. Aggregate counts by conflict type (handles both aggregated object and raw arrays)
         if (oblast.by_type) {
             battlesCount += (oblast.by_type["Battles"] || oblast.by_type["battles"] || 0);
-            
-            explosionsCount += (oblast.by_type["Explosions"] || 
-                                 oblast.by_type["Explosions/Remote violence"] || 
-                                 oblast.by_type["explosions"] || 0);
-            
-            civilianAttacksCount += (oblast.by_type["Violence against civilians"] || 
-                                     oblast.by_type["Civilian violence"] || 
-                                     oblast.by_type["civilian_violence"] || 0);
+
+            explosionsCount += (oblast.by_type["Explosions"] ||
+                oblast.by_type["Explosions/Remote violence"] ||
+                oblast.by_type["explosions"] || 0);
+
+            civilianAttacksCount += (oblast.by_type["Violence against civilians"] ||
+                oblast.by_type["Civilian violence"] ||
+                oblast.by_type["civilian_violence"] || 0);
         } else if (oblast.events && Array.isArray(oblast.events)) {
             oblast.events.forEach(ev => {
                 if (ev.event_type === "Battles") battlesCount++;
@@ -140,7 +143,7 @@ function updateSummaryCards(oblastsArray, countriesArray) {
     d3.select("#explosions-attacks").text(explosionsCount.toLocaleString());
     d3.select("#battles-attacks").text(battlesCount.toLocaleString());
     d3.select("#civilian-attacks").text(civilianAttacksCount.toLocaleString());
-    
+
     d3.select("#civilian-casualties").text(`${civilianAttacksCount.toLocaleString()} Incidents Total`);
 }
 
@@ -150,12 +153,12 @@ function updateSummaryCards(oblastsArray, countriesArray) {
 
 function switchEventView(mode) {
     currentEventMode = mode;
-    
-    
+
+
     d3.selectAll(".toggle-btn").classed("active", false);
     d3.select(`#btn-${mode}`).classed("active", true);
-    
-    
+
+
     if (globalOblastsData) {
         renderEventTimeSeries(globalOblastsData);
     }
@@ -178,7 +181,7 @@ function renderEventTimeSeries(rawData) {
     const ukraineData = rawData.Ukraine || rawData;
     const parseTime = d3.timeParse("%Y-%m");
 
-    
+
     if (!window.eventVisibility) {
         window.eventVisibility = {
             "Battles": true,
@@ -209,7 +212,7 @@ function renderEventTimeSeries(rawData) {
     });
 
     // 4. Set layout
-    const margin = {top: 30, right: 140, bottom: 40, left: 50};
+    const margin = { top: 30, right: 140, bottom: 40, left: 50 };
     const width = container.node().getBoundingClientRect().width - margin.left - margin.right;
     const height = 300 - margin.top - margin.bottom;
 
@@ -226,7 +229,7 @@ function renderEventTimeSeries(rawData) {
         .range([height, 0]);
 
     const color = d3.scaleOrdinal().domain(eventTypes).range(["#e74c3c", "#f39c12", "#9b59b6"]);
-    
+
     // axis & grid
     svg.append("g").attr("class", "axis grid").attr("transform", `translate(0,${height})`)
         .call(d3.axisBottom(x).ticks(5).tickFormat(d3.timeFormat("20%y")).tickSize(-height));
@@ -234,7 +237,7 @@ function renderEventTimeSeries(rawData) {
 
     const lineGenerator = d3.line().x(d => x(d.date)).y(d => y(d.value)).curve(d3.curveMonotoneX);
 
-    
+
     // 1. Tooltip set
     let tooltip = d3.select(".chart-tooltip");
     if (tooltip.empty()) {
@@ -259,9 +262,9 @@ function renderEventTimeSeries(rawData) {
             tooltip.style("opacity", 0);
             mouseLine.style("opacity", 0);
         })
-        .on("mousemove", function(event) {
+        .on("mousemove", function (event) {
             const [mouseX] = d3.pointer(event);
-            const date = x.invert(mouseX); 
+            const date = x.invert(mouseX);
             const bisect = d3.bisector(d => d.date).left;
 
             let tooltipContent = `<span class="tooltip-date">${d3.timeFormat("%Y/%m")(date)}</span>`;
@@ -304,18 +307,18 @@ function renderEventTimeSeries(rawData) {
             .style("opacity", 0)
             .transition().duration(300)
             .style("opacity", 1);
-            
+
         eventTypes.forEach(type => {
             const safeName = type.replace(/[^a-zA-Z]/g, '');
             const isActive = window.eventVisibility[type];
             d3.select(`.legend-item-${safeName}`)
-                .style("opacity", isActive ? 1 : 0.3) 
+                .style("opacity", isActive ? 1 : 0.3)
                 .select("circle")
-                .attr("fill", isActive ? color(type) : "#444"); 
+                .attr("fill", isActive ? color(type) : "#444");
         });
     }
 
-    
+
     updateCharts();
 
     // 6. generate legends
@@ -330,18 +333,18 @@ function renderEventTimeSeries(rawData) {
             .attr("transform", `translate(0, ${i * legendSpacing})`)
             .style("cursor", "pointer")
             .on("click", () => {
-                window.eventVisibility[t.typeName] = !window.eventVisibility[t.typeName]; 
+                window.eventVisibility[t.typeName] = !window.eventVisibility[t.typeName];
                 updateCharts();
             });
 
-        legendRow.append("circle").attr("r", 6); 
+        legendRow.append("circle").attr("r", 6);
         legendRow.append("text")
             .attr("x", 15).attr("y", 5).attr("fill", color(t.typeName))
             .style("font-size", "11px").style("font-weight", "600")
             .text(t.displayName);
     });
 
-    
+
 }
 
 
@@ -349,7 +352,7 @@ function renderEventTimeSeries(rawData) {
  * Cumulative Aid
  */
 function renderAidLineForCombined(chartData, commonColor) {
-    const selector = "#ts-aid-cumulative"; 
+    const selector = "#ts-aid-cumulative";
     const container = d3.select(selector);
     if (container.empty()) return;
     container.selectAll("*").remove();
@@ -383,11 +386,11 @@ function renderAidLineForCombined(chartData, commonColor) {
 
     // 2. State management
     let selectedCountries = new Set();
-    
+
     // 3. Layout Settings
-    const margin = {top: 30, right: 30, bottom: 40, left: 50}; 
+    const margin = { top: 30, right: 30, bottom: 40, left: 50 };
     const width = container.node().getBoundingClientRect().width - margin.left - margin.right;
-    const height = 400 - margin.top - margin.bottom; 
+    const height = 400 - margin.top - margin.bottom;
 
     const svg = container.append("svg")
         .attr("width", "100%")
@@ -397,13 +400,13 @@ function renderAidLineForCombined(chartData, commonColor) {
         .attr("transform", `translate(${margin.left},${margin.top})`);
 
     const x = d3.scaleTime().domain(d3.extent(sortedMonths.map(m => parseTime(m)))).range([0, width]);
-    
+
     // Y scale definition
     const y = d3.scaleLinear().range([height, 0]);
 
     svg.append("g").attr("class", "axis grid").attr("transform", `translate(0,${height})`)
         .call(d3.axisBottom(x).ticks(5).tickFormat(d3.timeFormat("%Y")).tickSize(-height));
-    
+
     // Add specific class 'y-axis' for dynamic updates
     const yAxisGroup = svg.append("g").attr("class", "axis grid y-axis");
 
@@ -416,7 +419,7 @@ function renderAidLineForCombined(chartData, commonColor) {
             .datum(d)
             .attr("class", `aid-line line-${safeName}`)
             .attr("fill", "none")
-            .attr("stroke", commonColor(d.country)) 
+            .attr("stroke", commonColor(d.country))
             .attr("stroke-width", 2)
             .attr("d", d => lineGenerator(d.values));
     });
@@ -441,22 +444,26 @@ function renderAidLineForCombined(chartData, commonColor) {
 
     function updateLineStyles() {
         const isNone = selectedCountries.size === 0;
-        
+
         const activeData = isNone ? multiChartData : multiChartData.filter(d => selectedCountries.has(d.country));
         const newMax = d3.max(activeData, c => d3.max(c.values, v => v.value)) || 1;
         y.domain([0, newMax * 1.1]);
 
         yAxisGroup.transition().duration(500).call(d3.axisLeft(y).ticks(5).tickSize(-width));
-        
+
         d3.selectAll(".aid-line").transition().duration(500)
             .style("opacity", d => (isNone || selectedCountries.has(d.country)) ? 1 : 0.05)
             .style("stroke-width", d => (isNone || selectedCountries.has(d.country)) ? "4px" : "1px")
             .attr("d", d => lineGenerator(d.values)); // 라인 재계산
 
-        d3.selectAll(".legend-item").style("opacity", function(d, i) {
+        if (window.updateCombinedAidDonutSelection) {
+            window.updateCombinedAidDonutSelection(selectedCountries);
+        }
+        d3.selectAll(".legend-item").style("opacity", function (d, i) {
             const countryName = chartData[i].country;
             return (isNone || selectedCountries.has(countryName)) ? 1 : 0.3;
         });
+
     }
 
     updateLineStyles();
@@ -469,7 +476,7 @@ function renderAidLineForCombined(chartData, commonColor) {
     mouseG.append("rect")
         .attr("width", width).attr("height", height).attr("fill", "none").attr("pointer-events", "all")
         .on("mouseout", () => tooltip.style("opacity", 0))
-        .on("mousemove", function(event) {
+        .on("mousemove", function (event) {
             const [mouseX] = d3.pointer(event);
             const date = x.invert(mouseX);
             const bisect = d3.bisector(d => d.date).left;
@@ -500,7 +507,7 @@ function renderAidLineForCombined(chartData, commonColor) {
  * Donut Chart
  */
 function renderAidDonut(countriesArray) {
-    const selector = "#aid-type-donut"; 
+    const selector = "#aid-type-donut";
     const container = d3.select(selector);
     if (container.empty()) return;
 
@@ -529,8 +536,8 @@ function renderAidDonut(countriesArray) {
     // 2. Layout and Arc settings
     const rect = container.node().getBoundingClientRect();
     const width = rect.width;
-    const height = 480; 
-    
+    const height = 480;
+
     const radius = Math.min(width / 2.1, height / 2.8) - 15;
 
     const arc = d3.arc().innerRadius(radius * 0.6).outerRadius(radius);
@@ -559,8 +566,8 @@ function renderAidDonut(countriesArray) {
         } else {
             activeAidType = type;
             const data = chartData.find(d => d.type === type);
-            const amountFormatted = data.value >= 1000000000 
-                ? `€${(data.value / 1000000000).toFixed(2)}B` 
+            const amountFormatted = data.value >= 1000000000
+                ? `€${(data.value / 1000000000).toFixed(2)}B`
                 : `€${Math.round(data.value / 1000000).toLocaleString()}M`;
 
             // 1. Donut Animation
@@ -590,11 +597,11 @@ function renderAidDonut(countriesArray) {
         .attr("stroke", "#1a2634")
         .style("stroke-width", "2px")
         .style("cursor", "pointer")
-        .on("mouseover", function(e, d) { 
-            if (activeAidType !== d.data.type) handleAidTypeSelection(d.data.type, this); 
+        .on("mouseover", function (e, d) {
+            if (activeAidType !== d.data.type) handleAidTypeSelection(d.data.type, this);
         })
-        .on("mouseout", function(e, d) { 
-            if (activeAidType === d.data.type) handleAidTypeSelection(d.data.type, this); 
+        .on("mouseout", function (e, d) {
+            if (activeAidType === d.data.type) handleAidTypeSelection(d.data.type, this);
         });
 
     // 4. central text container
@@ -604,15 +611,15 @@ function renderAidDonut(countriesArray) {
     centerText.append("tspan").attr("x", 0).attr("dy", "0.35em").style("font-size", "14px").text("SELECT TYPE");
 
     // 5. Create bottom button legend
-    const legendHeight = chartData.length * 25;  
+    const legendHeight = chartData.length * 25;
     const legend = svg.append("g")
-        .attr("transform", `translate(-40, ${radius + 40})`); 
+        .attr("transform", `translate(-40, ${radius + 40})`);
 
     chartData.forEach((d, i) => {
         const g = legend.append("g")
             .attr("class", "aid-legend-item")
             .attr("id", `aid-legend-${d.type}`)
-            .attr("transform", `translate(0, ${i * 25})`)  
+            .attr("transform", `translate(0, ${i * 25})`)
             .style("cursor", "pointer")
             .on("click", () => handleAidTypeSelection(d.type));
 
@@ -635,9 +642,9 @@ function renderAidDonut(countriesArray) {
  */
 function renderLineChart(selector, data, color) {
     const container = d3.select(selector);
-    container.selectAll("*").remove(); 
+    container.selectAll("*").remove();
 
-    const margin = {top: 10, right: 20, bottom: 30, left: 40};
+    const margin = { top: 10, right: 20, bottom: 30, left: 40 };
     const width = container.node().clientWidth - margin.left - margin.right;
     const height = 250 - margin.top - margin.bottom;
 
@@ -668,7 +675,7 @@ function drawDonut(selector, data) {
     const colors = d3.scaleOrdinal(d3.schemeCategory10);
 
     const svg = container.append("svg").attr("width", width).attr("height", height)
-        .append("g").attr("transform", `translate(${width/2},${height/2})`);
+        .append("g").attr("transform", `translate(${width / 2},${height / 2})`);
 
     const pie = d3.pie().value(d => d.value);
     const arc = d3.arc().innerRadius(radius * 0.6).outerRadius(radius);
@@ -689,21 +696,21 @@ function renderRankingTable(countries, gdpRaw) {
 
     // 1. Color map dedicated to the top 10 Aid countries overall 
     const aidColorMap = {
-        "United States": "#5b84b1",    
-        "European Union": "#f39c12",    
-        "Germany": "#e74c3c",          
-        "Sweden": "#76c7c0",          
-        "United Kingdom": "#5cb85c",   
-        "Denmark": "#f1c40f",          
-        "Norway": "#9b59b6",           
-        "Japan": "#ff9999",          
-        "Canada": "#8b5a2b",           
-        "Poland": "#d3d3d3"             
+        "United States": "#5b84b1",
+        "European Union": "#f39c12",
+        "Germany": "#e74c3c",
+        "Sweden": "#76c7c0",
+        "United Kingdom": "#5cb85c",
+        "Denmark": "#f1c40f",
+        "Norway": "#9b59b6",
+        "Japan": "#ff9999",
+        "Canada": "#8b5a2b",
+        "Poland": "#d3d3d3"
     };
 
     // 1. World Bank data parsing (USD -> EUR exchange rate applied)
     const gdpLookup = {};
-    const dataArray = gdpRaw[1];  
+    const dataArray = gdpRaw[1];
     const USD_TO_EUR = 0.92;  // Apply 2024 average exchange rate
 
     if (dataArray) {
@@ -713,7 +720,7 @@ function renderRankingTable(countries, gdpRaw) {
                 const countryName = item.country.value;
                 // Prioritize mapping the latest data (2024)
                 if (!gdpLookup[countryName] || item.date === "2024") {
-                    gdpLookup[countryName] = item.value * USD_TO_EUR; 
+                    gdpLookup[countryName] = item.value * USD_TO_EUR;
                 }
             }
         });
@@ -725,14 +732,14 @@ function renderRankingTable(countries, gdpRaw) {
         "Slovakia": "Slovak Republic",
         "South Korea": "Korea, Rep.",
         "Czechia": "Czech Republic",
-        "European Union": "European Union"  
+        "European Union": "European Union"
     };
 
     // 3. Ratio Calculation and Sorting
     const dataWithRatio = countries.map(d => {
         const officialName = nameMap[d.country] || d.country;
         const gdpEur = gdpLookup[officialName] || 0;
-        
+
         const ratio = gdpEur > 0 ? ((d.total_eur / gdpEur) * 100) : 0;
         return { ...d, ratio };
     });
@@ -751,7 +758,7 @@ function renderRankingTable(countries, gdpRaw) {
 
         html += `<tr style="border-bottom: 1px solid var(--border);">
             <td style="padding: 10px 4px; color: ${nameColor}; font-size: 0.72rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                ${i+1}. ${displayName}
+                ${i + 1}. ${displayName}
             </td>
             <td style="padding: 10px 4px; text-align: right; color: var(--accent-yellow); font-weight: 700; font-size: 0.82rem;">
                 ${d.ratio.toFixed(3)}%
@@ -789,9 +796,9 @@ function renderDeathTimeSeries(acledRaw) {
     if (chartData.length === 0) return;
 
     // 2. Layout settings
-    const margin = {top: 40, right: 30, bottom: 60, left: 70}; 
+    const margin = { top: 40, right: 30, bottom: 60, left: 70 };
     const width = container.node().getBoundingClientRect().width - margin.left - margin.right;
-    const height = 420 - margin.top - margin.bottom; 
+    const height = 420 - margin.top - margin.bottom;
 
     const svg = container.append("svg")
         .attr("width", "100%")
@@ -819,7 +826,7 @@ function renderDeathTimeSeries(acledRaw) {
         .datum(chartData)
         .attr("fill", "none")
         .attr("stroke", "var(--red)")
-        .attr("stroke-width", 3)  
+        .attr("stroke-width", 3)
         .attr("d", d3.line().x(d => x(d.date)).y(d => y(d.value)).curve(d3.curveMonotoneX));
 
     svg.selectAll(".dot")
@@ -853,21 +860,21 @@ function renderDeathTimeSeries(acledRaw) {
             tooltip.style("opacity", 0);
             mouseLine.style("opacity", 0);
         })
-        .on("mousemove", function(event) {
+        .on("mousemove", function (event) {
             const [mouseX] = d3.pointer(event);
-            const date = x.invert(mouseX); 
-            
+            const date = x.invert(mouseX);
+
             const bisectDate = d3.bisector(d => d.date).left;
-            
+
             const i = bisectDate(chartData, date, 1);
             const d0 = chartData[i - 1];
             const d1 = chartData[i];
-            
+
             const d = d1 && (date - d0.date > d1.date - date) ? d1 : d0;
 
             if (d) {
                 mouseLine.attr("x1", x(d.date)).attr("x2", x(d.date)).style("opacity", 1);
-                
+
                 tooltip.style("opacity", 1)
                     .html(`
                         <span class="tooltip-date">${d3.timeFormat("%Y/%m")(d.date)}</span>
@@ -882,7 +889,7 @@ function renderDeathTimeSeries(acledRaw) {
     svg.append("path")
         .datum(chartData)
         .attr("fill", "none")
-        .attr("stroke", "var(--red)")  
+        .attr("stroke", "var(--red)")
         .attr("stroke-width", 2.5)
         .attr("d", d3.line().x(d => x(d.date)).y(d => y(d.value)).curve(d3.curveMonotoneX));
 
@@ -935,13 +942,13 @@ function renderCombinedAidDashboard(countriesArray) {
  * Top Donut Chart Rendering 
  */
 function renderAidDonutForCombined(chartData, commonColor, totalGlobalEur) {
-    const selector = "#aid-donut"; 
+    const selector = "#aid-donut";
     const container = d3.select(selector);
     container.selectAll("*").remove();
 
     const rect = container.node().getBoundingClientRect();
     const width = rect.width || 300;
-    const height = 300; 
+    const height = 300;
     const radius = Math.min(width / 2, height / 2) - 40;
 
     const arc = d3.arc().innerRadius(radius * 0.6).outerRadius(radius);
@@ -977,19 +984,39 @@ function renderAidDonutForCombined(chartData, commonColor, totalGlobalEur) {
     svg.selectAll("path")
         .data(pie(chartData))
         .enter().append("path")
-        .attr("class", d => `donut-slice slice-${d.data.country.replace(/\s+/g, '')}`)
+        .attr("class", d => `donut-slice slice-${safeClassName(d.data.country)}`)
         .attr("d", arc)
         .attr("fill", d => commonColor(d.data.country))
         .attr("stroke", "#1a2634").style("stroke-width", "2px")
         .style("cursor", "pointer")
-        .on("mouseover", function(e, d) {
+        .on("mouseover", function (e, d) {
             d3.select(this).transition().duration(200).attr("d", arcHover);
             updateCenterText(d.data.country, d.data.total_eur, commonColor(d.data.country));
         })
-        .on("mouseout", function() {
+        .on("mouseout", function () {
             d3.select(this).transition().duration(200).attr("d", arc);
             updateCenterText(null);
         });
+
+    window.updateCombinedAidDonutSelection = function (selectedCountries) {
+        const isNone = selectedCountries.size === 0;
+
+        svg.selectAll(".donut-slice")
+            .transition()
+            .duration(250)
+            .attr("d", arc)
+            .style("opacity", isNone ? 1 : 0.1);
+
+        if (!isNone) {
+            selectedCountries.forEach(country => {
+                svg.select(`.slice-${safeClassName(country)}`)
+                    .transition()
+                    .duration(300)
+                    .attr("d", arcHover)
+                    .style("opacity", 1);
+            });
+        }
+    };
 }
 
 
@@ -1008,8 +1035,8 @@ function renderEventTypeDonut(oblastsArray) {
     oblastsArray.forEach(d => {
         if (d.by_type) {
             Object.entries(d.by_type).forEach(([type, count]) => {
-                const label = type === "Explosions/Remote violence" ? "Explosions" : 
-                              type === "Violence against civilians" ? "Civilian Violence" : type;
+                const label = type === "Explosions/Remote violence" ? "Explosions" :
+                    type === "Violence against civilians" ? "Civilian Violence" : type;
                 eventTotals[label] = (eventTotals[label] || 0) + count;
             });
         }
@@ -1025,7 +1052,7 @@ function renderEventTypeDonut(oblastsArray) {
     // 2. Layout and Arc settings
     const rect = container.node().getBoundingClientRect();
     const width = rect.width || 300;
-    const height = 300; 
+    const height = 300;
     const radius = Math.min(width / 2, height / 2) - 50;
 
     const color = d3.scaleOrdinal()
