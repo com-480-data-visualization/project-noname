@@ -600,12 +600,16 @@ a:hover {
 
     width: 280px;
     padding: 10px 12px;
-    background: rgba(8, 18, 32, 0.94);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    background: rgba(19, 31, 48, 0.92);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    border: 1px solid var(--border);
     border-radius: 10px;
     box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
 
-    color: #fff;
+    color: var(--text-primary);
     font-size: 14px;
 }
 
@@ -715,18 +719,6 @@ a:hover {
     transform: scale(1);
 }
 
-.bf-frontline-row {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-top: -4px;
-    margin-bottom: 2px;
-    justify-content: center;
-    color: #fff;
-    font-weight: 500;
-
-}
-
 .bf-month-row {
     display: flex;
     align-items: center;
@@ -775,7 +767,22 @@ a:hover {
 }
 
 #bf-compare-month-row {
-    display: none;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+
+    transition:
+        max-height 0.25s ease,
+        opacity 0.25s ease,
+        margin 0.25s ease;
+
+    margin-top: 0;
+}
+
+#bf-compare-month-row.visible {
+    max-height: 60px;
+    opacity: 1;
+    margin-top: 6px;
 }
 
 .bf-compare-row {
@@ -795,6 +802,11 @@ a:hover {
 
 .hidden {
     display: none !important;
+}
+
+.bf-disabled {
+    opacity: 0.4;
+    pointer-events: none;
 }
 
 #bf-stats {
@@ -956,19 +968,22 @@ a:hover {
     height: 32px;
     padding: 0 10px;
 
-    background: rgba(8, 18, 32, 0.85);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    color: #f1f4f6;
-    border-radius: 8px;
+    background: rgba(19, 31, 48, 0.85);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
 
+    border-radius: 8px;
     font-size: 13px;
     font-weight: 600;
     cursor: pointer;
-
+    transition: all 0.2s ease;
 }
 
 #map-reset:hover {
-    background: rgba(255, 255, 255, 0.10);
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
 }
 
 #map-export {
@@ -980,16 +995,48 @@ a:hover {
     height: 32px;
     padding: 0 10px;
 
-    background: rgba(8, 18, 32, 0.85);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    color: #f1f4f6;
-    border-radius: 8px;
+    background: rgba(19, 31, 48, 0.85);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
 
+    border-radius: 8px;
     font-size: 13px;
     font-weight: 600;
     cursor: pointer;
+    transition: all 0.2s ease;
 }
 
 #map-export:hover {
-    background: rgba(255, 255, 255, 0.10);
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+}
+
+.bf-popup-type {
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 2px;
+}
+
+.bf-popup-date {
+    font-size: 12px;
+    color: #94a3b8;
+    margin-bottom: 4px;
+}
+
+.bf-popup-coords {
+    font-size: 11px;
+    color: #64748b;
+    font-family: monospace;
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.bf-popup-notes {
+    font-size: 13px;
+    color: #cbd5e1;
+    max-height: 150px;
+    overflow-y: auto;
 }

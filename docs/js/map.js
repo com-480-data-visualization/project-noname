@@ -31,7 +31,6 @@ let battlefrontHeatLayer = null;
 let playbackTimer = null;
 let isPlaying = false;
 let activeHeatLayer = null;
-let dbscanLayer = null;
 
 // ── Custom panes (enable CSS opacity transitions) ───────────────────────────
 // panes are like lucid layers that sit on top of the base map; we can control their z-index and opacity independently
@@ -268,103 +267,65 @@ function setMapMode(mode) {
         btn.classList.toggle('active', btn.dataset.view === mode);
     });
 
-
-    if (mode === 'states') {
-        worldPane.style.opacity = 1;
+    function hideDataPanes() {
+        worldPane.style.opacity = 0;
         oblastPane.style.opacity = 0;
         battlefrontPane.style.opacity = 0;
 
-        if (battlefrontLayer) map.removeLayer(battlefrontLayer);
+        if (battlefrontLayer && map.hasLayer(battlefrontLayer)) {
+            map.removeLayer(battlefrontLayer);
+        }
+
         if (activeHeatLayer && map.hasLayer(activeHeatLayer)) {
             map.removeLayer(activeHeatLayer);
             activeHeatLayer = null;
         }
+    }
+
+    if (mode === 'states') {
+        hideDataPanes();
 
         map.flyTo([20, 0], 2, {
-            duration: 2.0,
+            duration: 1.1,
             easeLinearity: 0.9
         });
 
-        buildLegend('aid');
+        setTimeout(() => {
+            worldPane.style.opacity = 1;
+            buildLegend('aid');
+        }, 1200);
 
     } else if (mode === 'oblasts') {
-        battlefrontPane.style.opacity = 0;
+        hideDataPanes();
 
-        if (battlefrontLayer) map.removeLayer(battlefrontLayer);
-        if (activeHeatLayer && map.hasLayer(activeHeatLayer)) {
-            map.removeLayer(activeHeatLayer);
-            activeHeatLayer = null;
-        }
+        map.flyTo([48.37, 31.16], 5, {
+            duration: 0.9,
+            easeLinearity: 0.8
+        });
 
-        if (previousMode === 'states') {
-            worldPane.style.opacity = 1;
-            oblastPane.style.opacity = 0;
-
-            map.flyTo([48.37, 31.16], 5, {
-                duration: 0.8,
-                easeLinearity: 0.25
-            });
-
-            setTimeout(() => {
-                worldPane.style.opacity = 0;
-                oblastPane.style.opacity = 1;
-            }, 700);
-
-        } else {
-            worldPane.style.opacity = 0;
+        setTimeout(() => {
             oblastPane.style.opacity = 1;
-
-            map.flyTo([48.37, 31.16], 5, {
-                duration: 0.8,
-                easeLinearity: 0.25
-            });
-        }
-
-        buildLegend('conflict');
+            buildLegend('conflict');
+        }, 900);
 
     } else if (mode === 'battlefront') {
 
-        if (previousMode === 'states') {
-            worldPane.style.opacity = 1;
-            oblastPane.style.opacity = 0;
-            battlefrontPane.style.opacity = 0;
+        hideDataPanes();
 
-            map.flyTo([48.37, 31.16], 6, {
-                duration: 0.8,
-                easeLinearity: 0.25
-            });
+        map.flyTo([48.37, 31.16], 6, {
+            duration: 0.9,
+            easeLinearity: 0.8
+        });
 
-            setTimeout(() => {
-                worldPane.style.opacity = 0;
-                battlefrontPane.style.opacity = 1;
-
-                if (battlefrontLayer && !map.hasLayer(battlefrontLayer)) {
-                    battlefrontLayer.addTo(map);
-                }
-
-                if (updateBattlefrontMap) {
-                    updateBattlefrontMap();
-                }
-            }, 700);
-
-        } else {
-            worldPane.style.opacity = 0;
-            oblastPane.style.opacity = 0;
+        setTimeout(() => {
             battlefrontPane.style.opacity = 1;
-
             if (battlefrontLayer && !map.hasLayer(battlefrontLayer)) {
                 battlefrontLayer.addTo(map);
             }
-
-            map.flyTo([48.37, 31.16], 6, {
-                duration: 0.8,
-                easeLinearity: 0.25
-            });
-
             if (updateBattlefrontMap) {
                 updateBattlefrontMap();
             }
-        }
+        }, 900);
     }
 }
 
@@ -566,13 +527,13 @@ Promise.all([
     }).addTo(map);
 
     // ── 3. BattlefrontPane ──────────────────────────────────────
-    const canvasRenderer = L.canvas({ padding: 0.5 });
-
-    battlefrontLayer = L.layerGroup([], {
-        pane: 'battlefrontPane'
+    const canvasRenderer = L.canvas({
+        padding: 0.5,
+        pane: 'battlefrontPane',
+        tolerance: 10 // <-- THE MAGIC FIX: 10px of invisible click forgiveness!
     });
 
-    dbscanLayer = L.layerGroup([], {
+    battlefrontLayer = L.layerGroup([], {
         pane: 'battlefrontPane'
     });
 
@@ -599,7 +560,10 @@ Promise.all([
     }
 
     compareToggle.addEventListener('change', () => {
-        compareMonthRow.style.display = compareToggle.checked ? 'flex' : 'none';
+        compareMonthRow.classList.toggle(
+            'visible',
+            compareToggle.checked
+        );
         updateBattlefrontMap();
     });
 
@@ -624,8 +588,15 @@ Promise.all([
             activeHeatLayer = null;
         }
 
-        if (dbscanLayer && !map.hasLayer(dbscanLayer)) {
-            dbscanLayer.addTo(map);
+        const compareRow = document.querySelector('.bf-compare-row');
+        if (renderMode === 'density') {
+            compareToggle.checked = false;
+
+            compareMonthRow.classList.remove('visible');
+
+            compareRow?.classList.add('bf-disabled');
+        } else {
+            compareRow?.classList.remove('bf-disabled');
         }
 
         const monthInput = document.getElementById('bf-month');
@@ -694,13 +665,16 @@ Promise.all([
 
                 const marker = L.circleMarker([e.lat, e.lon], {
                     pane: 'battlefrontPane',
-                    renderer: canvasRenderer,
                     radius: getBattlefrontMarkerRadius(isComparison),
-                    stroke: isComparison,
-                    color: '#ffffff',
-                    weight: isComparison ? 0.8 : 0,
+
+                    stroke: true,
+                    color: isComparison ? '#ffffff' : '#000000',
+                    opacity: isComparison ? 1 : 0,
+                    weight: isComparison ? 0.8 : 10,
+
                     fillColor: EVENT_TYPE_COLORS[e.type] || '#ffffff',
                     fillOpacity: 0,
+                    interactive: true
                 }).addTo(battlefrontLayer);
 
                 setTimeout(() => {
@@ -708,117 +682,21 @@ Promise.all([
                         fillOpacity: isComparison ? 0.25 : 0.55
                     });
                 }, 10);
-            });
-        }
 
-        function drawDbscanFronts(events) {
-            dbscanLayer.clearLayers();
-
-            const battleEvents = events.filter(e =>
-                e.type === 'Battles' && e.lat && e.lon
-            );
-
-            if (battleEvents.length < 8) return;
-
-            const maxDistanceKm = 65;
-            const minPoints = 6;
-
-            const visited = new Set();
-            const clustered = new Set();
-            const clusters = [];
-
-            function distanceKm(a, b) {
-                return turf.distance(
-                    turf.point([a.lon, a.lat]),
-                    turf.point([b.lon, b.lat]),
-                    { units: 'kilometers' }
-                );
-            }
-
-            function regionQuery(point) {
-                return battleEvents.filter(other =>
-                    distanceKm(point, other) <= maxDistanceKm
-                );
-            }
-
-            function expandCluster(point, neighbors, cluster) {
-                cluster.push(point);
-                clustered.add(point);
-
-                let i = 0;
-                while (i < neighbors.length) {
-                    const neighbor = neighbors[i];
-
-                    if (!visited.has(neighbor)) {
-                        visited.add(neighbor);
-
-                        const neighborNeighbors = regionQuery(neighbor);
-
-                        if (neighborNeighbors.length >= minPoints) {
-                            neighbors = neighbors.concat(
-                                neighborNeighbors.filter(n => !neighbors.includes(n))
-                            );
-                        }
-                    }
-
-                    if (!clustered.has(neighbor)) {
-                        cluster.push(neighbor);
-                        clustered.add(neighbor);
-                    }
-
-                    i++;
-                }
-            }
-
-            battleEvents.forEach(point => {
-                if (visited.has(point)) return;
-
-                visited.add(point);
-
-                const neighbors = regionQuery(point);
-
-                if (neighbors.length < minPoints) return;
-
-                const cluster = [];
-                expandCluster(point, neighbors, cluster);
-                clusters.push(cluster);
-            });
-
-            clusters.forEach(cluster => {
-                if (cluster.length < 8) return;
-
-                const points = turf.featureCollection(
-                    cluster.map(e => turf.point([e.lon, e.lat]))
-                );
-
-                let hull = turf.concave(points, {
-                    maxEdge: 75,
-                    units: 'kilometers'
-                });
-
-                if (!hull) return;
-
-                // Smooth/soften shape
-                hull = turf.buffer(hull, 12, {
-                    units: 'kilometers'
-                });
-
-                hull = turf.simplify(hull, {
-                    tolerance: 0.06,
-                    highQuality: true
-                });
-
-                L.geoJSON(hull, {
-                    pane: 'battlefrontPane',
-                    style: {
-                        color: '#ffd700',
-                        weight: 2,
-                        opacity: 0.85,
-                        fillColor: '#ff4d4d',
-                        fillOpacity: 0.12,
-                        dashArray: '6 4'
-                    }
-                }).addTo(dbscanLayer);
+                marker.bindPopup(`
+                <div class="bf-popup-content">
+                    <div class="bf-popup-type" style="color: ${EVENT_TYPE_COLORS[e.type] || '#fff'}">
+                        ${e.type}
+                    </div>
+                    <div class="bf-popup-date">${e.date}</div>
+                    <div class="bf-popup-coords">
+                        📍 ${parseFloat(e.lat).toFixed(4)}°, ${parseFloat(e.lon).toFixed(4)}°
+                    </div>
+                    <div class="bf-popup-notes">
+                        ${e.notes || e.description || 'No detailed description available.'}
+                    </div>
+                </div>
+            `);
             });
         }
 
@@ -826,13 +704,6 @@ Promise.all([
         const filtered = events.filter(e => selectedTypes.includes(e.type));
 
         drawEvents(filtered, false);
-
-        const dbscanToggle = document.getElementById('bf-frontline-toggle');
-        if (dbscanToggle && dbscanToggle.checked) {
-            drawDbscanFronts(filtered);
-        } else {
-            dbscanLayer.clearLayers();
-        }
 
         const statsBox = document.getElementById('bf-stats');
 
@@ -880,9 +751,6 @@ Promise.all([
 
     document.querySelectorAll('input[name="bf-render-mode"]')
         .forEach(r => r.addEventListener('change', updateBattlefrontMap));
-
-    document.getElementById('bf-frontline-toggle')
-        ?.addEventListener('change', updateBattlefrontMap);
 
     const playBtn = document.getElementById('bf-play');
 
