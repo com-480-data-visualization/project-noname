@@ -11,7 +11,7 @@ Project for the **COM-480 Data Visualization** course at EPFL.
 
 ## 📘 Final Deliverables
 
-* 📄 **Process Book:** [Read the process book](INSERT_PROCESS_BOOK_LINK_HERE)
+* 📄 **Process Book:** [Read the process book](https://github.com/com-480-data-visualization/project-noname/blob/master/process_book.pdf)
 * 🎥 **Screencast:** [Watch the screencast](https://youtu.be/vVviNAbOysE)
 * 🌐 **Website:** [Go to website](https://com-480-data-visualization.github.io/project-noname/)
 
@@ -103,6 +103,6 @@ data/
 ### Milestone 3: Final Project
 
 * 🌐 **Website:** [Go to website](https://com-480-data-visualization.github.io/project-noname/)
-* 📄 **Process Book:** [Read the process book](INSERT_PROCESS_BOOK_LINK_HERE)
-* 🎥 **Screencast:** [Watch the screencast](INSERT_SCREENCAST_LINK_HERE)
+* 📄 **Process Book:** [Read the process book](https://github.com/com-480-data-visualization/project-noname/blob/master/process_book.pdf)
+* 🎥 **Screencast:** [Watch the screencast](https://youtu.be/vVviNAbOysE)
 
