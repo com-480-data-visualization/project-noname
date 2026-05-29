@@ -12,7 +12,7 @@ Project for the **COM-480 Data Visualization** course at EPFL.
 ## 📘 Final Deliverables
 
 * 📄 **Process Book:** [Read the process book](INSERT_PROCESS_BOOK_LINK_HERE)
-* 🎥 **Screencast:** [Watch the screencast](INSERT_SCREENCAST_LINK_HERE)
+* 🎥 **Screencast:** [Watch the screencast](https://youtu.be/GgTBXMif1Fw)
 * 🌐 **Website:** [Go to website](https://com-480-data-visualization.github.io/project-noname/)
 
 ## 🔴 Abstract
