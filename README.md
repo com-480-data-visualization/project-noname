@@ -99,7 +99,7 @@ data/
 
 ### Milestone 1: Proposal
 
-👉 **[View Milestone 1](./Milestone1.md)**
+👉 **[View Milestone 1](./MIlestone1.md)**
 
 ### Milestone 2: Prototype
 
@@ -111,13 +111,3 @@ data/
 * 📄 **Process Book:** [Read the process book](INSERT_PROCESS_BOOK_LINK_HERE)
 * 🎥 **Screencast:** [Watch the screencast](INSERT_SCREENCAST_LINK_HERE)
 
-
-## 📌 Notes
-
-Before running or deploying the project, make sure that:
-
-1. the `data/` folder is included in the repository;
-2. all required `.json` and `.geojson` files are available;
-3. the website is served through a local or hosted web server;
-4. relative paths between the website files and the `data/` folder are consistent;
-5. placeholder links in this README are replaced with the final website, process book, and screencast links.
