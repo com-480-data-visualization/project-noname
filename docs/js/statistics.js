@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         ]);
 
         // 1. Data Structure Normalization 
-        const oblastsArray = Object.values(acledRaw.Ukraine || {});
+        const oblastsArray = Object.values(acledRaw).flatMap(country => Object.values(country));
         const countriesArray = Object.entries(aidRaw).map(([name, data]) => ({
             country: name,
             ...data
