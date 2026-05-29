@@ -95,69 +95,6 @@ data/
 └── timeline_events.json
 ```
 
-## 🛠️ Technologies Used
-
-* **HTML5 / CSS3 / JavaScript**
-* **D3.js v7**
-* **Leaflet.js v1.9.4**
-* **Leaflet.heat**
-* **Turf.js**
-* **html2canvas**
-* **R / Python** for exploratory data analysis and preprocessing
-
-
-## 🧑‍💻 Running the Website Locally
-
-Because the website loads local `.json` and `.geojson` files, it should be run through a local web server rather than opened directly with `file://`.
-
-### Option 1: VS Code Live Server
-
-1. Clone the repository.
-2. Open the project folder in VS Code.
-3. Install the **Live Server** extension.
-4. Open the website entry file, usually `index.html`.
-5. Right-click and select **Open with Live Server**.
-
-### Option 2: Python Local Server
-
-From the repository root, run:
-
-```bash
-python -m http.server 5500
-```
-
-Then open:
-
-```text
-http://127.0.0.1:5500/
-```
-
-If the website is located inside the `docs/` folder, open:
-
-```text
-http://127.0.0.1:5500/docs/
-```
-
-### Option 3: Node.js Local Server
-
-If Node.js is installed, run:
-
-```bash
-npx http-server -p 5500
-```
-
-Then open the corresponding local URL in your browser.
-
-## 🔄 Data Preprocessing
-
-The repository includes preprocessing and exploratory analysis scripts used to transform raw datasets into website-ready files.
-
-* `EDA.R` contains exploratory data analysis work.
-* `preprocess.py` contains preprocessing logic for generating structured data files.
-* Processed outputs are stored in the `data/` folder and loaded directly by the website.
-
-If the data is updated, the processed files in the `data/` folder should be regenerated or replaced while preserving the filenames expected by the website.
-
 ## 📍 Milestones
 
 ### Milestone 1: Proposal
