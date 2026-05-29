@@ -13,15 +13,17 @@ document.addEventListener('DOMContentLoaded', async () => {
         acled: 'data/acled_by_oblast.json',
         aid: 'data/aid_by_country.json',
         timeline: 'data/timeline_events.json',
-        gdp: 'data/gdp_by_country.json'
+        gdp: 'data/gdp_by_country.json',
+        drone: 'data/drone_by_month.json',
     };
 
     try {
-        const [acledRaw, aidRaw, timelineRaw, gdpRaw] = await Promise.all([
+        const [acledRaw, aidRaw, timelineRaw, gdpRaw, droneRaw] = await Promise.all([
             d3.json(DATA_PATHS.acled),
             d3.json(DATA_PATHS.aid),
             d3.json(DATA_PATHS.timeline),
-            d3.json(DATA_PATHS.gdp)
+            d3.json(DATA_PATHS.gdp),
+            d3.json(DATA_PATHS.drone),
         ]);
 
         // 1. Data Structure Normalization 
@@ -43,6 +45,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         renderAidDonut(countriesArray);
         renderRankingTable(countriesArray, gdpRaw);
         renderDeathTimeSeries(acledRaw);
+        renderDroneTimeSeries(droneRaw);
 
 
     } catch (err) {
@@ -894,6 +897,84 @@ function renderDeathTimeSeries(acledRaw) {
         .attr("cy", d => y(d.value))
         .attr("r", 4)
         .attr("fill", "var(--red)");
+}
+
+function renderDroneTimeSeries(droneRaw) {
+    const container = d3.select("#ts-drone-strikes");
+    container.selectAll("*").remove();
+
+    const parseTime = d3.timeParse("%Y-%m");
+    const chartData = Object.entries(droneRaw)
+        .map(([month, count]) => ({ date: parseTime(month), value: +count }))
+        .filter(d => d.date !== null)
+        .sort((a, b) => a.date - b.date);
+
+    if (chartData.length === 0) return;
+
+    const margin = { top: 20, right: 30, bottom: 50, left: 55 };
+    const width = container.node().getBoundingClientRect().width - margin.left - margin.right;
+    const height = 260 - margin.top - margin.bottom;
+
+    const svg = container.append("svg")
+        .attr("width", "100%")
+        .attr("height", height + margin.top + margin.bottom)
+        .attr("viewBox", `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`)
+        .append("g")
+        .attr("transform", `translate(${margin.left},${margin.top})`);
+
+    const x = d3.scaleTime().domain(d3.extent(chartData, d => d.date)).range([0, width]);
+    const y = d3.scaleLinear().domain([0, d3.max(chartData, d => d.value) * 1.1]).range([height, 0]);
+
+    svg.append("g")
+        .attr("class", "axis grid")
+        .attr("transform", `translate(0,${height})`)
+        .call(d3.axisBottom(x).ticks(6).tickFormat(d3.timeFormat("%Y/%m")).tickSize(-height));
+
+    svg.append("g")
+        .attr("class", "axis grid")
+        .call(d3.axisLeft(y).ticks(5).tickSize(-width));
+
+    // Area fill
+    svg.append("path")
+        .datum(chartData)
+        .attr("fill", "rgba(52, 152, 219, 0.15)")
+        .attr("d", d3.area().x(d => x(d.date)).y0(height).y1(d => y(d.value)).curve(d3.curveMonotoneX));
+
+    svg.append("path")
+        .datum(chartData)
+        .attr("fill", "none")
+        .attr("stroke", "#3498db")
+        .attr("stroke-width", 2.5)
+        .attr("d", d3.line().x(d => x(d.date)).y(d => y(d.value)).curve(d3.curveMonotoneX));
+
+    let tooltip = d3.select(".chart-tooltip");
+    if (tooltip.empty()) {
+        tooltip = d3.select("body").append("div").attr("class", "chart-tooltip").style("opacity", 0);
+    }
+
+    const mouseLine = svg.append("line")
+        .attr("y1", 0).attr("y2", height)
+        .attr("stroke", "#aaa").attr("stroke-width", 1).attr("stroke-dasharray", "4")
+        .style("opacity", 0);
+
+    svg.append("rect")
+        .attr("width", width).attr("height", height)
+        .attr("fill", "none").attr("pointer-events", "all")
+        .on("mouseout", () => { tooltip.style("opacity", 0); mouseLine.style("opacity", 0); })
+        .on("mousemove", function (event) {
+            const bisect = d3.bisector(d => d.date).left;
+            const date = x.invert(d3.pointer(event)[0]);
+            const i = bisect(chartData, date, 1);
+            const d0 = chartData[i - 1], d1 = chartData[i];
+            const d = d1 && (date - d0.date > d1.date - date) ? d1 : d0;
+            if (!d) return;
+            mouseLine.attr("x1", x(d.date)).attr("x2", x(d.date)).style("opacity", 1);
+            tooltip.style("opacity", 1)
+                .html(`<span class="tooltip-date">${d3.timeFormat("%Y/%m")(d.date)}</span>
+                       <div><span style="color:#3498db">●</span> Strikes: <strong>${d.value.toLocaleString()}</strong></div>`)
+                .style("left", (event.pageX + 15) + "px")
+                .style("top", (event.pageY - 28) + "px");
+        });
 }
 
 

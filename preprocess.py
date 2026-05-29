@@ -21,7 +21,7 @@ sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(BASE_DIR, "data")
-OUT_DIR  = os.path.join(BASE_DIR, "website", "data")
+OUT_DIR  = os.path.join(BASE_DIR, "docs", "data")
 os.makedirs(OUT_DIR, exist_ok=True)
 
 # ---------------------------------------------------------------------------
@@ -133,7 +133,36 @@ def process_acled():
 
 
 # ---------------------------------------------------------------------------
-# 3. Ukraine Support Tracker -> aid_by_country.json
+# 3. ACLED -> drone_by_month.json
+# ---------------------------------------------------------------------------
+
+def process_drone_strikes():
+    print("  Processing drone strikes ...")
+    monthly = defaultdict(int)
+
+    with open(ACLED_FILE, encoding="utf-8-sig", newline="") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            if row["sub_event_type"].strip() != "Air/drone strike":
+                continue
+            if row["country"].strip() not in ("Ukraine", "Russia"):
+                continue
+            date_str = row["event_date"].strip()
+            try:
+                month = datetime.strptime(date_str, "%Y-%m-%d").strftime("%Y-%m")
+            except ValueError:
+                month = date_str[:7]
+            monthly[month] += 1
+
+    out = dict(sorted(monthly.items()))
+    out_path = os.path.join(OUT_DIR, "drone_by_month.json")
+    with open(out_path, "w", encoding="utf-8") as f:
+        json.dump(out, f, ensure_ascii=False, indent=2)
+    print(f"  [ok] drone_by_month.json ({sum(out.values())} events across {len(out)} months)")
+
+
+# ---------------------------------------------------------------------------
+# 4. Ukraine Support Tracker -> aid_by_country.json
 # ---------------------------------------------------------------------------
 
 ASSISTANCE_FILE = os.path.join(DATA_DIR, "assistance_main_data.xlsx")
@@ -287,11 +316,14 @@ if __name__ == "__main__":
     print("\n=== Step 2: Process ACLED data ===")
     process_acled()
 
-    print("\n=== Step 3: Process aid data ===")
+    print("\n=== Step 3: Process drone strikes ===")
+    process_drone_strikes()
+
+    print("\n=== Step 4: Process aid data ===")
     process_assistance()
 
-    print("\n=== Step 4: Write timeline events ===")
+    print("\n=== Step 5: Write timeline events ===")
     write_timeline()
 
-    print("\nDone! Files in website/data/")
-    print("Start the site:  cd website && python -m http.server 8000")
+    print("\nDone! Files in docs/data/")
+    print("Start the site:  cd docs && python -m http.server 8000")
