@@ -4,15 +4,15 @@ Project for the **COM-480 Data Visualization** course at EPFL.
 
 ## 👨‍👩‍👧‍👦 Students
 
-**Daniele Giuli**
-**Chaewon Yoon**
-**Ali Shenaskhosh**
+* **Daniele Giuli**
+* **Chaewon Yoon**
+* **Ali Shenaskhosh**
 
 ## ✅ Live Prototype
 
 The final live prototype can be found here:
 
-👉 **[Go to website](INSERT_WEBSITE_LINK_HERE)**
+👉 **[Go to website](https://com-480-data-visualization.github.io/project-noname/)**
 
 ## 📘 Final Deliverables
 
