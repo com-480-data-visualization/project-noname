@@ -104,14 +104,7 @@ function updateSummaryCards(oblastsArray, countriesArray) {
     oblastsArray.forEach(oblast => {
         if (!oblast) return;
 
-        // 1. Calculate total casualties from monthly object or total death fallback
-        if (oblast.monthly) {
-            Object.values(oblast.monthly).forEach(count => {
-                totalCasualties += (+count || 0);
-            });
-        } else {
-            totalCasualties += (+oblast.total_deaths || +oblast.deaths || 0);
-        }
+        totalCasualties += (+oblast.fatalities || 0);
 
         // 2. Aggregate counts by conflict type (handles both aggregated object and raw arrays)
         if (oblast.by_type) {
