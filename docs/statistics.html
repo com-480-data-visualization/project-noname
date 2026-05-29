@@ -23,10 +23,13 @@
     <main class="page-detail">
         <h2 class="detail-heading">Overall Conflict Statistics</h2>
         <p class="detail-sub">Summary of Overall Support Status and Dispute Damage Statistics</p>
+        <p style="font-size:0.78rem;color:#888;margin:-8px 0 20px;text-align:center;">
+            Data sources: ACLED (events up to April 2025) &nbsp;·&nbsp; Ukraine Support Tracker (aid up to December 2025)
+        </p>
 
         <!-- Summary Statistics Section -->
         <div class="stats-matrix" style="margin-bottom: 32px;">
-    
+
             <section class="stats-row" style="margin-bottom: 20px;">
                 <div class="stat-card">
                     <div class="sc-label">Total Deaths</div>
@@ -76,6 +79,15 @@
             </div>
         </div>
 
+        <!-- Drone Strikes Time Series -->
+        <div class="chart-card" style="margin-top: 24px;">
+            <h3>AIR / DRONE STRIKES OVER TIME</h3>
+            <div class="chart-guide-container">
+                <p class="chart-guide"><span class="info-icon">ⓘ</span> Monthly count of Air/drone strike events (ACLED sub_event_type)</p>
+            </div>
+            <div id="ts-drone-strikes" style="height: 260px;"></div>
+        </div>
+
         <!-- AID ALLOCATION ANALYSIS -->
         <div class="chart-card combined-aid-container">
             <div class="header-group">
@@ -94,16 +106,6 @@
                     <div id="ts-aid-cumulative" style="height: 400px;"></div>
                 </div>
             </div>
-        </div>
-
-        
-        <!-- Drone Strikes Time Series -->
-        <div class="chart-card" style="margin-top: 24px;">
-            <h3>AIR / DRONE STRIKES OVER TIME</h3>
-            <div class="chart-guide-container">
-                <p class="chart-guide"><span class="info-icon">ⓘ</span> Monthly count of Air/drone strike events (ACLED sub_event_type)</p>
-            </div>
-            <div id="ts-drone-strikes" style="height: 260px;"></div>
         </div>
 
         <!-- Rest of the data -->
