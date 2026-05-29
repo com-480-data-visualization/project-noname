@@ -105,22 +105,6 @@ data/
 * **html2canvas**
 * **R / Python** for exploratory data analysis and preprocessing
 
-## 🚀 Project Structure
-
-```text
-project-root/
-├── .github/workflows/       # GitHub workflow files
-├── data/                    # Data files used by the website
-├── docs/                    # Website files for deployment
-├── figures/                 # Figures used in reports or milestones
-├── EDA.R                    # Exploratory data analysis script
-├── Milestone1.md            # Milestone 1 report
-├── Milestone2.md            # Milestone 2 report
-├── guidebook.md             # Additional documentation
-├── plan.docx                # Project planning document
-├── preprocess.py            # Data preprocessing script
-└── README.md                # Project documentation
-```
 
 ## 🧑‍💻 Running the Website Locally
 
@@ -190,11 +174,6 @@ If the data is updated, the processed files in the `data/` folder should be rege
 * 📄 **Process Book:** [Read the process book](INSERT_PROCESS_BOOK_LINK_HERE)
 * 🎥 **Screencast:** [Watch the screencast](INSERT_SCREENCAST_LINK_HERE)
 
-## 🤝 Authors
-
-* **Chaewon Yoon**
-* **Daniele**
-* **Ali**
 
 ## 📌 Notes
 
