@@ -8,17 +8,12 @@ Project for the **COM-480 Data Visualization** course at EPFL.
 * **Chaewon Yoon**
 * **Ali Shenaskhosh**
 
-## ✅ Live Prototype
-
-The final live prototype can be found here:
-
-👉 **[Go to website](https://com-480-data-visualization.github.io/project-noname/)**
 
 ## 📘 Final Deliverables
 
 * 📄 **Process Book:** [Read the process book](INSERT_PROCESS_BOOK_LINK_HERE)
 * 🎥 **Screencast:** [Watch the screencast](INSERT_SCREENCAST_LINK_HERE)
-* 🌐 **Website:** [Go to website](INSERT_WEBSITE_LINK_HERE)
+* 🌐 **Website:** [Go to website](https://com-480-data-visualization.github.io/project-noname/)
 
 ## 🔴 Abstract
 
@@ -107,7 +102,7 @@ data/
 
 ### Milestone 3: Final Project
 
-* 🌐 **Website:** [Go to website](INSERT_WEBSITE_LINK_HERE)
+* 🌐 **Website:** [Go to website](https://com-480-data-visualization.github.io/project-noname/)
 * 📄 **Process Book:** [Read the process book](INSERT_PROCESS_BOOK_LINK_HERE)
 * 🎥 **Screencast:** [Watch the screencast](INSERT_SCREENCAST_LINK_HERE)
 
