@@ -17,9 +17,8 @@ const map = L.map('map', {
     maxBoundsViscosity: 1.0,
 }).setView([48.37, 31.16], 5);   // centred on Ukraine
 
-L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png', {
-    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors © <a href="https://carto.com/">CARTO</a>',
-    subdomains: 'abcd',
+L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png', {
+    attribution: '© <a href="https://stadiamaps.com/">Stadia Maps</a>, © <a href="https://openmaptiles.org/">OpenMapTiles</a> © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
     maxZoom: 19,
     opacity: 0.8,
 }).addTo(map);
