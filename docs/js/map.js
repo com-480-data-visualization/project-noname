@@ -17,10 +17,10 @@ const map = L.map('map', {
     maxBoundsViscosity: 1.0,
 }).setView([48.37, 31.16], 5);   // centred on Ukraine
 
-L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark_no_labels/{z}/{x}/{y}{r}.png', {
-    attribution: '© <a href="https://stadiamaps.com/">Stadia Maps</a>, © <a href="https://openmaptiles.org/">OpenMapTiles</a> © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
-    maxZoom: 19,
-    opacity: 0.8,
+L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+    attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
+    maxZoom: 16,
+    opacity: 0.85,
 }).addTo(map);
 
 console.log("map.js loaded");
@@ -285,8 +285,8 @@ function setMapMode(mode) {
         hideDataPanes();
 
         map.flyTo([20, 0], 2, {
-            duration: 1.1,
-            easeLinearity: 0.9
+            duration: 1.3,
+            easeLinearity: 0.25
         });
 
         setTimeout(() => {
@@ -298,22 +298,22 @@ function setMapMode(mode) {
         hideDataPanes();
 
         map.flyTo([48.37, 31.16], 5, {
-            duration: 0.9,
-            easeLinearity: 0.8
+            duration: 1.2,
+            easeLinearity: 0.25
         });
 
         setTimeout(() => {
             oblastPane.style.opacity = 1;
             buildLegend('conflict');
-        }, 900);
+        }, 1200);
 
     } else if (mode === 'battlefront') {
 
         hideDataPanes();
 
         map.flyTo([48.37, 31.16], 6, {
-            duration: 0.9,
-            easeLinearity: 0.8
+            duration: 1.2,
+            easeLinearity: 0.25
         });
 
         setTimeout(() => {
@@ -324,7 +324,7 @@ function setMapMode(mode) {
             if (updateBattlefrontMap) {
                 updateBattlefrontMap();
             }
-        }, 900);
+        }, 1200);
     }
 }
 
@@ -340,18 +340,18 @@ document.querySelectorAll('.view-btn').forEach(btn => {
 document.getElementById('map-reset').addEventListener('click', () => {
     if (currentMode === 'states') {
         map.flyTo([20, 0], 2, {
-            duration: 1.2,
-            easeLinearity: 0.9
+            duration: 1.3,
+            easeLinearity: 0.25
         });
     } else if (currentMode === 'oblasts') {
         map.flyTo([48.37, 31.16], 5, {
-            duration: 1.0,
-            easeLinearity: 0.8
+            duration: 1.2,
+            easeLinearity: 0.25
         });
     } else if (currentMode === 'battlefront') {
         map.flyTo([48.37, 31.16], 6, {
-            duration: 1.0,
-            easeLinearity: 0.8
+            duration: 1.2,
+            easeLinearity: 0.25
         });
     }
 });
@@ -543,7 +543,7 @@ Promise.all([
         monthInput.min = months[0];
         monthInput.max = months[months.length - 1];
 
-        if (!monthInput.value) {
+        if (!monthInput.value || monthInput.value < months[0] || monthInput.value > months[months.length - 1]) {
             monthInput.value = months[0];
         }
     }
@@ -664,23 +664,16 @@ Promise.all([
 
                 const marker = L.circleMarker([e.lat, e.lon], {
                     pane: 'battlefrontPane',
+                    renderer: canvasRenderer,
                     radius: getBattlefrontMarkerRadius(isComparison),
-
-                    stroke: true,
-                    color: isComparison ? '#ffffff' : '#000000',
-                    opacity: isComparison ? 1 : 0,
-                    weight: isComparison ? 0.8 : 10,
-
+                    stroke: isComparison,
+                    color: '#ffffff',
+                    opacity: 0.9,
+                    weight: 0.8,
                     fillColor: EVENT_TYPE_COLORS[e.type] || '#ffffff',
-                    fillOpacity: 0,
+                    fillOpacity: isComparison ? 0.25 : 0.6,
                     interactive: true
                 }).addTo(battlefrontLayer);
-
-                setTimeout(() => {
-                    marker.setStyle({
-                        fillOpacity: isComparison ? 0.25 : 0.55
-                    });
-                }, 10);
 
                 marker.bindPopup(`
                 <div class="bf-popup-content">
